@@ -58,6 +58,11 @@ body, * {
     color: #3D405B;
 }
 
+.header-top-bar-left-item a {
+    text-decoration: none;
+    color: #E07A5F;
+}
+
 .header-top-block img {
     padding: 0 20px;
 }
@@ -75,6 +80,17 @@ body, * {
 .header-top-block-right-item {
     list-style: none;
     padding: 0 0 0 20px;
+    font-size: 18px;
+}
+
+.header-top-block-right-item a {
+    text-decoration: none;
+    color: #3D405B;
+}
+
+.header-top-block-right-item a:hover {
+    text-decoration: none;
+    color: #E07A5F;
 }
 
 .header-top-bar-right {
@@ -86,6 +102,16 @@ body, * {
 .header-top-bar-right-item {
     list-style: none;
     padding: 0 0 0 20px;
+}
+
+.header-top-bar-right-item a {
+    text-decoration: none;
+    color: #3D405B;
+}
+
+.header-top-bar-right-item a:hover {
+    text-decoration: none;
+    color: #E07A5F;
 }
 
 .header-top-bar-right-item:first-child::before {
@@ -192,7 +218,7 @@ body, * {
 
   .home-info-boxes {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-content: center;
     border-top: 1px solid #dfdcd7;
     border-bottom: 1px solid #dfdcd7;
@@ -426,6 +452,11 @@ body, * {
 
 .home-best-sellers-items-item h3 {
     font-size: 14px;
+}
+
+.home-best-sellers-items-item h3 a {
+    text-decoration: none;
+    color: #3D405B;
 }
 
 .home-best-sellers-items-item h5 {

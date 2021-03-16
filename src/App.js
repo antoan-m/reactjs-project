@@ -30,10 +30,10 @@ function App() {
     <i class="fas fa-search header-top-block-site-search-input-icon"></i>
     </article>
     <ul class="header-top-block-right">
-      <li class="header-top-block-right-item">Wishlist</li>
-      <li class="header-top-block-right-item">Orders</li>
-      <li class="header-top-block-right-item">Profile</li>
-      <li class="header-top-block-right-item">Cart</li>
+      <li class="header-top-block-right-item"><a href="#">Wishlist</a></li>
+      <li class="header-top-block-right-item"><a href="#">Orders</a></li>
+      <li class="header-top-block-right-item"><a href="#">Profile</a></li>
+      <li class="header-top-block-right-item"><a href="#">Cart</a></li>
     </ul>
   </section>
 
@@ -130,39 +130,34 @@ function App() {
 
 <article class="home-best-sellers-items-item">
   <a href="#">
-<img src="./books/book-1.jpg" class="home-best-sellers-items-item-img" alt="Under a Firefly Moon (Firefly Lake Book 1)" />
-  <h3>Under a Firefly Moon (Firefly Lake Book 1)</h3>
+<img src="./books/book-1.jpg" class="home-best-sellers-items-item-img" alt="Under a Firefly Moon (Firefly Lake Book 1)" /></a>
+  <h3><a href="#">Under a Firefly Moon (Firefly Lake Book 1)</a></h3>
     <h5><a href="#">Nora Roberts</a></h5>
     <p>$29.99</p>
-    </a>
-</article>
-
-
-<article class="home-best-sellers-items-item">
-  <a href="#">
-<img src="./books/book-1.jpg" class="home-best-sellers-items-item-img" alt="Under a Firefly Moon (Firefly Lake Book 1)" />
-  <h3>Under a Firefly Moon (Firefly Lake Book 1)</h3>
-    <h5><a href="#">Nora Roberts</a></h5>
-    <p>$29.99</p>
-    </a>
 </article>
 
 <article class="home-best-sellers-items-item">
   <a href="#">
-<img src="./books/book-1.jpg" class="home-best-sellers-items-item-img" alt="Under a Firefly Moon (Firefly Lake Book 1)" />
-  <h3>Under a Firefly Moon (Firefly Lake Book 1)</h3>
+<img src="./books/book-1.jpg" class="home-best-sellers-items-item-img" alt="Under a Firefly Moon (Firefly Lake Book 1)" /></a>
+  <h3><a href="#">Under a Firefly Moon (Firefly Lake Book 1)</a></h3>
     <h5><a href="#">Nora Roberts</a></h5>
     <p>$29.99</p>
-    </a>
 </article>
 
 <article class="home-best-sellers-items-item">
   <a href="#">
-<img src="./books/book-1.jpg" class="home-best-sellers-items-item-img" alt="Under a Firefly Moon (Firefly Lake Book 1)" />
-  <h3>Under a Firefly Moon (Firefly Lake Book 1)</h3>
+<img src="./books/book-1.jpg" class="home-best-sellers-items-item-img" alt="Under a Firefly Moon (Firefly Lake Book 1)" /></a>
+  <h3><a href="#">Under a Firefly Moon (Firefly Lake Book 1)</a></h3>
     <h5><a href="#">Nora Roberts</a></h5>
     <p>$29.99</p>
-    </a>
+</article>
+
+<article class="home-best-sellers-items-item">
+  <a href="#">
+<img src="./books/book-1.jpg" class="home-best-sellers-items-item-img" alt="Under a Firefly Moon (Firefly Lake Book 1)" /></a>
+  <h3><a href="#">Under a Firefly Moon (Firefly Lake Book 1)</a></h3>
+    <h5><a href="#">Nora Roberts</a></h5>
+    <p>$29.99</p>
 </article>
 
 </article>
