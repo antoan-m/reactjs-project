@@ -1,0 +1,26 @@
+#F4F1DE - cream
+
+#E07A5F - orange
+
+#3D405B - grey
+
+#81B29A - green
+
+#F2CC8F - yellow
+
+
+
+
+/* CSS HEX */
+--eggshell: #f4f1deff;
+--terra-cotta: #e07a5fff;
+--independence: #3d405bff;
+--green-sheen: #81b29aff;
+--deep-champagne: #f2cc8fff;
+
+/* CSS HSL */
+--eggshell: hsla(52, 50%, 91%, 1);
+--terra-cotta: hsla(13, 68%, 63%, 1);
+--independence: hsla(234, 20%, 30%, 1);
+--green-sheen: hsla(151, 24%, 60%, 1);
+--deep-champagne: hsla(37, 79%, 75%, 1);
