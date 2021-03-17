@@ -31,7 +31,7 @@ function Header() {
          </ul>
        </section>
        <section className="header-top-block">
-       <NavLink to="/" exact><img src="logo.jpg" alt="Book Store" /></NavLink>
+       <NavLink to="/" exact><img src={process.env.PUBLIC_URL + '/logo.jpg'} alt="Book Store" /></NavLink>
          <article className="header-top-block-site-search">
            <input type="text" className="header-top-block-site-search-input" name="s" placeholder="Search site" />
            <i className="fas fa-search header-top-block-site-search-input-icon"></i>
