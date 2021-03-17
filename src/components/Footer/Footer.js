@@ -16,7 +16,7 @@ function Footer() {
            <p>+359 333 555 999</p>
          </article>
          <article className="footer-payments">
-           <img src="payments.png" alt="payments" />
+           <img src={process.env.PUBLIC_URL + '/payments.png'} alt="payments" />
          </article>
          <article className="footer-share">
            <a href="https://facebook.com">
