@@ -1,14 +1,14 @@
-import "./Author.css";
+import "./Contact.css";
 
 import { Route, Link, NavLink, Redirect, Switch } from 'react-router-dom';
 
 
-function Author() {
+function Contact() {
   return (
    <div className="App">
-     This is the Author comoponent!
+     This is the Contact comoponent!
    </div>
   );
 }
 
-export default Author;
+export default Contact;

@@ -1,14 +1,14 @@
-import "./Author.css";
+import "./Checkout.css";
 
 import { Route, Link, NavLink, Redirect, Switch } from 'react-router-dom';
 
 
-function Author() {
+function Checkout() {
   return (
    <div className="App">
-     This is the Author comoponent!
+     This is the Checkout comoponent!
    </div>
   );
 }
 
-export default Author;
+export default Checkout;

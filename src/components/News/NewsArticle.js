@@ -1,14 +1,14 @@
-import "./Author.css";
+import "./NewsArticle.css";
 
 import { Route, Link, NavLink, Redirect, Switch } from 'react-router-dom';
 
 
-function Author() {
+function NewsArticle() {
   return (
    <div className="App">
-     This is the Author comoponent!
+     This is the NewsArticle comoponent!
    </div>
   );
 }
 
-export default Author;
+export default NewsArticle;
