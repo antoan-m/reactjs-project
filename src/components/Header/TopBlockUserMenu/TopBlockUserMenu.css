@@ -1,0 +1,21 @@
+.header-top-block-right {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.header-top-block-right-item {
+  list-style: none;
+  padding: 0 0 0 20px;
+  font-size: 18px;
+}
+
+.header-top-block-right-item a {
+  text-decoration: none;
+  color: #3d405b;
+}
+
+.header-top-block-right-item a:hover {
+  text-decoration: none;
+  color: #e07a5f;
+}

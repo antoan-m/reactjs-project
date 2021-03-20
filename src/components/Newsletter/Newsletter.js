@@ -10,7 +10,7 @@ function Newsletter() {
          </p>
        <article className="newsletter-form">
          <input type="text" className="newsletter-input" placeholder="Enter your email to signup" />
-         <button type="submit" name="subscribe" className="newsletter-button">Subscribe</button>
+         <button type="submit" name="subscribe" className="newsletter-button">SUBSCRIBE</button>
        </article>
 </section>
   );
