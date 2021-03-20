@@ -6,48 +6,54 @@ import { Route, Link, NavLink, Redirect, Switch } from 'react-router-dom';
 function Register() {
   return (
    <div className="App">
-     <form>
+       <h2 className="page-title">REGISTRATION</h2>
+     <form id="user-register">
                     <div className="row">
-                        <div>
-                            <input id="name" type="text" className="validate" name="name" />
-                            <label for="name">Name</label>
+                        <div className="form-field-group">
+                            <input id="name" type="text" className="form-input-field" name="name" placeholder="Your names" />
                             <span className="vaidation-error error-text-red">Name is required!</span>
                             <span className="vaidation-error error-text-red">Name must be at least 3 characters!</span>
                         </div>
                     </div>
                     <div className="row">
-                        <div>
-                            <input id="email" type="email" className="validate" name="email" />
-                            <label for="email">Email</label>
+                        <div className="form-field-group">
+                            <input id="email" type="email" className="form-input-field" name="email" placeholder="Name" />
                             <span className="vaidation-error error-text-red">Email is required!</span>
                             <span className="vaidation-error error-text-red">Email is invalid!</span>
                             <span className="vaidation-error error-text-red">Email is already registered!</span>
                         </div>
                     </div>
                     <div className="row">
-                        <div>
-                            <input id="password" type="password" className="validate" name="password" />
-                            <label for="password">Password</label>
+                        <div className="form-field-group">
+                            <input id="password" type="password" className="form-input-field" name="password" placeholder="Password" />
                             <span className="vaidation-error error-text-red">Password is required!</span>
                             <span className="vaidation-error error-text-red">Password must be at least 6 characters!</span>
                         </div>
                     </div>
                     <div className="row">
-                        <div>
-                            <input id="rePassword" type="password" className="validate" name="rePassword" />
-                            <label for="rePassword">Repeat Password</label>
+                        <div className="form-field-group">
+                            <input id="rePassword" type="password" className="form-input-field" name="rePassword" placeholder="Repeat password" />
                             <span className="vaidation-error error-text-red">Password is required!</span>
                             <span className="vaidation-error error-text-red">Password must be at least 6 characters!</span>
-                            <span className="vaidation-error error-text-red">Passwords don't match!</span>
                             <span className="vaidation-error error-text-red">Passwords don't match!</span>
                         </div>
                     </div>
                     <div className="row">
-                        <div>
-                            <input id="address" type="text" className="validate" name="address" />
-                            <label for="address">Address</label>
-                            <span className="vaidation-error error-text-red">Address is required!</span>
-                            <span className="vaidation-error error-text-red">Address must be at least 6 characters!</span>
+                        <div className="form-field-group">
+                            <input id="city" type="text" className="form-input-field" name="city" placeholder="City" />
+                            <span className="vaidation-error error-text-red">City is required!</span>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="form-field-group">
+                            <input id="street" type="text" className="form-input-field" name="street" placeholder="Street" />
+                            <span className="vaidation-error error-text-red">Street is required!</span>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="form-field-group">
+                            <input id="phone" type="text" className="form-input-field" name="phone" placeholder="Phone number" />
+                            <span className="vaidation-error error-text-red">Phone number is required!</span>
                         </div>
                     </div>
                     
