@@ -4,6 +4,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Backendless from 'backendless'
+
+Backendless.initApp('7ECE9EFE-DB9E-D320-FF17-04C136319800', 'FACAE63E-4DE1-460A-AA9B-024AE689594C');
 
 ReactDOM.render(
   <React.StrictMode>

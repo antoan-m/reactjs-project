@@ -1,0 +1,49 @@
+#books {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.books-sidebar {
+  border: 1px solid #333;
+  width: 250px;
+}
+
+.books-sidebar-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.books-sidebar-list-title {
+    list-style: none;
+    font-size: 20px;
+    padding: 5px;
+    align-self: center;
+}
+
+.books-sidebar-list-item {
+  list-style: none;
+  padding: 5px 10px;
+}
+.books-sidebar-list-item:hover {
+  width: 100%;
+  background-color: brown;
+  color: #fff;
+}
+
+.books-sidebar-list-item-link {
+  text-decoration: none;
+  color: #3d405b;
+  background-color: antiquewhite;
+}
+
+
+.books-list {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.book-list-item {
+    border: 1px solid #333;
+    padding: 10px;
+}
