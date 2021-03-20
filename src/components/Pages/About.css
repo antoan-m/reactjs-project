@@ -1,0 +1,25 @@
+.page-title .about-us{
+    margin-bottom: 0; 
+}
+
+.about-us-header-image {
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.about-us-header-image img {
+    width: 100%;
+}
+
+.about-us p {
+  font-size: 18px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+
+.about-us-footer-image {
+    margin-top: 30px;
+    margin-bottom: -20px;
+    text-align: center;
+}

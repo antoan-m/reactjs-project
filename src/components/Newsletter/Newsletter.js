@@ -9,7 +9,7 @@ function Newsletter() {
          Signup to be the first to hear about exclusive deals, special offers and upcoming books
          </p>
        <article className="newsletter-form">
-         <input type="text" className="newsletter-input" placeholder="Enter your email to signup" />
+         <input type="text" className="newsletter-input" placeholder="Enter your email..." />
          <button type="submit" name="subscribe" className="newsletter-button">SUBSCRIBE</button>
        </article>
 </section>

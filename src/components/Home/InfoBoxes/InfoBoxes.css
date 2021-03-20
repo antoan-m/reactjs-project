@@ -1,0 +1,70 @@
+.home-info-boxes {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  border-top: 1px solid #dfdcd7;
+  border-bottom: 1px solid #dfdcd7;
+  width: 100%;
+  margin-top: 50px;
+  padding: 20px 0;
+  height: 140px;
+  margin-bottom: 40px;
+}
+
+.home-info-boxes-item {
+  height: 120px;
+  position: relative;
+}
+
+.home-info-boxes-item h4 {
+  padding: 8px 0 2px 85px;
+  font-size: 18px;
+  margin: 18px 0 0 0;
+  font-weight: 600;
+}
+
+.home-info-boxes-item p {
+  padding: 0px 0 0 85px;
+  font-size: 15px;
+}
+
+.home-info-boxes-item::before {
+  width: 80px;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 900;
+  color: #81b29a;
+  font-size: 55px;
+  position: absolute;
+  top: 10px;
+  text-align: center;
+}
+
+.home-info-boxes-item:nth-child(1)::before {
+  content: "\f0d1";
+}
+
+.home-info-boxes-item:nth-child(2)::before {
+  content: "\f53d";
+}
+
+.home-info-boxes-item:nth-child(3)::before {
+  content: "\f058";
+}
+
+.home-info-boxes-item:nth-child(4)::before {
+  content: "\f590";
+}
+
+.home-info-boxes-item:nth-child(1)::after,
+.home-info-boxes-item:nth-child(2)::after,
+.home-info-boxes-item:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 80px;
+  right: -70px;
+  top: 12px;
+  background-color: #dfdcd7;
+}

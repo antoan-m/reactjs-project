@@ -11,11 +11,12 @@ import NewsCategory from "./components/News/NewsCategory";
 import NewsArticle from "./components/News/NewsArticle";
 import Authors from "./components/Authors/Authors"
 import Author from "./components/Authors/Author"
-import About from "./components/Pages/Contact"
+import About from "./components/Pages/About"
+import Contact from "./components/Pages/Contact"
 import Login from "./components/User/Login"
 import Register from "./components/User/Register"
 
-import { Route, Link, NavLink, Redirect, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/authors" component={Authors} />
         <Route path="/authors/:id" component={Author} />
         <Route path="/about" exact component={About} />
+        <Route path="/contact" exact component={Contact} />
         <Route path="/user/login" exact component={Login} />
         <Route path="/user/register" exact component={Register} />
       </Switch>

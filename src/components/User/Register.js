@@ -1,12 +1,12 @@
 import "./Register.css";
 
-import { Route, Link, NavLink, Redirect, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function Register() {
   return (
-   <div className="App">
-       <h2 className="page-title">REGISTRATION</h2>
+   <fragment>
+       <h2 className="page-title">CREATE NEW ACCOUNT</h2>
        <section className="center">
        <article></article>
      <form id="user-register">
@@ -67,7 +67,7 @@ function Register() {
                     Publisher
                     </label>
                     </div>
-                    <span className="vaidation-error error-text-red">ERROR MESSAGE</span>
+                    <span className="vaidation-error error-text-red form-error">ERROR MESSAGE</span>
                     <div id="register-buttons">
                         <button className="btn waves-effect waves-light register-btn" name="action"><i className="material-icons left">input</i>Register</button>
                         <button className="btn waves-effect waves-light register-btn" name="action" type="reset"><i className="material-icons left">input</i>Reset</button>
@@ -75,8 +75,8 @@ function Register() {
                 </form>
                 <article></article>
                 </section>
-                <div id="already-registered">Already have an account? <Link to='./login'>Login</Link></div>
-   </div>
+                <div className="already-registered">Already have an account? <Link to='./login'>LOGIN</Link></div>
+   </fragment>
   );
 }
 

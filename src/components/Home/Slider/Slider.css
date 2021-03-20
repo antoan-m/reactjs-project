@@ -1,0 +1,26 @@
+.home-main-sliders {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding: 40px 0 0 0;
+}
+
+.home-main-sliders-big {
+  width: 1040px;
+  height: 530px;
+
+  /* padding: 20px 10px 20px 0; */
+}
+
+.home-main-sliders-right {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: column;
+}
+
+.home-main-sliders-small {
+  width: 330px;
+  height: 250px;
+  /* padding: 20px 0 20px 10px; */
+}
