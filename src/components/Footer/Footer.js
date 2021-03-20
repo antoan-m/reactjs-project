@@ -9,10 +9,10 @@ function Footer() {
        <article className="footer-top">
          <article className="footer-address">
            <h5>Address</h5><p>Sofia, Oborishte Street 35</p>
-           <p><span>Find us </span><NavLink to="contact-us" className="footer-address-map-link">HERE</NavLink></p>
+           <p><span>Find us </span><NavLink to="/contact" className="footer-address-map-link">HERE</NavLink></p>
          </article>
          <article className="footer-contacts">
-           <h5>Contact</h5><p>contact.office @bookstore.com</p>
+           <h5>Contact</h5><p>contact.office@bookstore.com</p>
            <p>+359 333 555 999</p>
          </article>
          <article className="footer-payments">

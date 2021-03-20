@@ -13,10 +13,14 @@ import Authors from "./components/Authors/Authors"
 import Author from "./components/Authors/Author"
 import About from "./components/Pages/About"
 import Contact from "./components/Pages/Contact"
+import Terms from "./components/Pages/Terms";
+import PageNotFound from "./components/Pages/PageNotFound";
 import Login from "./components/User/Login"
 import Register from "./components/User/Register"
 
+
 import { Route, Switch } from "react-router-dom";
+
 
 function App() {
   return (
@@ -34,8 +38,10 @@ function App() {
         <Route path="/authors/:id" component={Author} />
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
+        <Route path="/terms" exact component={Terms} />
         <Route path="/user/login" exact component={Login} />
         <Route path="/user/register" exact component={Register} />
+        <Route path="/" component={PageNotFound} />
       </Switch>
       <Newsletter />
       <Footer />

@@ -1,0 +1,13 @@
+.terms-paragraph-header {
+  padding: 30px 0 10px 0;
+}
+
+.terms-paragraph-header:first-of-type {
+    padding: 0px 0 10px 0;
+  }
+
+.terms-and-conditions p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
