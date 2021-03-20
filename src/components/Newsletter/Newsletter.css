@@ -1,0 +1,57 @@
+.newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 50px 0;
+}
+
+.newsletter-form {
+  width: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletter h3 {
+  font-size: 28px;
+  color: #3d405b;
+}
+
+.newsletter p {
+  padding: 20px 0;
+  color: #81b29a;
+}
+
+.newsletter input {
+  /* width: 100%; */
+  height: 60px;
+  position: relative;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid #dfdcd7;
+}
+
+.newsletter-icon {
+  position: relative;
+  left: -45px;
+  font-size: 30px;
+  top: 5px;
+  color: #3d405b;
+}
+
+.newsletter-button {
+  width: 150px;
+  height: 55px;
+  font-size: 22px;
+  color: #f4f1de;
+  background-color: #e07a5f;
+  border: 0px;
+  margin-left: 30px;
+}
+
+.newsletter-button:hover {
+  cursor: pointer;
+  color: #F4F1DE;
+  background-color: #81B29A;
+}

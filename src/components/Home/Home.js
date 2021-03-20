@@ -146,19 +146,6 @@ function Home() {
          </article>
        </article>
      </section>
-
-     <section className="newsletter">
-       <h3>Join Our Newsletter</h3>
-       <p>
-         Signup to be the first to hear about exclusive deals, special offers and upcoming collections
-         </p>
-       <article className="newsletter-form">
-         <input type="text" className="newsletter-input" placeholder="Enter your email to recieve newsletter" />
-         <button type="submit" name="subscribe" className="newsletter-button">Subscribe</button>
-       </article>
-     </section>
-
-     
    </div>
   );
 }

@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Newsletter from "./components/Newsletter/Newsletter";
 import Home from "./components/Home/Home";
 import Books from "./components/Books/Books";
 import BooksCategory from "./components/Books/BooksCategory"
@@ -34,6 +35,7 @@ function App() {
         <Route path="/user/login" exact component={Login} />
         <Route path="/user/register" exact component={Register} />
       </Switch>
+      <Newsletter />
       <Footer />
     </div>
   );

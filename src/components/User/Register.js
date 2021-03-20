@@ -7,6 +7,8 @@ function Register() {
   return (
    <div className="App">
        <h2 className="page-title">REGISTRATION</h2>
+       <section className="center">
+       <article></article>
      <form id="user-register">
                     <div className="row">
                         <div className="form-field-group">
@@ -17,7 +19,7 @@ function Register() {
                     </div>
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="email" type="email" className="form-input-field" name="email" placeholder="Name" />
+                            <input id="email" type="email" className="form-input-field" name="email" placeholder="Email" />
                             <span className="vaidation-error error-text-red">Email is required!</span>
                             <span className="vaidation-error error-text-red">Email is invalid!</span>
                             <span className="vaidation-error error-text-red">Email is already registered!</span>
@@ -71,6 +73,8 @@ function Register() {
                         <button className="btn waves-effect waves-light register-btn" name="action" type="reset"><i className="material-icons left">input</i>Reset</button>
                     </div>
                 </form>
+                <article></article>
+                </section>
                 <div id="already-registered">Already have an account? <Link to='./login'>Login</Link></div>
    </div>
   );
