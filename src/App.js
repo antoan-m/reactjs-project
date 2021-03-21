@@ -7,8 +7,7 @@ import Books from "./components/Books/Books";
 import BooksCategory from "./components/Books/BooksCategory"
 import Book from "./components/Books/Book/Book";
 import News from "./components/News/News";
-import NewsCategory from "./components/News/NewsCategory";
-import NewsArticle from "./components/News/NewsArticle";
+import NewsArticleDetails from "./components/News/NewsArticleDetails";
 import Authors from "./components/Authors/Authors"
 import Author from "./components/Authors/Author"
 import About from "./components/Pages/About"
@@ -28,14 +27,13 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/books" component={Books} />
-        <Route path="/books/:category" component={BooksCategory} />
-        <Route path="/books/:category/:id" component={Book} />
-        <Route path="/news" component={News} />
-        <Route path="/news/:category" component={NewsCategory} />
-        <Route path="/news/:category/:id" component={NewsArticle} />
-        <Route path="/authors" component={Authors} />
-        <Route path="/authors/:id" component={Author} />
+        <Route path="/books" exact component={Books} />
+        <Route path="/books/:category" exact component={BooksCategory} />
+        <Route path="/books/:category/:id" exact component={Book} />
+        <Route path="/news" exact component={News} />
+        <Route path="/news/:id" exact component={NewsArticleDetails} />
+        <Route path="/authors" exact component={Authors} />
+        <Route path="/authors/:id" exact component={Author} />
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/terms" exact component={Terms} />
