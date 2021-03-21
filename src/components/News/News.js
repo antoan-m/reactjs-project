@@ -2,7 +2,6 @@ import "./News.css";
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NewsArticle from "./NewsArticle";
-import Backendless from 'backendless';
 
 class News extends Component {
   constructor() {

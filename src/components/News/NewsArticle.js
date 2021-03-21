@@ -1,7 +1,6 @@
 import { Component } from 'react';
 
 import "./NewsArticle.css";
-import NewsArticleDetails from "./NewsArticleDetails";
 
 import { Link } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ render() {
   return (
      <article className="news-list-item" key={x.objectId}>
 
-<Link to={`/news/${x.objectId}`}><img src={x.image} className="news-list-item-image" alt="Under a Firefly Moon (Firefly Lake Book 1)" /></Link>
+<Link to={`/news/${x.objectId}`}><img src={x.image} className="news-list-item-image" image={x.image} alt="Under a Firefly Moon (Firefly Lake Book 1)" /></Link>
 
 <article className="news-list-item-details">
 <Link to={`/news/${x.objectId}`}><h3 className="news-list-item-title">{x.title}</h3></Link>

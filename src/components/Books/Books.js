@@ -1,93 +1,49 @@
 import "./Books.css";
-import Backendless from "backendless";
-import { Route, Link, NavLink, Redirect, Switch } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Component } from 'react';
+import BookArticle from './BookArticle';
+import BooksSidebar from './BooksSidebar';
 
+class Books extends Component {
+  constructor() {
+    super();
+    this.state = {
+      books: []
+    };
+  }
 
-function Books() {
+  booksQuery = '';
 
-  const [books, setBooks] = useState([]);
+  componentDidMount() {
 
-  let booksQuery = '';
-  //let booksQuery = `year%3D1999`; //equals
-  //let booksQuery = `title%20LIKE%20%27%25Proba%25%27`; //contains
-  //let booksQuery = `price%3E%3D0%20AND%20price%20%3C%3D%2020`; //between
+    console.log('mount');
+    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?sortBy=created%20desc`, {
+      headers: { 'Access-Control-Allow-Origin': "*" }
+    })
+   .then(res => res.json())
+          .then(books => this.setState({ books }))
+          .then(console.log(this.state))
+          
+  };
 
-  useEffect(() => {
-    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?where=${booksQuery}`, {
-    headers: { 'Access-Control-Allow-Origin': "*" }
-  })
- .then(res => res.json())
- .then(result => setBooks(result))
-  }, [])
-
-    console.log(books);
-
-
+  render() {
   return (
-   <div className="App" id="books">
+<div className="books">
 
-     <aside className="books-sidebar">
+<BooksSidebar />
 
-      <section className="books-sidebar-categories">
-      <ul className="books-sidebar-list">
-        <li className="books-sidebar-list-title">CATEGORIES</li>
-        <Link to="/books/category/comedy" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Comedy</li></Link>
-        <Link to="/books/category/thriller" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Thriller</li></Link>
-        <Link to="/books/category/poems" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Poems</li></Link>
-      </ul>
-      </section>
-      <section className="books-sidebar-authors">
-      <ul className="books-sidebar-list">
-        <li className="books-sidebar-list-title">AUTHORS</li>
-        <Link to="/books/author/agatha-christy" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Agatha Christy</li></Link>
-        <Link to="/books/author/jack-london" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Jack London</li></Link>
-        <Link to="/books/author/john-grisom" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">John Grisom</li></Link>
-      </ul>
-      </section>
-      <section className="books-sidebar-format">
-      <ul className="books-sidebar-list">
-        <li className="books-sidebar-list-title">FORMAT</li>
-        <Link to="/books/author/agatha-christy" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Paperback</li></Link>
-        <Link to="/books/author/jack-london" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Hardcover</li></Link>
-        <Link to="/books/author/john-grisom" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Digital</li></Link>
-      </ul>
-      </section>
-      <section className="books-sidebar-price">
-      <ul className="books-sidebar-list">
-        <li className="books-sidebar-list-title">PRICES</li>
-        <Link to="/books/price/under-10" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Under 10</li></Link>
-        <Link to="/books/price/10-20" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">10 - 20</li></Link>
-        <Link to="/books/price/over-20" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Over 20</li></Link>
-      </ul>
-      </section>
-      <section className="books-sidebar-featured-books">
-      <ul className="books-sidebar-list">
-        <li className="books-sidebar-list-title">FEATURED BOOKS</li>
-        <Link to="/books/details/asdasdasfasdasf" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Book 1</li></Link>
-        <Link to="/books/details/sdfsdasdfasdf" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Book 2</li></Link>
-        <Link to="/books/details/gerfsdsdfasdfasd" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Book 3</li></Link>
-      </ul>
-      </section>
-     </aside>
+    <section className="books-main">
+
+     <section className="books-filter"><span>NEWEST</span> | <span>OLDEST</span> | <span>LOW PRICE</span> | <span>HIGH PRICE</span></section>
 
      <section className="books-list">
 
-       <article className="book-list-item" key={books.map(x => x.objectid)}>
-        <h1>{books.map(x => x.title)}</h1>
-        <h2>{books.map(x => x.author)}</h2>
-        <h3>{books.map(x => x.price)}</h3>
-        <h4>{books.map(x => x.year)}</h4>
-        <h5>{books.map(x => x.format)}</h5>
-        <h6>{books.map(x => x.objectId)}</h6>
-        <img src={books.map(x => x.image)} alt={books.map(x => x.objectId)} />
-       </article>
-
+       <BookArticle bookData={this.state.books} />
 
      </section>
-
+</section>
    </div>
   );
+}
 }
 
 export default Books;

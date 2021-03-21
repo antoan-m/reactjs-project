@@ -1,30 +1,52 @@
 import "./NewsArticleDetails.css";
+import { Component } from 'react';
+import { Link } from "react-router-dom";
+
+class NewsArticleDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentArticleParams : props.match.params,
+      newsArticleDetails: {}
+  };
+}
 
 
-function NewsArticleDetails() {
+articleID = this.props.match.params.id;
+
+componentDidMount() {
+    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/news/${this.articleID}`, {
+        headers: { 'Access-Control-Allow-Origin': "*" }
+})
+        .then(res => res.json())
+        .then(newsArticleDetails => this.setState({ newsArticleDetails }))
+        
+};
+
+render() {
   return (
-   <fragment>
-     <h2 className="page-title">ABOUT BOOK STORE</h2>
-     <article className="about-us about-us">
-       <article className="about-us-header-image">
-         <img src={process.env.PUBLIC_URL + '/essential-books.jpg'} alt="payments" />
+   <section className="news-details">
+<aside className="books-sidebar">
+<section className="books-sidebar-featured-books">
+<ul className="books-sidebar-list">
+ <li className="books-sidebar-list-title">FEATURED BOOKS</li>
+ <Link to="/books/details/asdasdasfasdasf" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Book 1</li></Link>
+ <Link to="/books/details/sdfsdasdfasdf" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Book 2</li></Link>
+ <Link to="/books/details/gerfsdsdfasdfasd" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Book 3</li></Link>
+</ul>
+</section>
+</aside>
+     <article className="news-article-details">
+       <h2 className="news-article-details-title">{this.state.newsArticleDetails.title}</h2>
+	   <p className="news-article-details-date"><i class="material-icons news-article-details-date-icon">access_time</i>12:32 01.10.2020</p>
+       <article className="news-article-details-image">
+         <img src={this.state.newsArticleDetails.image} alt={this.state.newsArticleDetails.title} />
+         <p className="news-article-details-description">{this.state.newsArticleDetails.description}</p>
          </article>
-     
-     <p>Book Store began in `1997`. Over the decades that have followed, we have grown to become an icon of the British cultural landscape, employing over 3000 superb booksellers across over 280 bookshops.</p>
-
-     <p>As the last surviving national bookshop chain, we are proud to have fought off the perceived threat of e-readers and online competition to begin a programme of active expansion. Recent years have seen fresh shops open around the country and sites either move or be upgraded.</p>
-
-     <p>Perhaps unusually for a national retailer, our branch managers enjoy a high degree of individual autonomy, running their shops to best please their local customers, with only the lightest of central suggested direction. We take enormous pleasure in championing simply good (but sometimes relatively overlooked) books, a principle that began most famously with John Williams’ Stoner, a quiet, intense novel that we turned into a bestseller forty years after its original publication.</p>
-
-     <p>Working closely with our bookshops are our efforts online, where at Book Store we are working to bring the very essence of Book Store to every home and smartphone in Britain. With hugely popular endeavours such as our regular reading update Book Store Weekly and an ever-increasing offering of exclusive reader offers and signed editions, Book Store.com is the perfect online companion to our High Street bookshops. Click & Collect – the service that links the two – has grown in tandem with our success, allowing our customers to experience the best of both worlds.</p>
-
-     <p>Through our own coffee shops, range of books, our array of gifts and booksellers who genuinely love what they sell, we welcome you to Book Store.</p>
      </article>
-     <article className="about-us-footer-image">
-     <img src={process.env.PUBLIC_URL + '/logo.jpg'} alt="Book Store" />
-     </article>
-   </fragment>
+   </section>
   );
+}
 }
 
 export default NewsArticleDetails;

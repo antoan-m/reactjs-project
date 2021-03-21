@@ -3,7 +3,7 @@
   padding: 10px;
   display: flex;
   width: 535px;
-  margin: 20px 20px;
+  margin: 0px 20px 20px 20px;
   position: relative;
   -webkit-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.66);
   box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.66);
@@ -51,7 +51,9 @@
 }
 
 .news-list-item-description {
-  font-size: 16px;
+  font-size: 14px;
+  overflow: hidden;
+  max-height: 85px;
 }
 
 .news-list-item-btn {

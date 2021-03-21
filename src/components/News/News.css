@@ -1,5 +1,6 @@
 .news {
   display: flex;
+  padding-top: 20px;
 }
 
 .news-sidebar {
