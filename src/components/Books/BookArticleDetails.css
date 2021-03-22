@@ -1,4 +1,130 @@
 .book-details {
-    display: flex;
-    
+  display: flex;
+}
+
+.book-article-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 56px;
+  border-top: 1px solid #ddd;
+  padding-top: 40px;
+}
+
+.book-article-details-top {
+  display: flex;
+  max-height: 500px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.book-article-details-bottom {
+  display: flex;
+}
+
+.book-article-details-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  /* position: relative; */
+}
+
+.book-article-details-info-title {
+  font-weight: 600;
+  padding: 0 40px 20px 0;
+  color: #3d405b;
+}
+
+.book-article-details-info-bullets-bullet a {
+  color: #e07a5f;
+}
+
+.book-article-details-info-bullets-bullet a:hover {
+  color: #3d405b;
+}
+
+.book-article-details-info-bullets-bullet-label {
+  font-weight: 600;
+}
+
+.book-article-details-info-price {
+  font-size: 30px;
+  font-weight: 600;
+  position: absolute;
+  right: 66px;
+  top: 250px;
+  padding: 10px 30px;
+  background: linear-gradient(220deg, transparent 24px, #f4f1de 0);
+}
+
+.book-article-details-info-short-description {
+  padding: 20px 0 0px 0;
+  height: 120px;
+  overflow: hidden;
+}
+
+.book-article-details-image {
+  border-right: 1px solid #ddd;
+  padding: 0 30px 0 10px;
+  height: 500px;
+}
+
+.book-article-details-info-buttons {
+  padding-top: 30px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 48px;
+}
+
+.book-article-details-info-buttons-cart {
+  margin-right: 40px;
+}
+
+.book-article-details-info-buttons-cart-btn {
+  min-width: 200px;
+  margin: 0;
+  background-color: #e07a5f;
+}
+
+.book-article-details-info-buttons-cart-btn:hover {
+  color: #fff;
+  background-color: #3d405b;
+}
+
+.book-article-details-info-buttons-like {
+  margin-left: 40px;
+}
+
+.book-article-details-info-buttons-wishlist-btn {
+  color: #333;
+  background-color: #fff;
+}
+
+.book-article-details-info-buttons-wishlist-btn:hover {
+  color: #333;
+  background-color: #f4f1de;
+}
+
+.book-article-details-info-buttons-like-btn {
+  color: #333;
+  background-color: #fff;
+}
+
+.book-article-details-info-buttons-like-btn:hover {
+  color: #333;
+  background-color: #f4f1de;
+}
+
+.book-article-details-more-info {
+  padding: 0 20px;
+}
+
+.book-article-details-more-info-h3 {
+  font-size: 22px;
+  margin: 0 0 20px 0;
+  line-height: 22px;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #ddd;
 }
