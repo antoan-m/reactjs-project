@@ -53,6 +53,7 @@ ul.collapsible {
 .books-sidebar-list-item {
   list-style: none;
   padding: 5px 10px;
+  font-size: 14px;
 }
 .books-sidebar-list-item:hover {
   width: 100%;

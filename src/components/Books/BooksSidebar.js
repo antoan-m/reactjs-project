@@ -1,6 +1,11 @@
 import "./BooksSidebar.css";
 import { Component } from 'react';
 import FeaturedBooks from './FeaturedBooks'
+import BooksSidebarCategories from './BooksAside/BooksSidebarCategories'
+import BooksSidebarAuthors from './BooksAside/BooksSidebarAuthors'
+import BooksSidebarFormats from './BooksAside/BooksSidebarFormats'
+import BooksSidebarPrices from './BooksAside/BooksSidebarPrices'
+
 import { Link } from 'react-router-dom';
 import M from 'materialize-css';
 
@@ -8,7 +13,11 @@ class BooksSidebar extends Component {
   constructor() {
     super();
     this.state = {
-        featuredBooks: []
+        featuredBooks: [],
+        categories: [],
+        authors: [],
+        formats: [],
+        prices: []
       };
   }
 
@@ -25,7 +34,36 @@ class BooksSidebar extends Component {
     })
    .then(res => res.json())
           .then(featuredBooks => this.setState({ featuredBooks }))
-          .then(console.log(this.state))
+          .then(console.log(this.state));
+
+
+   fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=category&groupBy=category&sortBy=category`, {
+      headers: { 'Access-Control-Allow-Origin': "*" }
+    })
+   .then(res => res.json())
+          .then(categories => this.setState({ categories }))
+          .then(console.log(this.state));
+
+   fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=author&groupBy=author&sortBy=author`, {
+      headers: { 'Access-Control-Allow-Origin': "*" }
+          })
+        .then(res => res.json())
+        .then(authors => this.setState({ authors }))
+        .then(console.log(this.state));
+
+    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=format&groupBy=format&sortBy=format`, {
+       headers: { 'Access-Control-Allow-Origin': "*" }
+        })
+        .then(res => res.json())
+        .then(formats => this.setState({ formats }))
+        .then(console.log(this.state));
+
+    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=price&groupBy=price&sortBy=price`, {
+       headers: { 'Access-Control-Allow-Origin': "*" }
+        })
+        .then(res => res.json())
+        .then(prices => this.setState({ prices }))
+        .then(console.log(this.state));
 
   };
 
@@ -39,9 +77,7 @@ render() {
       <div className="collapsible-header"><i className="material-icons">menu</i>CATEGORIES</div>
       <div className="collapsible-body">
         <span>
-            <Link to="/books/comedy" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Comedy</li></Link>
-            <Link to="/books/thriller" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Thriller</li></Link>
-            <Link to="/books/poems" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Poems</li></Link>
+        <BooksSidebarCategories categoriesList={this.state.categories} />
         </span>
       </div>
     </li>
@@ -53,9 +89,7 @@ render() {
       <div className="collapsible-header"><i className="material-icons">menu</i>AUTHORS</div>
       <div className="collapsible-body">
         <span>
-      <Link to="/books/author/agatha-christy" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Agatha Christy</li></Link>
-      <Link to="/books/author/jack-london" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Jack London</li></Link>
-      <Link to="/books/author/john-grisom" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">John Grisom</li></Link>
+        <BooksSidebarAuthors authorsList={this.state.authors} />
         </span>
       </div>
     </li>
@@ -67,9 +101,7 @@ render() {
       <div className="collapsible-header"><i className="material-icons">menu</i>FORMAT</div>
       <div className="collapsible-body">
         <span>
-      <Link to="/books/author/agatha-christy" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Paperback</li></Link>
-      <Link to="/books/author/jack-london" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Hardcover</li></Link>
-      <Link to="/books/author/john-grisom" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Digital</li></Link>
+        <BooksSidebarFormats formatsList={this.state.formats} />
         </span>
       </div>
     </li>
@@ -81,9 +113,7 @@ render() {
       <div className="collapsible-header"><i className="material-icons">menu</i>PRICE</div>
       <div className="collapsible-body">
         <span>
-      <Link to="/books/price/under-10" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Under 10</li></Link>
-      <Link to="/books/price/10-20" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">10 - 20</li></Link>
-      <Link to="/books/price/over-20" exact className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Over 20</li></Link>
+        <BooksSidebarPrices pricesList={this.state.prices} />
         </span>
       </div>
     </li>
