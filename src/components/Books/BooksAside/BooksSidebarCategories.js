@@ -12,7 +12,7 @@ render() {
   return (
     this.props.categoriesList.map(x => {
     return (
-       <Link to={`/books/${x.category}`} exact className="books-sidebar-list-item-link" key={x.category}><article className="books-sidebar-list-item">{x.category.toUpperCase()}</article></Link>
+       <Link to={`/books/${x.category}`} className="books-sidebar-list-item-link" key={x.category}><article className="books-sidebar-list-item">{x.category.toUpperCase()}</article></Link>
        )
     })
       )}
