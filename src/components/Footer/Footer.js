@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-import { Route, Link, NavLink, Redirect, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 function Footer() {

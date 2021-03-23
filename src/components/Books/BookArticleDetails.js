@@ -49,12 +49,12 @@ render() {
         <article className="book-article-details-info-buttons">
 
           <Link to="#" className="book-article-details-info-buttons-cart" title="Add to Cart">
-            <button class="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Add to cart</button>
+            <button className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Add to cart</button>
 	        </Link>
          
           <article className="book-article-details-info-buttons-wishlist">
             <Link to="#" className="book-article-details-info-buttons-wishlist-link" title="Add book to your Wishlist">
-            <button class="btn waves-effect btn-large book-article-details-info-buttons-wishlist-btn">
+            <button className="btn waves-effect btn-large book-article-details-info-buttons-wishlist-btn">
               <i className="material-icons left">favorite</i>Add to Wishlist
             </button>
             </Link>
@@ -62,7 +62,7 @@ render() {
 
           <article className="book-article-details-info-buttons-like">
             <Link to="#" className="book-article-details-info-buttons-like-link" title="Like the book">
-            <button class="btn waves-effect btn-large book-article-details-info-buttons-like-btn">
+            <button className="btn waves-effect btn-large book-article-details-info-buttons-like-btn">
               <i className="material-icons left">sentiment_very_satisfied</i>
             <span className="book-article-details-info-buttons-like-btn-text">Like | {this.state.BookArticleDetails.likes}</span>
             </button>

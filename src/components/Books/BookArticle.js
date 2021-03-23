@@ -25,7 +25,7 @@ render() {
 </article>
 <article className="book-list-item-details-bottom">
   <p className="book-list-item-details-price">${x.price}</p>
-<Link to={`/books/${x.category}/${x.objectId}`}><button className="btn waves-effect waves-light book-list-item-details-btn">Read more<i class="material-icons right">import_contacts</i></button></Link>
+<Link to={`/books/${x.category}/${x.objectId}`}><button className="btn waves-effect waves-light book-list-item-details-btn">Read more<i className="material-icons right">import_contacts</i></button></Link>
 </article>
 </article>
 </article>

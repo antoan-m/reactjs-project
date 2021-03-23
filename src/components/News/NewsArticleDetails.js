@@ -38,7 +38,7 @@ render() {
 </aside>
      <article className="news-article-details">
        <h2 className="news-article-details-title">{this.state.newsArticleDetails.title}</h2>
-	   <p className="news-article-details-date"><i class="material-icons news-article-details-date-icon">access_time</i>12:32 01.10.2020</p>
+	   <p className="news-article-details-date"><i className="material-icons news-article-details-date-icon">access_time</i>12:32 01.10.2020</p>
        <article className="news-article-details-image">
          <img src={this.state.newsArticleDetails.image} alt={this.state.newsArticleDetails.title} />
          <p className="news-article-details-description">{this.state.newsArticleDetails.description}</p>

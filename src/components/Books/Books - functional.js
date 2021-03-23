@@ -1,7 +1,7 @@
 import "./Books.css";
 import { Link } from 'react-router-dom';
+import BookArticle from './BookArticle';
 import { useEffect, useState } from 'react';
-
 
 function Books() {
 

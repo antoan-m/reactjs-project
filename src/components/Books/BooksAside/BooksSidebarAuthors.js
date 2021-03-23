@@ -12,7 +12,7 @@ render() {
   return (
     this.props.authorsList.map(x => {
     return (
-       <Link to={`/books/${x.author}`} exact className="books-sidebar-list-item-link" key={x.author}><li className="books-sidebar-list-item">{x.author.toUpperCase()}</li></Link>
+       <Link to={`/books/${x.author}`} exact className="books-sidebar-list-item-link" key={x.author}><article className="books-sidebar-list-item">{x.author.toUpperCase()}</article></Link>
        )
     })
       )}

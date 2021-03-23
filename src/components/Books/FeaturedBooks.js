@@ -7,7 +7,6 @@ class FeaturedBooks extends Component {
     super(props);
   }
   render() {
-    console.log(this.props); 
     return (
         this.props.featuredBooksData.map(x => {
             return (

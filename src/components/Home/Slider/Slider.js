@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 function Slider() {
   return (
 
-    <showcase className="home-main-sliders">
+    <article className="home-main-sliders">
        <section className="home-main-sliders-left">
          <article className="home-main-sliders-big">
            <div className="main-carousel">
@@ -25,7 +25,7 @@ function Slider() {
              </NavLink>
          </article>
        </section>
-     </showcase>
+     </article>
 
   );
 }
