@@ -13,8 +13,7 @@ class BookArticle extends Component {
 render() {
   return (
   this.props.bookData.map(x => {
-    console.log(x.objectId);
-  return (
+    return (
      <article className="book-list-item" key={x.objectId}>
 
 <Link to={`/books/${x.category}/${x.objectId}`}><img src={x.image} className="book-list-item-details-image" image={x.image} alt="Under a Firefly Moon (Firefly Lake Book 1)" /></Link>

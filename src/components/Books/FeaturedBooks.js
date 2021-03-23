@@ -10,7 +10,7 @@ class FeaturedBooks extends Component {
     return (
         this.props.featuredBooksData.map(x => {
             return (
-                <Link to={`/books/${x.category}/${x.objectId}`}><article className="featured-book">
+                <Link to={`/books/${x.category}/${x.objectId}`} key={x.objectId}><article className="featured-book">
                     <img src={x.image} className="featured-book-img" alt={x.title} />
                     <p className="featured-book-price">${x.price}</p>
                     <p className="featured-book-line"></p>
