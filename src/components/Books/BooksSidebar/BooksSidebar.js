@@ -1,10 +1,10 @@
 import "./BooksSidebar.css";
 import { Component } from 'react';
-import FeaturedBooks from './FeaturedBooks'
-import BooksSidebarCategories from './BooksAside/BooksSidebarCategories'
-import BooksSidebarAuthors from './BooksAside/BooksSidebarAuthors'
-import BooksSidebarFormats from './BooksAside/BooksSidebarFormats'
-import BooksSidebarPrices from './BooksAside/BooksSidebarPrices'
+import FeaturedBooks from '../FeaturedBooks'
+import BooksSidebarCategories from './BooksSidebarCategories'
+import BooksSidebarAuthors from './BooksSidebarAuthors'
+import BooksSidebarFormats from './BooksSidebarFormats'
+import BooksSidebarPrices from './BooksSidebarPrices'
 
 import M from 'materialize-css';
 

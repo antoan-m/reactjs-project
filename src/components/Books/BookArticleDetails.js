@@ -1,5 +1,5 @@
 import "./BookArticleDetails.css";
-import BooksSidebar from './BooksSidebar'
+import BooksSidebar from './BooksSidebar/BooksSidebar'
 import { Component } from 'react';
 import { Link } from "react-router-dom";
 

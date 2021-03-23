@@ -13,6 +13,7 @@ class BookArticle extends Component {
 render() {
   return (
   this.props.bookData.map(x => {
+    console.log(x.objectId);
   return (
      <article className="book-list-item" key={x.objectId}>
 

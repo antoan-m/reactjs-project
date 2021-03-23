@@ -1,7 +1,7 @@
 import "./Books.css";
 import { Component } from 'react';
 import BookArticle from './BookArticle';
-import BooksSidebar from './BooksSidebar';
+import BooksSidebar from './BooksSidebar/BooksSidebar';
 
 class Books extends Component {
   constructor() {
@@ -20,7 +20,7 @@ class Books extends Component {
     })
    .then(res => res.json())
           .then(books => this.setState({ books }))
-          .then(console.log(this.state))
+          // .then(console.log(this.state))
           
   };
 
