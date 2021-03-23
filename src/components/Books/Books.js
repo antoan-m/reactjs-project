@@ -2,27 +2,39 @@ import "./Books.css";
 import { Component } from 'react';
 import BookArticle from './BookArticle';
 import BooksSidebar from './BooksSidebar/BooksSidebar';
+import booksService from '../../services/booksService'
+
+
 
 class Books extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       books: []
     };
   }
 
+  
   booksQuery = '';
 
   componentDidMount() {
+
+    this.category = this.props.match.params.category;
+
+    booksService.getAll(this.category)
+    .then(books => this.setState({ books }))
     
-    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?sortBy=created%20desc`, {
-      headers: { 'Access-Control-Allow-Origin': "*" }
-    })
-   .then(res => res.json())
-          .then(books => this.setState({ books }))
-          // .then(console.log(this.state))
-          
   };
+
+  componentDidUpdate() {
+
+    this.category = this.props.match.params.category;
+
+    booksService.getAll(this.category)
+    .then(books => this.setState({ books }));
+
+}
+
 
   render() {
   return (

@@ -29,12 +29,12 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/books" exact component={Books} />
-        <Route path="/books/:category" exact component={BooksCategory} />
+        <Route path="/books/:category" exact component={Books} />
         <Route path="/books/:category/:id" exact component={BookArticleDetails} />
         <Route path="/news" exact component={News} />
         <Route path="/news/:id" exact component={NewsArticleDetails} />
         <Route path="/authors" exact component={Authors} />
-        <Route path="/authors/:id" exact component={Author} />
+        <Route path="/authors/author/:id" exact component={Books} />
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/terms" exact component={Terms} />

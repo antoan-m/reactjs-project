@@ -3,9 +3,9 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class BooksSidebarCategories extends Component {
-//   constructor(props) {
-//     super(props)
-//   }
+  constructor(props) {
+    super(props)
+  }
 
 
 render() {
