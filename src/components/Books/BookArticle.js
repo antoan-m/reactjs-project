@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 
 
 class BookArticle extends Component {
-  //  constructor(props) {
-  //   super(props)
-  //  }
+   constructor(props) {
+    super(props)
+   }
 
 render() {
   return (
@@ -16,16 +16,16 @@ render() {
     return (
      <article className="book-list-item" key={x.objectId}>
 
-<Link to={`/books/${x.category}/${x.objectId}`}><img src={x.image} className="book-list-item-details-image" image={x.image} alt="Under a Firefly Moon (Firefly Lake Book 1)" /></Link>
+<Link to={`/books/details/${x.objectId}`}><img src={x.image} className="book-list-item-details-image" image={x.image} alt={x.title} /></Link>
 
 <article className="book-list-item-details">
 <article className="book-list-item-details-top">
-<Link to={`/books/${x.category}/${x.objectId}`}><h3 className="book-list-item-details-title">{x.title}</h3></Link>
+<Link to={`/books/details/${x.objectId}`}><h3 className="book-list-item-details-title">{x.title}</h3></Link>
 <Link to={`/books/${x.author}`}><p className="book-list-item-details-author">{x.author}</p></Link>
 </article>
 <article className="book-list-item-details-bottom">
   <p className="book-list-item-details-price">${x.price}</p>
-<Link to={`/books/${x.category}/${x.objectId}`}><button className="btn waves-effect waves-light book-list-item-details-btn">Read more<i className="material-icons right">import_contacts</i></button></Link>
+<Link to={`/books/details/${x.objectId}`}><button className="btn waves-effect waves-light book-list-item-details-btn">Read more<i className="material-icons right">import_contacts</i></button></Link>
 </article>
 </article>
 </article>

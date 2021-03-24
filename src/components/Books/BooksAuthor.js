@@ -1,37 +1,48 @@
-import "./BooksCategory.css";
+import "./BooksAuthor.css";
 import { Component } from 'react';
 import BookArticle from './BookArticle';
 import BooksSidebar from './BooksSidebar/BooksSidebar';
 import booksService from '../../services/booksService'
 
-class BooksCategory extends Component {
+
+
+class BooksAuthor extends Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
-      category: this.props.match.params.category
+      current_author: this.props.match.params.id
     };
   }
 
-  
-  
-  booksQuery = '';
 
   componentDidMount() {
 
-    this.category = this.props.match.params.category;
+    this.setState({
+    current_author: this.props.match.params.id
+    });
 
-    booksService.getAll(this.category)
+    this.current_author = this.props.match.params.id;
+
+    booksService.getAllByAuthor(this.current_author)
     .then(books => this.setState({ books }))
+  };
+
+  componentDidUpdate() {
+
+    if (this.props.match.params.id !== this.state.current_author) {
+
+    this.current_author = this.props.match.params.id;
+
+    booksService.getAllByAuthor(this.current_author)
+    .then(books => this.setState({ books }))
+
+    this.setState({current_author: this.props.match.params.id});
+    }
+    
+  
 }
 
-componentDidUpdate() {
-
-    this.category = this.props.match.params.category;
-
-    booksService.getAll(this.category)
-    .then(books => this.setState({ books }))
-}
 
   render() {
   return (
@@ -54,4 +65,4 @@ componentDidUpdate() {
 }
 }
 
-export default BooksCategory;
+export default BooksAuthor;

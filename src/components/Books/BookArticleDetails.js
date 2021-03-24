@@ -37,11 +37,11 @@ render() {
         </article>
         <article className="book-article-details-info">
             <h1 className="book-article-details-info-title">{this.state.BookArticleDetails.title}</h1>
-	          <p className="book-article-details-info-author"><span className="book-article-details-info-author-label">Author: </span><Link to={`/books/${this.state.BookArticleDetails.author}`}>{this.state.BookArticleDetails.author}</Link></p>
+	          <p className="book-article-details-info-author"><span className="book-article-details-info-author-label">Author: </span><Link to={`/books/author/${this.state.BookArticleDetails.author}`}>{this.state.BookArticleDetails.author}</Link></p>
             <p className="book-article-details-info-price">${this.state.BookArticleDetails.price}</p>
             <p className="book-article-details-info-short-description">{this.state.BookArticleDetails.short_description}</p>
             <article className="book-article-details-info-bullets">
-              <p className="book-article-details-info-bullets-bullet"><span className="book-article-details-info-bullets-bullet-label">Category: </span><Link to={`/books/${this.state.BookArticleDetails.category}`}>{this.state.BookArticleDetails.category}</Link></p>
+              <p className="book-article-details-info-bullets-bullet"><span className="book-article-details-info-bullets-bullet-label">Category: </span><Link to={`/books/category/${this.state.BookArticleDetails.category}`}>{this.state.BookArticleDetails.category}</Link></p>
               <p className="book-article-details-info-bullets-bullet"><span className="book-article-details-info-bullets-bullet-label">Format: </span>{this.state.BookArticleDetails.format}</p>
               <p className="book-article-details-info-bullets-bullet"><span className="book-article-details-info-bullets-bullet-label">Pages: </span>{this.state.BookArticleDetails.pages}</p>
               <p className="book-article-details-info-bullets-bullet"><span className="book-article-details-info-bullets-bullet-label">Year: </span>{this.state.BookArticleDetails.year}</p>

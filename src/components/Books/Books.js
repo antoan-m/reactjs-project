@@ -5,33 +5,41 @@ import BooksSidebar from './BooksSidebar/BooksSidebar';
 import booksService from '../../services/booksService'
 
 
-
 class Books extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      current_category: this.props.match.params.category
     };
   }
 
-  
-  booksQuery = '';
-
   componentDidMount() {
+
+    this.setState({
+    current_category: this.props.match.params.category,
+    });
 
     this.category = this.props.match.params.category;
 
-    booksService.getAll(this.category)
+    booksService.getAll(this.category, this.author, this.format, this.price)
     .then(books => this.setState({ books }))
-    
   };
 
   componentDidUpdate() {
 
+    console.log(this.props.match.params)
+
+    if (this.props.match.params.category !== this.state.current_category) {
+
     this.category = this.props.match.params.category;
 
-    booksService.getAll(this.category)
-    .then(books => this.setState({ books }));
+    booksService.getAll(this.category, this.props.match.params)
+    .then(books => this.setState({ books }))
+
+    this.setState({current_category: this.props.match.params.category});
+    }
+
 
 }
 

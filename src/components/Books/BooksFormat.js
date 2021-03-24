@@ -1,37 +1,48 @@
-import "./BooksCategory.css";
+import "./BooksFormat.css";
 import { Component } from 'react';
 import BookArticle from './BookArticle';
 import BooksSidebar from './BooksSidebar/BooksSidebar';
 import booksService from '../../services/booksService'
 
-class BooksCategory extends Component {
+
+
+class BooksFormat extends Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
-      category: this.props.match.params.category
+      current_format: this.props.match.params.id
     };
   }
 
-  
-  
-  booksQuery = '';
 
   componentDidMount() {
 
-    this.category = this.props.match.params.category;
+    this.setState({
+    current_format: this.props.match.params.id
+    });
 
-    booksService.getAll(this.category)
+    this.current_format = this.props.match.params.id;
+
+    booksService.getAllByFormat(this.current_format)
     .then(books => this.setState({ books }))
+  };
+
+  componentDidUpdate() {
+
+    if (this.props.match.params.id !== this.state.current_format) {
+
+    this.current_format = this.props.match.params.id;
+
+    booksService.getAllByFormat(this.current_format)
+    .then(books => this.setState({ books }))
+
+    this.setState({current_format: this.props.match.params.id});
+    }
+    
+  
 }
 
-componentDidUpdate() {
-
-    this.category = this.props.match.params.category;
-
-    booksService.getAll(this.category)
-    .then(books => this.setState({ books }))
-}
 
   render() {
   return (
@@ -54,4 +65,4 @@ componentDidUpdate() {
 }
 }
 
-export default BooksCategory;
+export default BooksFormat;
