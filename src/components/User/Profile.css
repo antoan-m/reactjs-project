@@ -1,0 +1,79 @@
+.profile-main {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  margin-top: 40px;
+  padding: 20px 20px;
+}
+
+.profile-main-left {
+  display: flex;
+}
+
+.profile-main-header {
+  font-weight: 600;
+  padding: 0 40px 20px 0;
+  color: #3d405b;
+  font-size: 30px;
+}
+
+.profile-main-left-last-tasks-list {
+  width: 430px;
+  border-right: 1px solid #ddd;
+  margin-right: 30px;
+}
+
+.profile-main-left-last-tasks-list a,
+.profile-main-left-last-orders-list a,
+.profile-main-left-last-admin-list a {
+  font-size: 18px;
+  color: #e07a5f;
+}
+
+.profile-main-left-last-tasks-list a:hover,
+.profile-main-left-last-orders-list a:hover,
+.profile-main-left-last-admin-list a:hover {
+  font-size: 18px;
+  color: #3d405b;
+}
+
+.profile-main-left-last-tasks-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-list-item-btn-user {
+  width: 160px;
+  margin: 10px 0;
+}
+
+.profile-main-left-last-orders-list-item {
+  display: flex;
+}
+
+.profile-main-left-last-orders-list-item-image img {
+  width: 120px;
+}
+
+.profile-main-left-last-orders-list-item-title {
+  font-size: 22px;
+  color: #3d405b;
+  padding: 0px 30px;
+}
+
+.profile-main-left-last-orders-list-item-price {
+  font-size: 18px;
+  color: #e07a5f;
+  padding: 20px 30px;
+}
+
+.profile-main-left-last-orders-list-item-buttons {
+  display: flex;
+  border-left: 1px solid #ddd;
+  padding: 0 20px;
+}
+
+.profile-list-item-btn-admin {
+  width: 160px;
+  margin: 10px 0;
+}

@@ -7,19 +7,16 @@ function Navigation() {
     <nav className="header-top-navigation">
          <ul className="header-top-navigation-menu">
            <li className="header-top-navigation-menu-item">
-           <NavLink to="/" exact activeClassName="header-top-navigation-menu-item-active">Home</NavLink>
+           <NavLink to="/" exact activeClassName="header-top-navigation-menu-item-active-mainmenu">Home</NavLink>
            </li>
            <li className="header-top-navigation-menu-item">
-             <NavLink to="/news" exact activeClassName="header-top-navigation-menu-item-active">News</NavLink>
+             <NavLink to="/news" exact activeClassName="header-top-navigation-menu-item-active-mainmenu">News</NavLink>
            </li>
            <li className="header-top-navigation-menu-item">
-             <NavLink to="/books" exact activeClassName="header-top-navigation-menu-item-active">Books</NavLink>
+             <NavLink to="/books" exact activeClassName="header-top-navigation-menu-item-active-mainmenu">Books</NavLink>
            </li>
            <li className="header-top-navigation-menu-item">
-             <NavLink to="/authors" exact activeClassName="header-top-navigation-menu-item-active">Authors</NavLink>
-           </li>
-           <li className="header-top-navigation-menu-item">
-             <NavLink to="/about" exact activeClassName="header-top-navigation-menu-item-active">About Us</NavLink>
+             <NavLink to="/about" exact activeClassName="header-top-navigation-menu-item-active-mainmenu">About Us</NavLink>
            </li>
          </ul>
        </nav>

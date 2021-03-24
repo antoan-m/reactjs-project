@@ -48,5 +48,9 @@
 }
 
 .header-top-navigation-menu-item-active {
+  background-color: none;
+}
+
+.header-top-navigation-menu-item-active-mainmenu {
   background-color: #e07a5f;
 }

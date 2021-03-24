@@ -1,7 +1,6 @@
 .weekly-deals {
   height: 450px;
   margin-bottom: 50px;
-  background-color: #f4f1de;
   padding: 20px 0;
 }
 
@@ -24,6 +23,8 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  width: 50%;
+  max-width: 640px;
 }
 
 .weekly-deals-items-item:first-child {
@@ -32,7 +33,7 @@
 }
 
 .weekly-deals-items-item-img {
-  width: 200px;
+  width: auto;
   height: 327px;
 }
 

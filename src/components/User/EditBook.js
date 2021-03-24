@@ -1,11 +1,11 @@
-import "./Register.css";
+import "./EditBook.css";
 import { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import userService from "../../services/userService";
 import React from 'react';
 import M from 'materialize-css';
 
-class Register extends Component {
+class EditBook extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -54,7 +54,7 @@ render() {
        <h2 className="page-title">CREATE NEW ACCOUNT</h2>
        <section className="center">
        <article></article>
-     <form id="user-register">
+     <form id="user-EditBook">
                     <div className="row">
                         <div className="form-field-group">
                             <input id="name" type="text" className="form-input-field" name="name" placeholder="Your names" />
@@ -67,7 +67,7 @@ render() {
                             <input id="email" type="email" className="form-input-field" name="email" placeholder="Email" />
                             <span className="vaidation-error error-text-red">Email is required!</span>
                             <span className="vaidation-error error-text-red">Email is invalid!</span>
-                            <span className="vaidation-error error-text-red">Email is already registered!</span>
+                            <span className="vaidation-error error-text-red">Email is already EditBooked!</span>
                         </div>
                     </div>
                     <div className="row">
@@ -104,7 +104,7 @@ render() {
                         </div>
                     </div>
                     
-                    <div className="switch register-switch">
+                    <div className="switch EditBook-switch">
                     <label>
                     User
                     <input type="checkbox" name="userType" />
@@ -113,17 +113,17 @@ render() {
                     </label>
                     </div>
                     <span className="vaidation-error error-text-red form-error">ERROR MESSAGE</span>
-                    <div id="register-buttons">
-                        <button onClick={this.submitHandler.bind(this)} className="btn waves-effect waves-light register-btn" name="action"><i className="material-icons left">input</i>Register</button>
-                        <button className="btn waves-effect waves-light register-btn" name="action" type="reset"><i className="material-icons left">input</i>Reset</button>
+                    <div id="EditBook-buttons">
+                        <button onClick={this.submitHandler.bind(this)} className="btn waves-effect waves-light EditBook-btn" name="action"><i className="material-icons left">input</i>EditBook</button>
+                        <button className="btn waves-effect waves-light EditBook-btn" name="action" type="reset"><i className="material-icons left">input</i>Reset</button>
                     </div>
                 </form>
                 <article></article>
                 </section>
-                <div className="already-registered">Already have an account? <Link to='./login'>LOGIN</Link></div>
+                <div className="already-EditBooked">Already have an account? <Link to='./login'>LOGIN</Link></div>
     </>
   );
 }
 }
 
-export default Register;
+export default EditBook;

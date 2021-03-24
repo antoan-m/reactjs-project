@@ -5,13 +5,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Backendless from 'backendless'
+import ScrollToTop from 'react-router-scroll-top'
 
-Backendless.initApp('7ECE9EFE-DB9E-D320-FF17-04C136319800', 'FACAE63E-4DE1-460A-AA9B-024AE689594C');
+
+Backendless.initApp('7ECE9EFE-DB9E-D320-FF17-04C136319800', 'D25AC5BB-3B9F-4F71-866A-6F9F6ED00656');
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+    <ScrollToTop>
     <App />
+    </ScrollToTop>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
