@@ -1,8 +1,9 @@
 .news-list-item {
-  border: 1px solid #333;
+  border: 1px solid #ddd;
   padding: 10px;
   display: flex;
-  width: 535px;
+  width: 506px;
+  height: 200px;
   margin: 0px 20px 20px 20px;
   position: relative;
   -webkit-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.66);

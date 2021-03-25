@@ -27,11 +27,10 @@ componentDidMount() {
 <section className="featured-category">
 
        <article className="featured-category-item-big">
-       <NavLink to="/books/thrillers">
            <img src="thrillers-banner.jpg" alt="Thrillers" />
-           <h2>Featured Category</h2>
-           <h3>Thrillers</h3>
-        </NavLink>
+           <h2>Featured Books</h2>
+           
+       
        </article>
 
        <article className="featured-category-items-small">

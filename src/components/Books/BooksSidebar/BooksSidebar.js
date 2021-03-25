@@ -1,10 +1,11 @@
 import "./BooksSidebar.css";
 import { Component } from 'react';
-import FeaturedBooks from '../FeaturedBooks'
-import BooksSidebarCategories from './BooksSidebarCategories'
-import BooksSidebarAuthors from './BooksSidebarAuthors'
-import BooksSidebarFormats from './BooksSidebarFormats'
-import BooksSidebarPrices from './BooksSidebarPrices'
+import FeaturedBooks from '../FeaturedBooks';
+import BooksSidebarCategories from './BooksSidebarCategories';
+import BooksSidebarAuthors from './BooksSidebarAuthors';
+import BooksSidebarFormats from './BooksSidebarFormats';
+import BooksSidebarPrices from './BooksSidebarPrices';
+import bookService from '../../../services/booksService';
 
 import M from 'materialize-css';
 
@@ -27,41 +28,20 @@ class BooksSidebar extends Component {
 
     M.AutoInit();
 
-    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?where=featured%3Dtrue&sortBy=created%20desc`, {
-      headers: { 'Access-Control-Allow-Origin': "*" }
-    })
-   .then(res => res.json())
-          .then(featuredBooks => this.setState({ featuredBooks }))
-          // .then(console.log(this.state));
+    bookService.getCategories()
+           .then(categories => this.setState({ categories }))
+    
+    bookService.getAuthors()
+           .then(authors => this.setState({ authors }))
 
+    bookService.getFormats()
+           .then(formats => this.setState({ formats }))
 
-   fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=category&groupBy=category&sortBy=category`, {
-      headers: { 'Access-Control-Allow-Origin': "*" }
-    })
-   .then(res => res.json())
-          .then(categories => this.setState({ categories }))
-          // .then(console.log(this.state));
+    bookService.getPrices()
+           .then(prices => this.setState({ prices }))
 
-   fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=author&groupBy=author&sortBy=author`, {
-      headers: { 'Access-Control-Allow-Origin': "*" }
-          })
-        .then(res => res.json())
-        .then(authors => this.setState({ authors }))
-        // .then(console.log(this.state));
-
-    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=format&groupBy=format&sortBy=format`, {
-       headers: { 'Access-Control-Allow-Origin': "*" }
-        })
-        .then(res => res.json())
-        .then(formats => this.setState({ formats }))
-        // .then(console.log(this.state));
-
-    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=price&groupBy=price&sortBy=price`, {
-       headers: { 'Access-Control-Allow-Origin': "*" }
-        })
-        .then(res => res.json())
-        .then(prices => this.setState({ prices }))
-        // .then(console.log(this.state));
+    bookService.getFeaturedBooks(3)
+           .then(featuredBooks => this.setState({ featuredBooks }))
 
   };
 

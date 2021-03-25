@@ -2,6 +2,7 @@ import "./News.css";
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NewsArticle from "./NewsArticle";
+import BooksSidebar from "../Books/BooksSidebar/BooksSidebar"
 
 class News extends Component {
   constructor() {
@@ -25,16 +26,8 @@ class News extends Component {
   render() {
     return (
 <article className="news">
-<aside className="books-sidebar">
-<section className="books-sidebar-featured-books">
-<ul className="books-sidebar-list">
- <li className="books-sidebar-list-title">FEATURED BOOKS</li>
- <Link to="/books/details/asdasdasfasdasf" className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Book 1</li></Link>
- <Link to="/books/details/sdfsdasdfasdf" className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Book 2</li></Link>
- <Link to="/books/details/gerfsdsdfasdfasd" className="books-sidebar-list-item-link"><li className="books-sidebar-list-item">Book 3</li></Link>
-</ul>
-</section>
-</aside>
+
+<BooksSidebar />
 
 <section className="news-list">
 

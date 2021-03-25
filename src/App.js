@@ -1,4 +1,6 @@
 import "./App.css";
+import React from 'react';
+import { Route, Switch } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -10,6 +12,10 @@ import BooksAuthor from "./components/Books/BooksAuthor";
 import BooksFormat from "./components/Books/BooksFormat";
 import BooksPrice from "./components/Books/BooksPrice";
 import BooksDiscounted from "./components/Books/BooksDiscounted";
+import BooksOldest from "./components/Books/BooksOldest";
+import BooksNewest from "./components/Books/BooksNewest";
+import BooksHighPrice from "./components/Books/BooksHighPrice";
+import BooksLowPrice from "./components/Books/BooksLowPrice";
 import BookArticleDetails from "./components/Books/BookArticleDetails";
 import News from "./components/News/News";
 import NewsArticleDetails from "./components/News/NewsArticleDetails";
@@ -30,10 +36,9 @@ import Admin from "./components/User/Admin";
 import Cart from "./components/User/Cart";
 import PageNotFound from "./components/Pages/PageNotFound";
 
-import { Route, Switch } from "react-router-dom";
 
+export function App() {
 
-function App() {
   return (
     <div className="App">
       <Header />
@@ -46,6 +51,10 @@ function App() {
         <Route path="/books/format/:id" exact component={BooksFormat} />
         <Route path="/books/price/:id" exact component={BooksPrice} />
         <Route path="/books/discounted" exact component={BooksDiscounted} />
+        <Route path="/books/oldest" exact component={BooksOldest} />
+        <Route path="/books/newest" exact component={BooksNewest} />
+        <Route path="/books/highprice" exact component={BooksHighPrice} />
+        <Route path="/books/lowprice" exact component={BooksLowPrice} />
         <Route path="/news" exact component={News} />
         <Route path="/news/:id" exact component={NewsArticleDetails} />
         <Route path="/about" exact component={About} />

@@ -1,4 +1,4 @@
-import "./Books.css";
+import "./BooksLowPrice.css";
 import { Component } from 'react';
 import BookArticle from './BookArticle';
 import BooksSidebar from './BooksSidebar/BooksSidebar';
@@ -6,7 +6,7 @@ import BookFilters from './BookFilters/BookFilters';
 import booksService from '../../services/booksService';
 
 
-class Books extends Component {
+class BooksLowPrice extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +23,7 @@ class Books extends Component {
 
     this.category = this.props.match.params.category;
 
-    booksService.getAll()
+    booksService.sortByPriceAsc()
     .then(books => this.setState({ books }))
   };
 
@@ -35,7 +35,7 @@ class Books extends Component {
 
     this.category = this.props.match.params.category;
 
-    booksService.getAll()
+    booksService.sortByPriceAsc()
     .then(books => this.setState({ books }))
 
     this.setState({current_category: this.props.match.params.category});
@@ -52,7 +52,7 @@ class Books extends Component {
 
     <section className="books-main">
 
-     <BookFilters />
+    <BookFilters />
 
      <section className="books-list">
      
@@ -65,4 +65,4 @@ class Books extends Component {
 }
 }
 
-export default Books;
+export default BooksLowPrice;

@@ -1,6 +1,6 @@
 import "./Login.css";
 import { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import userService from "../../services/userService";
 import React from 'react';
 import M from 'materialize-css';

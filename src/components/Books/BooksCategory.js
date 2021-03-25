@@ -2,7 +2,9 @@ import "./BooksCategory.css";
 import { Component } from 'react';
 import BookArticle from './BookArticle';
 import BooksSidebar from './BooksSidebar/BooksSidebar';
-import booksService from '../../services/booksService'
+import BookFilters from './BookFilters/BookFilters';
+import booksService from '../../services/booksService';
+
 
 class BooksCategory extends Component {
   constructor(props) {
@@ -41,7 +43,7 @@ componentDidUpdate() {
 
     <section className="books-main">
 
-     <section className="books-filter"><span>NEWEST</span> | <span>OLDEST</span> | <span>LOW PRICE</span> | <span>HIGH PRICE</span></section>
+    <BookFilters />
 
      <section className="books-list">
 

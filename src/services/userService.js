@@ -29,7 +29,6 @@ return fetch(`${api.users}/login`, requestOptions)
 
 export default {
     userLogin
-
 };
 
 

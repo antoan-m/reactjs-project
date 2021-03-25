@@ -1,45 +1,81 @@
 .news {
   display: flex;
+  align-items: flex-start;
   padding-top: 20px;
 }
-
-.news-sidebar {
-  border: 1px solid #333;
-  width: 250px;
-  min-width: 250px;
+.news-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 1150px;
+  padding: 0;
 }
 
-.news-sidebar-list {
+.books-sidebar {
+  border: 1px solid #ddd;
+  width: 300px;
+  margin-right: 20px;
+}
+
+ul.collapsible {
+  border-right: 0px;
+  border-left: 0px;
+  margin: 0;
+}
+
+.collapsible span.badge {
+  margin-left: auto;
+  width: 45px;
+  height: 28px;
+  padding: 0px;
+}
+
+.collapsible span.badge i.material-icons {
+  width: 45px;
+}
+
+.collapsible-header {
+  padding: 10px;
+}
+
+.collapsible-header i {
+  width: 26px;
+  font-size: 28px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.collapsible-body {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.books-sidebar-list {
   display: flex;
   flex-direction: column;
 }
 
-.news-sidebar-list-title {
+.books-sidebar-list-title {
   list-style: none;
   font-size: 20px;
   padding: 5px;
-  align-self: center;
+  /* align-self: center; */
 }
 
-.news-sidebar-list-item {
+.books-sidebar-list-item {
   list-style: none;
   padding: 5px 10px;
+  font-size: 14px;
 }
-.news-sidebar-list-item:hover {
+.books-sidebar-list-item:hover {
   width: 100%;
-  background-color: brown;
+  background-color: #e07a5f;
   color: #fff;
 }
 
-.news-sidebar-list-item-link {
+.books-sidebar-list-item-link {
   text-decoration: none;
   color: #3d405b;
   background-color: antiquewhite;
-}
-
-.news-list {
-  display: flex;
-  /* justify-content: space-evenly; */
-  flex-wrap: wrap;
-  max-width: 1150px;
 }

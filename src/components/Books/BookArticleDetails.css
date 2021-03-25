@@ -69,6 +69,10 @@
   height: 500px;
 }
 
+.book-article-details-image img {
+  height: 450px;
+}
+
 .book-article-details-info-buttons {
   padding-top: 30px;
   border-top: 1px solid #ddd;
