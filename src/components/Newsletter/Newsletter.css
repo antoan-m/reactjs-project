@@ -55,3 +55,14 @@
   color: #F4F1DE;
   background-color: #81B29A;
 }
+
+.newsletter-button:disabled,
+.newsletter-button[disabled]{
+  background-color: #bebebe;
+  color: #fff;
+}
+
+.newsletter p.newsletter-error {
+  color: red;
+  height: 30px;
+}

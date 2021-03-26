@@ -1,7 +1,5 @@
 import "./Newsletter.css";
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
-import userService from "../../services/userService";
 import newsletterService from "../../services/newsletterService";
 import React from 'react';
 import M from 'materialize-css';
@@ -9,27 +7,54 @@ import M from 'materialize-css';
 class Newsletter extends Component {
     constructor(props) {
       super(props);
-    }
-    state = {
+      this.state = {
         subscribers: '',
-        email: ''
+        email: '',
+        newsletterError: ''
       }
+    }
+    
 
-  //   componentDidMount() {
-  //      newsletterService.getNewsletter()
-  //     .then(newsletter => this.setState({current_newsletter: newsletter}))
-  //   }
+    componentDidMount() {
+       this.subs = newsletterService.getNewsletter()
+      .then(res => res.json())
+      .then(res => {
+        this.setState({subscribers: res.subscribers})
+        // M.toast({html: JSON.stringify(res)});
+        // M.toast({html: JSON.stringify(this.state.subscribers)});
+    });
+    }
 
-  //   componentDidUpdate() {
-  //     newsletterService.getNewsletter()
-  //    .then(newsletter => this.setState(newsletter))
-  //  }
+    componentDidUpdate() {
+      
+   }
 
   
     changeHandlerEmail(e) {
       console.log(e.target.value);
-      this.setState({email: e.target.value})
-      // console.log(this.state.email);
+      this.setState({email: e.target.value},
+      function validateEmail() {
+        if (!this.state.email.includes('@')) {
+          setTimeout(
+            () =>
+            this.setState({newsletterError: "Invalid email!"}),
+            800
+          );
+        
+      } else {
+        this.setState({newsletterError: ""})
+      }
+      if (this.state.email === '') {
+        this.setState({newsletterError: ""})
+      }
+    }
+)
+    
+      newsletterService.getNewsletter()
+      .then(res => res.json())
+      .then(res => {
+        this.setState({subscribers: res.subscribers})
+    });
   }
 
   subscribeNewsletter(e) {
@@ -43,17 +68,24 @@ class Newsletter extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({subscribers: res.subscribers})
-        M.toast({html: JSON.stringify(res)});
-        M.toast({html: JSON.stringify(this.state.subscribers)});
+        
     });
-      
-  newsletterService.subscribeNewsletter(this.state.subscribers, this.state.email)
-  .then(response => response.text())
-  .then(result => {console.log(result);
-    M.toast({html: JSON.stringify(result)})
+
+    if (this.state.email !== '' && this.state.newsletterError !== '') {
+        this.newSubscriber = newsletterService.subscribeNewsletter(this.state.subscribers, this.state.email)
+        .then(response => response.text())
+        .then(result => {console.log(result);
+          M.toast({html: 'Thank you for subscribing!'});
   })
-  .catch(error => console.log('error', error));
+        .catch(error => console.log('error', error));
+      } else if (this.state.email === ''){
+        this.setState({newsletterError: "Enter valid email!"})
+        return
+    }
+      
       };
+
+      
 
 render() {
       return (
@@ -65,8 +97,9 @@ render() {
     <article className="newsletter-section">
        <form className="newsletter-form">
          <input type="text" className="newsletter-input" id="email" name="email" onChange={this.changeHandlerEmail.bind(this)} value={this.state.email} placeholder="Enter your email..." />
-         <button type="submit" name="subscribe" onClick={this.subscribeNewsletter.bind(this)} className="newsletter-button">SUBSCRIBE</button>
+         <button type="submit" name="subscribe" disabled={this.state.newsletterError} onClick={this.subscribeNewsletter.bind(this)} className="newsletter-button">SUBSCRIBE</button>
        </form>
+       <p className="newsletter-error">{this.state.newsletterError}</p>
     </article>
 </section>
   );
