@@ -10,6 +10,7 @@
     "flickity": "^2.2.2",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^17.0.1",
+    "react-debounce-component": "^1.0.0",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-router-scroll-top": "^0.2.1",

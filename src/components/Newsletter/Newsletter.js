@@ -3,6 +3,8 @@ import { Component } from 'react';
 import newsletterService from "../../services/newsletterService";
 import React from 'react';
 import M from 'materialize-css';
+import Debounce from 'react-debounce-component';
+
 
 class Newsletter extends Component {
     constructor(props) {
@@ -14,7 +16,6 @@ class Newsletter extends Component {
       }
     }
     
-
     componentDidMount() {
        this.subs = newsletterService.getNewsletter()
       .then(res => res.json())
@@ -31,28 +32,25 @@ class Newsletter extends Component {
 
   
     changeHandlerEmail(e) {
-      console.log(e.target.value);
+
+      // console.log('TARGET:' + e.target.value);
+
       this.setState({email: e.target.value},
-      function validateEmail() {
-        if (!this.state.email.includes('@')) {
-          setTimeout(
-            () =>
-            this.setState({newsletterError: "Invalid email!"}),
-            800
-          );
-        
-      } else {
-        this.setState({newsletterError: ""})
-      }
-      if (this.state.email === '') {
-        this.setState({newsletterError: ""})
-      }
-    }
-)
-    
+
+          function validateEmail() {
+
+            if (!this.state.email.includes('@')) { this.setState({newsletterError: "Invalid email!"}) } 
+            else { this.setState({newsletterError: ""}) }
+
+            if (this.state.email.length < 6) { this.setState({newsletterError: "Invalid email!"}) }
+
+            if (this.state.email === '') { this.setState({newsletterError: ""}) }
+          }
+      )
       newsletterService.getNewsletter()
-      .then(res => res.json())
-      .then(res => {
+        .then(res => res.json())
+        .then(res => {
+      
         this.setState({subscribers: res.subscribers})
     });
   }
@@ -71,7 +69,7 @@ class Newsletter extends Component {
         
     });
 
-    if (this.state.email !== '' && this.state.newsletterError !== '') {
+    if (this.state.email !== '' && this.state.newsletterError === '') {
         this.newSubscriber = newsletterService.subscribeNewsletter(this.state.subscribers, this.state.email)
         .then(response => response.text())
         .then(result => {console.log(result);
@@ -99,7 +97,9 @@ render() {
          <input type="text" className="newsletter-input" id="email" name="email" onChange={this.changeHandlerEmail.bind(this)} value={this.state.email} placeholder="Enter your email..." />
          <button type="submit" name="subscribe" disabled={this.state.newsletterError} onClick={this.subscribeNewsletter.bind(this)} className="newsletter-button">SUBSCRIBE</button>
        </form>
-       <p className="newsletter-error">{this.state.newsletterError}</p>
+       <Debounce ms={1000}>
+          <p className="newsletter-error">{this.state.newsletterError}</p>
+       </Debounce>
     </article>
 </section>
   );

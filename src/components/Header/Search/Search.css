@@ -22,3 +22,7 @@
   color: #3d405b;
   width: 60px;
 }
+
+.search-results {
+    display: flex;
+}
