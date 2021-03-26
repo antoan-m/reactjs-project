@@ -1,12 +1,11 @@
 import api from './api';
-import M from 'materialize-css';
 
 function getSearchResults(search_query) {
     
-        let query = `title%20LIKE%20'%25${search_query}%25'%7C%7Cauthor%20LIKE%20'%25${search_query}%25'`;
+        let query = undefined;
         
         if (search_query) {
-          query = `&where'${search_query}'&`;
+          query = `where=title%20LIKE%20'%25${search_query}%25'%7C%7Cauthor%20LIKE%20'%25${search_query}%25'%7C%7Ccategory%20LIKE%20'%25${search_query}%25'&`;
         } else {
           query = '';
         }
@@ -21,3 +20,5 @@ function getSearchResults(search_query) {
 export default {
     getSearchResults
 };
+
+//`where=title%20LIKE%20'%25${search_query}%25'%7C%7Cauthor%20LIKE%20'%25${search_query}%25'%7C%7Ccategory%20LIKE%20'%25${search_query}%25'`

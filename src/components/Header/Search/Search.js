@@ -5,39 +5,80 @@ import React from 'react';
 import M from 'materialize-css';
 import Debounce from 'react-debounce-component';
 import SearchResults from './SearchResults';
+import booksService from '../../../services/booksService';
 
 
 class Search extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          search_results: [],
-          search_query: ''
-        };
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+        search_results: [],
+        search_query: '',
+        search_error: '11111',
+        display_results: false,
+        showSearchPanel: 'none'
+    };
+  }
 
-    changeHandlerSearch(e) {
+  componentDidMount() {
 
-        console.log(e.target.value);
+    searchService.getSearchResults(this.state.search_query)
+    .then(search_results => this.setState({ search_results }))
+  };
 
-        searchService.getSearchResults(e.target.value)
-        .then(search_results => this.setState({ search_results }))
+  componentDidUpdate() {
+
+
 
     }
 
+    changeHandlerSearch(e) {
 
+        console.log('TARGET:' + e.target.value);
+
+        this.setState({search_query: e.target.value}, 
+            
+            function validateSearch() {
+
+            if (this.state.search_query.length < 3) { 
+                this.setState({searchError: "Enter more at least 3 characters."}); 
+                this.setState({showSearchPanel: false}) 
+            }
+
+            if (this.state.search_query === '') { 
+                this.setState({searchError: ""});
+                this.setState({showSearchPanel: false}) 
+        }
+          
+
+            searchService.getSearchResults(this.state.search_query)
+            .then(search_results => this.setState({ search_results: search_results, showSearchPanel: true }))
+            }
+        )
+    }
+
+    onBlurHandler(e) {
+        this.setState({ showSearchPanel: false, search_query: '' });
+    }
 
 render() {
     return(
-<article className="header-top-block-site-search">
-           <input type="text" id="header-top-block-site-search-input search" name="search" onChange={this.changeHandlerSearch} value={this.state.search_query} placeholder="Search..." />
+        <>
+    <article className="header-top-block-site-search">
+        <form className="header-top-block-site-search">
+           <input type="text" id="header-top-block-site-search-input search" name="search" onChange={this.changeHandlerSearch.bind(this)} onBlur={this.onBlurHandler.bind(this)} value={this.state.search_query} placeholder="Search..." />
+        </form>
            <i className="fas fa-search header-top-block-site-search-input-icon"></i>
-            <Debounce ms={1000}>
-                <SearchResults searchData={this.state.search_results} />
-            </Debounce>
-</article>
-
-
+           <article className="search-result-panel" style={{display: this.state.showSearchPanel}}>
+                <Debounce ms="100">
+                    { this.state.showSearchPanel && <SearchResults searchData={this.state.search_results} /> }
+                </Debounce>
+        </article>
+    </article>
+    
+        <p className="search-error">{this.state.searchData}</p>
+        
+</>
     );
 }
 }

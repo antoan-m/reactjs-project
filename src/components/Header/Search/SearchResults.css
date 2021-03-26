@@ -1,0 +1,50 @@
+.search-results-item {
+    display: flex;
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+.search-results-item:hover {
+ background-color: #3D405B;
+  }
+
+.search-results-image {
+    max-height: 80px;
+}
+
+.search-results-more-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-results-more-info-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #E07A5F;
+    padding: 0 0 10px 0;
+}
+
+.search-results-more-info-title:hover {
+    color: #f4f1de;
+}
+
+.search-results-more-info-author {
+    font-size: 16px;
+    font-weight: 600;
+    color: #E07A5F;
+    padding: 0 0 10px 0;
+}
+
+.search-results-more-info-author:hover {
+    color: #f4f1de;
+}
+
+.search-results-more-info-price {
+    font-size: 16px;
+    color: #E07A5F;
+}
+
+.search-results-more-info-price:hover {
+    color: #f4f1de;
+}

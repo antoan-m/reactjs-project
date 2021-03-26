@@ -23,6 +23,22 @@
   width: 60px;
 }
 
-.search-results {
-    display: flex;
+.header-top-block-site-search {
+  position: relative;
 }
+
+.search-result-panel {
+  max-height: 350px;
+  width: 546px;
+  background-color: rgb(244 241 222 / 98%);
+  position: absolute;
+  top: 46px;
+  left: 0;
+  z-index:999;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
