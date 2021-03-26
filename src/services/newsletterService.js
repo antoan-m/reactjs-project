@@ -24,8 +24,9 @@ function subscribeNewsletter(updated_subscribers, email) {
     var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
-      updated_subscribers.split();
-      const newList = updated_subscribers.push(email);
+      let listArray = updated_subscribers.split(',');
+      listArray.push(email);
+      let newList = listArray.toString();
 
       var data = JSON.stringify({
         "subscribers": newList
