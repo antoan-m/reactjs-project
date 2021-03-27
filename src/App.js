@@ -25,6 +25,8 @@ import Terms from "./components/Pages/Terms";
 import Login from "./components/User/Login";
 import Register from "./components/User/Register";
 import Profile from "./components/User/Profile";
+import ProfileDetails from "./components/User/ProfileDetails";
+import ProfileDetailsEdit from "./components/User/ProfileDetailsEdit";
 import UserNewsletter from "./components/User/UserNewsletter";
 import AddBook from "./components/User/AddBook";
 import EditBook from "./components/User/EditBook";
@@ -63,6 +65,8 @@ export function App() {
         <Route path="/user/register" exact component={Register} />
         <Route path="/user/logout" exact component={Home} />
         <Route path="/user/profile" exact component={Profile} />
+        <Route path="/user/profile/details/:userid" exact component={ProfileDetails} />
+        <Route path="/user/profile/details/:userid/edit" exact component={ProfileDetailsEdit} />
         <Route path="/user/profile/newsletter" exact component={Newsletter} />
         <Route path="/user/profile/user-newsletter" exact component={UserNewsletter} />
         <Route path="/user/profile/addbook" exact component={AddBook} />

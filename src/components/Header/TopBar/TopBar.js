@@ -7,6 +7,9 @@ if (userToken === null || userToken === undefined) {
   userToken = false;
 }
 
+function logout(userToken) {
+// userService.userLogout(userToken);
+}
 
 function TopBar() {
   console.log(userToken)
@@ -34,7 +37,7 @@ function TopBar() {
           <NavLink to="/user/register" exact className="header-top-navigation-menu-item-active">Register</NavLink>
         </li>}
         {userToken && <li className="header-top-bar-right-item">
-        <NavLink to="/" exact onClick={ userService.userLogout(userToken)} className="header-top-navigation-menu-item-active">Logout</NavLink>
+        <NavLink to="/" exact onClick={ logout()} className="header-top-navigation-menu-item-active">Logout</NavLink>
         </li>}
       </ul>
     </section>

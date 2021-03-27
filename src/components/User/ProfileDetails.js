@@ -1,10 +1,10 @@
-import "./Profile.css";
+import "./ProfileDetails.css";
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import userService from "../../services/userService";
 
 
-class Profile extends Component {
+class ProfileDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +42,7 @@ class Profile extends Component {
           <section className="profile-main-left-last-tasks">
           <h2 className="profile-main-header">User Panel | Hello, {this.state.user_data.name}</h2>
           <ul className="profile-main-left-last-tasks-list">
-                 <Link to={`/user/profile/details/${this.state.user_data.objectId}`}><button className="btn waves-effect waves-light profile-list-item-btn-user">My Details<i className="material-icons right">import_contacts</i></button></Link>
+                 <Link to={`/user/profile/details/${this.state.user_data.objectId}/edit`}><button className="btn waves-effect waves-light profile-list-item-btn-user">My Details<i className="material-icons right">import_contacts</i></button></Link>
                   <Link to="/user/profile/orders"><button className="btn waves-effect waves-light profile-list-item-btn-user">Orders<i className="material-icons right">import_contacts</i></button></Link>
                   <Link to="/user/profile/wishlist"><button className="btn waves-effect waves-light profile-list-item-btn-user">Wishlist<i className="material-icons right">import_contacts</i></button></Link>
                   <Link to="/user/profile/reviews"><button className="btn waves-effect waves-light profile-list-item-btn-user">My Reviews<i className="material-icons right">import_contacts</i></button></Link>
@@ -80,4 +80,4 @@ class Profile extends Component {
 }
 }
 
-export default Profile;
+export default ProfileDetails;
