@@ -1,8 +1,10 @@
 import "./Register.css";
 import { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import userService from "../../services/userService";
+import countryList from "../../services/countryList";
 import React from 'react';
+import Debounce from 'react-debounce-component';
 import M from 'materialize-css';
 
 class Register extends Component {
@@ -10,40 +12,148 @@ class Register extends Component {
       super(props);
       this.state = {
         current_user: '',
-        error: '',
+        register_server_error: '',
+        register_name_error: '',
+        register_email_error: '',
+        register_password_error: '',
+        register_rePassword_error: '',
+        register_country_error: '',
+        register_address_error: '',
+        register_phone_error: '',
+        disable_submit: false,
         name: '',
         email: '',
         password: '',
         rePassword: '',
-        city: '',
-        street: '',
+        country: '',
+        address: '',
         phone: '',
-        useType: ''
+        countries: []
       }
     }
 
-changeHandlerEmail(e) {
-    this.setState({email: e.target.value});
-    console.log(e.target.value);
-}
+    componentDidMount() {
+            this.setState({countries: countryList});
 
-changeHandlerPass(e) {
-    this.setState({password: e.target.value});
-    console.log(e.target.value);
-}
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {classes: 'form-countrylist-dropdown', dropdownOptions: countryList});
+        }
+
+        componentDidUpdate() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {classes: 'form-countrylist-dropdown', dropdownOptions: countryList});
+        }
+
+
+    changeHandlerName(e) {
+
+        console.log('TARGET:' + e.target.value);
+        console.log(this.state);
+  
+        this.setState({name: e.target.value},
+  
+            function validateName() {
+  
+              if (this.state.name.length < 3) { this.setState({register_name_error: "Name should be at least 3 characters long!"}) }
+              else { this.setState({register_name_error: ""}) }
+            }
+        )
+      };
+
+    changeHandlerEmail(e) {
+  
+        this.setState({email: e.target.value},
+  
+            function validateEmail() {
+  
+                if (!this.state.email.includes('@')) { this.setState({register_email_error: "Email should contain '@'!"}) } 
+                else if (!this.state.email.includes('.')) { this.setState({register_email_error: "Invalid email!"}) }
+                else if (this.state.email.indexOf(' ') !== -1) { this.setState({register_email_error: "Invalid email!"}) }
+                else if (this.state.email.length < 6) { this.setState({register_email_error: "Invalid email!"}) }
+                else if (this.state.email === '') { this.setState({register_email_error: ""}) }
+                else { this.setState({register_email_error: ""}) }
+            }
+        )
+      };
+
+      changeHandlerPassword(e) {
+
+        this.setState({password: e.target.value},
+  
+            function validatePassword() {
+  
+              if (this.state.password.length < 6) { this.setState({register_password_error: "Password should be at least 6 characters long!"}) }
+              else if (this.state.password.indexOf(' ') !== -1) { this.setState({register_password_error: "Password should not contain spaces!"}) }
+              else if (this.state.password === '') { this.setState({register_password_error: ""}) }
+              else { this.setState({register_password_error: ""}) }
+            }
+        )
+      };
+
+      changeHandlerRePassword(e) {
+  
+        this.setState({rePassword: e.target.value},
+  
+            function validateRePassword() {
+  
+              if (this.state.password !== this.state.rePassword) { this.setState({register_rePassword_error: "Password missmatch!"}) } 
+              else if (this.state.password.rePassword < 6) { this.setState({register_password_error: "Password missmatch!"}) }
+              else { this.setState({register_rePassword_error: ""}) }
+            }
+        )
+      };
+
+      changeHandlerPhone(e) {
+  
+        this.setState({phone: e.target.value},
+  
+            function validatePhone() {
+
+              let letter = /[a-zA-Z\D]/;
+  
+              if (this.state.phone.match(letter)) { this.setState({register_phone_error: "Phone should contain only numbers!"}) } 
+              else if (this.state.phone.length < 10) { this.setState({register_phone_error: "Invalid phone!"}) }
+              else if (this.state.phone === '') { this.setState({register_phone_error: ""}) }
+              else { this.setState({register_phone_error: ""}) }
+            }
+        )
+      };
+
+      changeHandlerCountry(e) {
+
+        this.setState({country: e.target.value},
+  
+            function validateCountry() {
+              if (this.state.country === 'Country'|| !this.state.country || this.state.country === '') { this.setState({register_country_error: "Choose country!"}) } 
+              else { this.setState({register_country_error: ""}) }
+            }
+        )
+      };
+
+      changeHandlerAddress(e) {
+
+        this.setState({address: e.target.value},
+  
+            function validateAddress() {
+  
+              if (this.state.address.length === 0) { this.setState({register_address_error: "Enter address!"}) }
+              else if (this.state.address === '') { this.setState({register_address_error: ""}) }
+              else { this.setState({register_address_error: ""}) }
+            }
+        )
+      }
+
 
 submitHandler(e) {
     e.preventDefault();
 
-    const { email, password } = this.state;
+    const { name, email, password, rePassword, country, address, phone } = this.state;
     
-    userService.userLogin(email, password, true)
-    .then(user => {
-        this.setState({ current_user: user})
-        })
-        .catch(error => {
-            this.setState({ error: error })
-        });
+    if(password !== rePassword) {
+        return this.setState({register_rePassword_error: "Password missmatch!"});
+    }
+
+    userService.userRegister(name, email, password, country, address, phone);
     };
 
 
@@ -57,64 +167,78 @@ render() {
      <form id="user-register">
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="name" type="text" className="form-input-field" name="name" placeholder="Your names" />
-                            <span className="vaidation-error error-text-red">Name is required!</span>
-                            <span className="vaidation-error error-text-red">Name must be at least 3 characters!</span>
+                            <input id="name" type="text" className="form-input-field" name="name" onChange={this.changeHandlerName.bind(this)} value={this.state.name} placeholder="Your names" />
+                            <Debounce ms={1000}>
+                            <span className="vaidation-error error-text-red">{this.state.register_name_error}</span>
+                            </Debounce>
                         </div>
                     </div>
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="email" type="email" className="form-input-field" name="email" placeholder="Email" />
-                            <span className="vaidation-error error-text-red">Email is required!</span>
-                            <span className="vaidation-error error-text-red">Email is invalid!</span>
-                            <span className="vaidation-error error-text-red">Email is already registered!</span>
+                            <input id="email" type="email" className="form-input-field" name="email" onChange={this.changeHandlerEmail.bind(this)} value={this.state.email} placeholder="Email" />
+                            <Debounce ms={1000}>
+                            <span className="vaidation-error error-text-red">{this.state.register_email_error}</span>
+                            </Debounce>
                         </div>
                     </div>
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="password" type="password" className="form-input-field" name="password" placeholder="Password" />
-                            <span className="vaidation-error error-text-red">Password is required!</span>
-                            <span className="vaidation-error error-text-red">Password must be at least 6 characters!</span>
+                            <input id="password" type="password" className="form-input-field" name="password" onChange={this.changeHandlerPassword.bind(this)} value={this.state.password} placeholder="Password" />
+                            <Debounce ms={1000}>
+                            <span className="vaidation-error error-text-red">{this.state.register_password_error}</span>
+                            </Debounce>
                         </div>
                     </div>
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="rePassword" type="password" className="form-input-field" name="rePassword" placeholder="Repeat password" />
-                            <span className="vaidation-error error-text-red">Password is required!</span>
-                            <span className="vaidation-error error-text-red">Password must be at least 6 characters!</span>
-                            <span className="vaidation-error error-text-red">Passwords don't match!</span>
+                            <input id="rePassword" type="password" className="form-input-field" name="rePassword" onChange={this.changeHandlerRePassword.bind(this)} value={this.state.rePassword} placeholder="Repeat password" />
+                            <Debounce ms={1000}>
+                            <span className="vaidation-error error-text-red">{this.state.register_rePassword_error}</span>
+                            </Debounce>
+                        </div>
+                    </div>
+
+                    {/* <div className="row">
+                        <div className="form-field-group">
+                            <input id="country" type="text" className="form-input-field" name="country" onChange={this.changeHandlerCountry.bind(this)} value={this.state.contry} placeholder="Country" />
+                            <Debounce ms={1000}>
+                            <span className="vaidation-error error-text-red">{this.state.register_country_error}</span>
+                            </Debounce>
+                        </div>
+                    </div> */}
+
+                    <div className="row">
+                    <div className="form-field-group">
+                        <select class="browser-default form-countrylist-dropdown" onChange={this.changeHandlerCountry.bind(this)} >
+                            <option value={this.state.contry}>Country</option>
+                            {this.state.countries.map(x =>
+                                <option value={x} key={x}>{x}</option>
+                            )}
+                        </select>
+                        <span className="vaidation-error error-text-red">{this.state.register_country_error}</span>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="form-field-group">
+                            <input id="address" type="text" className="form-input-field" name="address" onChange={this.changeHandlerAddress.bind(this)} value={this.state.address} placeholder="Address" />
+                            <Debounce ms={1000}>
+                            <span className="vaidation-error error-text-red">{this.state.register_address_error}</span>
+                            </Debounce>
                         </div>
                     </div>
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="city" type="text" className="form-input-field" name="city" placeholder="City" />
-                            <span className="vaidation-error error-text-red">City is required!</span>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="form-field-group">
-                            <input id="street" type="text" className="form-input-field" name="street" placeholder="Street" />
-                            <span className="vaidation-error error-text-red">Street is required!</span>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="form-field-group">
-                            <input id="phone" type="text" className="form-input-field" name="phone" placeholder="Phone number" />
-                            <span className="vaidation-error error-text-red">Phone number is required!</span>
+                            <input id="phone" type="text" className="form-input-field" name="phone" onChange={this.changeHandlerPhone.bind(this)} value={this.state.phone} placeholder="Phone number" />
+                            <Debounce ms={1000}>
+                            <span className="vaidation-error error-text-red">{this.state.register_phone_error}</span>
+                            </Debounce>
                         </div>
                     </div>
                     
-                    <div className="switch register-switch">
-                    <label>
-                    User
-                    <input type="checkbox" name="userType" />
-                    <span className="lever"></span>
-                    Seller
-                    </label>
-                    </div>
-                    <span className="vaidation-error error-text-red form-error">ERROR MESSAGE</span>
+                    <span className="vaidation-error error-text-red form-error">{this.state.register_server_error}</span>
                     <div id="register-buttons">
-                        <button onClick={this.submitHandler.bind(this)} className="btn waves-effect waves-light register-btn" name="action"><i className="material-icons left">input</i>Register</button>
+                    <button onClick={this.submitHandler.bind(this)} disabled={this.state.disable_submit} className="btn waves-effect waves-light register-btn" name="action"><i className="material-icons left">input</i>Register</button>
                         <button className="btn waves-effect waves-light register-btn" name="action" type="reset"><i className="material-icons left">input</i>Reset</button>
                     </div>
                 </form>

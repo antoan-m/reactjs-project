@@ -94,7 +94,7 @@ render() {
          </p>
     <article className="newsletter-section">
        <form className="newsletter-form">
-         <input type="text" className="newsletter-input" id="email" name="email" onChange={this.changeHandlerEmail.bind(this)} value={this.state.email} placeholder="Enter your email..." />
+         <input type="text" className="newsletter-input" id="uesr-email" name="user-email" onChange={this.changeHandlerEmail.bind(this)} value={this.state.email} placeholder="Enter your email..." />
          <button type="submit" name="subscribe" disabled={this.state.newsletterError} onClick={this.subscribeNewsletter.bind(this)} className="newsletter-button">SUBSCRIBE</button>
        </form>
        <Debounce ms={1000}>

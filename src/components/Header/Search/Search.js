@@ -58,7 +58,7 @@ class Search extends Component {
     }
 
     onBlurHandler(e) {
-        this.setState({ showSearchPanel: false, search_query: '' });
+        // this.setState({ showSearchPanel: false, search_query: '' });
     }
 
 render() {
@@ -66,13 +66,13 @@ render() {
         <>
     <article className="header-top-block-site-search">
         <form className="header-top-block-site-search">
+        {/* <Debounce ms="100"> */}
            <input type="text" id="header-top-block-site-search-input search" name="search" onChange={this.changeHandlerSearch.bind(this)} onBlur={this.onBlurHandler.bind(this)} value={this.state.search_query} placeholder="Search..." />
+        {/* </Debounce> */}
         </form>
            <i className="fas fa-search header-top-block-site-search-input-icon"></i>
            <article className="search-result-panel" style={{display: this.state.showSearchPanel}}>
-                <Debounce ms="100">
                     { this.state.showSearchPanel && <SearchResults searchData={this.state.search_results} /> }
-                </Debounce>
         </article>
     </article>
     
