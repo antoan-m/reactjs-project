@@ -3,9 +3,7 @@ import { Component } from 'react';
 import searchService from '../../../services/searchService';
 import React from 'react';
 import M from 'materialize-css';
-import Debounce from 'react-debounce-component';
 import SearchResults from './SearchResults';
-import booksService from '../../../services/booksService';
 
 
 class Search extends Component {
@@ -22,8 +20,8 @@ class Search extends Component {
 
   componentDidMount() {
 
-    searchService.getSearchResults(this.state.search_query)
-    .then(search_results => this.setState({ search_results }))
+    // searchService.getSearchResults(this.state.search_query)
+    // .then(search_results => this.setState({ search_results }))
   };
 
   componentDidUpdate() {
@@ -33,8 +31,6 @@ class Search extends Component {
     }
 
     changeHandlerSearch(e) {
-
-        console.log('TARGET:' + e.target.value);
 
         this.setState({search_query: e.target.value}, 
             
@@ -58,7 +54,10 @@ class Search extends Component {
     }
 
     onBlurHandler(e) {
-        // this.setState({ showSearchPanel: false, search_query: '' });
+        this.setState({ search_query: '' });
+        setTimeout(() => { 
+            this.setState({ showSearchPanel: false}) 
+        }, 500);
     }
 
 render() {
@@ -66,9 +65,7 @@ render() {
         <>
     <article className="header-top-block-site-search">
         <form className="header-top-block-site-search">
-        {/* <Debounce ms="100"> */}
            <input type="text" id="header-top-block-site-search-input search" name="search" onChange={this.changeHandlerSearch.bind(this)} onBlur={this.onBlurHandler.bind(this)} value={this.state.search_query} placeholder="Search..." />
-        {/* </Debounce> */}
         </form>
            <i className="fas fa-search header-top-block-site-search-input-icon"></i>
            <article className="search-result-panel" style={{display: this.state.showSearchPanel}}>

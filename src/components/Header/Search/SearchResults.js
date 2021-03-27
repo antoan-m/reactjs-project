@@ -1,6 +1,6 @@
 import './SearchResults.css';
 import { Component } from 'react';
-import { Link, history } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class SearchResults extends Component {

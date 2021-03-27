@@ -17,11 +17,13 @@ var requestOptions = {
 
 return fetch(`${api.users}/login`, requestOptions)
 .then(response => response.json())
-  .then(result => {console.log(result);
+  .then(result => {
+    console.log(result);
     M.toast({html: 'Hello, ' + result['name'] + '!'})
     localStorage.name = result['name'];
     localStorage.email = result['email'];
-    localStorage['user-token'] = result['user-token'];})
+    localStorage['user-token'] = result['user-token']
+    ;})
   .catch(error => {console.log('error', error);
   M.toast({html: error.message})
 })
@@ -51,24 +53,77 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/users/register", requestOptions)
+fetch(`${api.users}/register`, requestOptions)
   .then(response => response.json())
-
-  .then(result => {console.log(result);
-    M.toast({html: 'Hello, ' + result['name'] + '!'})
-    localStorage.name = result['name'];
-    localStorage.email = result['email'];
-    localStorage['user-token'] = result['user-token'];})
-
+  .then(result => {
+    console.log(result);
+    M.toast({html: 'Registration successful!'})
+})
   .catch(error => {console.log('error', error);
     M.toast({html: error.message})
 })
 }
 
+function userValidate(token) {
+
+var myHeaders = new Headers();
+myHeaders.append(
+  "Content-Type", "application/json",
+  "user-token", token
+  );
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+  fetch(`${api.users}/isvalidusertoken/${token}`, requestOptions)
+  .then(response => response.json())
+  .then(result => {console.log(result);
+    localStorage.removeItem('name');
+    localStorage.removeItem('email');
+    localStorage.removeItem('user-token');
+  })
+  .catch(error => {
+    console.log('error', error);
+    M.toast({html: error.message})
+})
+}
+
+
+function userLogout(token) {
+
+  var myHeaders = new Headers();
+  myHeaders.append(
+    "Content-Type", "application/json",
+    "user-token", token
+    );
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+    fetch(`${api.users}/logout/${token}`, requestOptions)
+    .then(response => { 
+      response.json();
+      localStorage.removeItem('name');
+      localStorage.removeItem('email');
+      localStorage.removeItem('user-token');
+      
+    })
+    .catch(error => {
+      console.log('error', error);
+      M.toast({html: error.message})
+  })
+  }
+
 
 export default {
     userLogin,
-    userRegister
+    userRegister,
+    userValidate,
+    userLogout
 };
 
 

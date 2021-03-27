@@ -36,7 +36,6 @@ import Admin from "./components/User/Admin";
 import Cart from "./components/User/Cart";
 import PageNotFound from "./components/Pages/PageNotFound";
 
-
 export function App() {
 
   return (
@@ -62,6 +61,7 @@ export function App() {
         <Route path="/terms" exact component={Terms} />
         <Route path="/user/login" exact component={Login} />
         <Route path="/user/register" exact component={Register} />
+        <Route path="/user/logout" exact component={Home} />
         <Route path="/user/profile" exact component={Profile} />
         <Route path="/user/profile/newsletter" exact component={Newsletter} />
         <Route path="/user/profile/user-newsletter" exact component={UserNewsletter} />

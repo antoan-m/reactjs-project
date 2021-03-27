@@ -20,7 +20,6 @@ class Register extends Component {
         register_country_error: '',
         register_address_error: '',
         register_phone_error: '',
-        disable_submit: false,
         name: '',
         email: '',
         password: '',
@@ -47,9 +46,6 @@ class Register extends Component {
 
     changeHandlerName(e) {
 
-        console.log('TARGET:' + e.target.value);
-        console.log(this.state);
-  
         this.setState({name: e.target.value},
   
             function validateName() {
@@ -147,14 +143,42 @@ class Register extends Component {
 submitHandler(e) {
     e.preventDefault();
 
+    const { history } = this.props;
+    
     const { name, email, password, rePassword, country, address, phone } = this.state;
     
     if(password !== rePassword) {
         return this.setState({register_rePassword_error: "Password missmatch!"});
     }
 
-    userService.userRegister(name, email, password, country, address, phone);
+    if(country === '' || country === 'Country') {
+        return this.setState({register_country_error: "Choose country!"});
     };
+
+    userService.userRegister(name, email, password, country, address, phone);
+    
+        if (history) { history.push('/') };
+    };
+
+    submitClearHandler = () => { 
+        this.setState({
+        register_name_error: '',
+        register_email_error: '',
+        register_password_error: '',
+        register_rePassword_error: '',
+        register_country_error: '',
+        register_address_error: '',
+        register_phone_error: '',
+        name: '',
+        email: '',
+        password: '',
+        rePassword: '',
+        country: '',
+        address: '',
+        phone: ''
+    });
+      }
+      
 
 
 
@@ -209,7 +233,7 @@ render() {
 
                     <div className="row">
                     <div className="form-field-group">
-                        <select class="browser-default form-countrylist-dropdown" onChange={this.changeHandlerCountry.bind(this)} >
+                        <select className="browser-default form-countrylist-dropdown" onChange={this.changeHandlerCountry.bind(this)} >
                             <option value={this.state.contry}>Country</option>
                             {this.state.countries.map(x =>
                                 <option value={x} key={x}>{x}</option>
@@ -239,7 +263,7 @@ render() {
                     <span className="vaidation-error error-text-red form-error">{this.state.register_server_error}</span>
                     <div id="register-buttons">
                     <button onClick={this.submitHandler.bind(this)} disabled={this.state.disable_submit} className="btn waves-effect waves-light register-btn" name="action"><i className="material-icons left">input</i>Register</button>
-                        <button className="btn waves-effect waves-light register-btn" name="action" type="reset"><i className="material-icons left">input</i>Reset</button>
+                        <button onClick={this.submitClearHandler.bind(this)} className="btn waves-effect waves-light register-btn" name="action" type="reset"><i className="material-icons left">input</i>Reset</button>
                     </div>
                 </form>
                 <article></article>
