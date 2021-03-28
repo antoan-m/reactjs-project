@@ -1,10 +1,14 @@
 import api from './api';
 import M from 'materialize-css';
+import React, { useContext } from 'react';
 
 
 function userRegister(name, email, password, country, address, phone) {
   var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append(
+    "Content-Type", "application/json",
+    "Access-Control-Allow-Origin", "*",
+    );
   
   var raw = JSON.stringify({
     "name": name,
@@ -41,7 +45,10 @@ function userRegister(name, email, password, country, address, phone) {
 function userLogin(login, password) {
 
 var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+myHeaders.append(
+  "Content-Type", "application/json",
+  "Access-Control-Allow-Origin", "*"
+  );
 
 var raw = JSON.stringify({"login": login,"password": password});
 
@@ -73,24 +80,25 @@ function userValidate(token) {
 var myHeaders = new Headers();
 myHeaders.append(
   "Content-Type", "application/json",
+  "Access-Control-Allow-Origin", "*",
   "user-token", token
   );
 
 var requestOptions = {
-  method: 'POST',
+  method: 'GET',
   headers: myHeaders,
   redirect: 'follow'
 };
   return fetch(`${api.users}/isvalidusertoken/${token}`, requestOptions)
   .then(response => response.json())
   .then(result => {console.log(result);
+  })
+  .catch(error => {
+    console.log('error', error);
     localStorage.removeItem('name');
     localStorage.removeItem('email');
     localStorage.removeItem('id');
     localStorage.removeItem('user-token');
-  })
-  .catch(error => {
-    console.log('error', error);
     M.toast({html: error.message})
 })
 }
@@ -101,11 +109,12 @@ function userLogout(token) {
   var myHeaders = new Headers();
   myHeaders.append(
     "Content-Type", "application/json",
+    "Access-Control-Allow-Origin", "*",
     "user-token", token
     );
   
   var requestOptions = {
-    method: 'POST',
+    method: 'GET',
     headers: myHeaders,
     redirect: 'follow'
   };
@@ -124,12 +133,45 @@ function userLogout(token) {
   })
   }
 
+  function userUpdate(userId, name, country, address, phone) {
+    var myHeaders = new Headers();
+    myHeaders.append(
+      "Content-Type", "application/json",
+      "Access-Control-Allow-Origin", "*",
+      );
+    
+    var raw = JSON.stringify({
+      "name": name,
+      "country": country,
+      "address": address,
+      "phone": phone
+    });
+    
+    var requestOptions = {
+      method: 'PUT',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    return fetch(`${api.users}/${userId}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        M.toast({html: 'Update successful!'})
+    })
+      .catch(error => {console.log('error', error);
+        M.toast({html: error.message})
+    })
+    }
+
 
   function userData(user_id) {
 
     var myHeaders = new Headers();
     myHeaders.append(
       "Content-Type", "application/json",
+      "Access-Control-Allow-Origin", "*",
       "user-token", localStorage.getItem('user-token')
       );
     
@@ -151,6 +193,7 @@ export default {
     userRegister,
     userValidate,
     userLogout,
+    userUpdate,
     userData
 };
 

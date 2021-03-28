@@ -3,7 +3,7 @@ import "./About.css";
 
 function About() {
   return (
-   <fragment>
+   <>
      <h2 className="page-title">ABOUT BOOK STORE</h2>
      <article className="about-us about-us">
        <article className="about-us-header-image">
@@ -23,7 +23,7 @@ function About() {
      <article className="about-us-footer-image">
      <img src={process.env.PUBLIC_URL + '/logo.jpg'} alt="Book Store" />
      </article>
-   </fragment>
+   </>
   );
 }
 

@@ -1,0 +1,11 @@
+.profile-details-list-item {
+    list-style-type: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-size: 22px;
+    width: 330px;
+}
+
+.profile-details-list-item-label {
+    font-weight: 600;
+}

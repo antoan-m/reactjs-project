@@ -11,7 +11,8 @@ class ProfileDetailsEdit extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        current_user: '',
+        user_data: '',
+        user_id: localStorage.getItem('id'),
         register_server_error: '',
         register_name_error: '',
         register_email_error: '',
@@ -32,6 +33,14 @@ class ProfileDetailsEdit extends Component {
     }
 
     componentDidMount() {
+
+        userService.userData(this.state.user_id)
+        .then(data => this.setState({ user_data: data }))
+
+        if (this.state.contry === 'Country') {
+           this.setState({contry: false});
+        }
+
             this.setState({countries: countryList});
 
             var elems = document.querySelectorAll('select');
@@ -39,6 +48,15 @@ class ProfileDetailsEdit extends Component {
         }
 
         componentDidUpdate() {
+            if(!this.state.user_data) {
+        userService.userData(this.state.user_id)
+        .then(data => this.setState({ user_data: data }))
+            }
+
+            if (this.state.contry === 'Country' || this.state.contry === '') {
+                this.setState({contry: false});
+             }
+
             var elems = document.querySelectorAll('select');
             var instances = M.FormSelect.init(elems, {classes: 'form-countrylist-dropdown', dropdownOptions: countryList});
         }
@@ -52,22 +70,6 @@ class ProfileDetailsEdit extends Component {
   
               if (this.state.name.length < 3) { this.setState({register_name_error: "Name should be at least 3 characters long!"}) }
               else { this.setState({register_name_error: ""}) }
-            }
-        )
-      };
-
-    changeHandlerEmail(e) {
-  
-        this.setState({email: e.target.value},
-  
-            function validateEmail() {
-  
-                if (!this.state.email.includes('@')) { this.setState({register_email_error: "Email should contain '@'!"}) } 
-                else if (!this.state.email.includes('.')) { this.setState({register_email_error: "Invalid email!"}) }
-                else if (this.state.email.indexOf(' ') !== -1) { this.setState({register_email_error: "Invalid email!"}) }
-                else if (this.state.email.length < 6) { this.setState({register_email_error: "Invalid email!"}) }
-                else if (this.state.email === '') { this.setState({register_email_error: ""}) }
-                else { this.setState({register_email_error: ""}) }
             }
         )
       };
@@ -120,8 +122,8 @@ class ProfileDetailsEdit extends Component {
         this.setState({country: e.target.value},
   
             function validateCountry() {
-              if (this.state.country === 'Country'|| !this.state.country || this.state.country === '') { this.setState({register_country_error: "Choose country!"}) } 
-              else { this.setState({register_country_error: ""}) }
+              if (this.state.country === 'Country'|| !this.state.country || this.state.country === '') { this.setState({country: this.state.user_data.country}) } 
+              else { this.setState({register_country_error: "", country: this.state.user_data.country}) }
             }
         )
       };
@@ -145,17 +147,22 @@ submitHandler(e) {
 
     const { history } = this.props;
     
-    const { name, email, password, rePassword, country, address, phone } = this.state;
-    
+    const { name, password, rePassword, country, address, phone } = this.state;
+
+    if(password === '' && rePassword === '') {
+        return this.setState({register_password_error: "Enter the old or a new password!"});
+    }
+
+
     if(password !== rePassword) {
         return this.setState({register_rePassword_error: "Password missmatch!"});
     }
 
     if(country === '' || country === 'Country') {
-        return this.setState({register_country_error: "Choose country!"});
+        return this.setState({country: this.state.user_data.country});
     };
 
-    userService.userRegister(name, email, password, country, address, phone);
+    userService.userUpdate(this.state.user_data.objectId, name, country, address, phone);
     
         if (history) { history.push('/') };
     };
@@ -191,7 +198,7 @@ render() {
      <form id="user-register">
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="name" type="text" className="form-input-field" name="name" onChange={this.changeHandlerName.bind(this)} value={this.state.name} placeholder="Your names" />
+                            <input id="name" type="text" className="form-input-field" name="name" onChange={this.changeHandlerName.bind(this)} value={this.state.name ? this.state.name : this.state.user_data.name} placeholder="Your names" />
                             <Debounce ms={1000}>
                             <span className="vaidation-error error-text-red">{this.state.register_name_error}</span>
                             </Debounce>
@@ -199,7 +206,7 @@ render() {
                     </div>
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="email" type="email" className="form-input-field" name="email" onChange={this.changeHandlerEmail.bind(this)} value={this.state.email} placeholder="Email" />
+                            <input id="email" type="email" className="form-input-field" name="email" disabled value={this.state.email ? this.state.email : this.state.user_data.email} placeholder="Email" />
                             <Debounce ms={1000}>
                             <span className="vaidation-error error-text-red">{this.state.register_email_error}</span>
                             </Debounce>
@@ -234,7 +241,7 @@ render() {
                     <div className="row">
                     <div className="form-field-group">
                         <select className="browser-default form-countrylist-dropdown" onChange={this.changeHandlerCountry.bind(this)} >
-                            <option value={this.state.contry}>Country</option>
+                            <option value={this.state.user_data.country}>{this.state.user_data.country}</option>
                             {this.state.countries.map(x =>
                                 <option value={x} key={x}>{x}</option>
                             )}
@@ -245,7 +252,7 @@ render() {
 
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="address" type="text" className="form-input-field" name="address" onChange={this.changeHandlerAddress.bind(this)} value={this.state.address} placeholder="Address" />
+                            <input id="address" type="text" className="form-input-field" name="address" onChange={this.changeHandlerAddress.bind(this)} value={this.state.address ? this.state.address : this.state.user_data.address} placeholder="Address" />
                             <Debounce ms={1000}>
                             <span className="vaidation-error error-text-red">{this.state.register_address_error}</span>
                             </Debounce>
@@ -253,7 +260,7 @@ render() {
                     </div>
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="phone" type="text" className="form-input-field" name="phone" onChange={this.changeHandlerPhone.bind(this)} value={this.state.phone} placeholder="Phone number" />
+                            <input id="phone" type="text" className="form-input-field" name="phone" onChange={this.changeHandlerPhone.bind(this)} value={this.state.phone ? this.state.phone : this.state.user_data.phone} placeholder="Phone number" />
                             <Debounce ms={1000}>
                             <span className="vaidation-error error-text-red">{this.state.register_phone_error}</span>
                             </Debounce>

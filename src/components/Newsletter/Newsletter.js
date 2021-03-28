@@ -33,8 +33,6 @@ class Newsletter extends Component {
   
     changeHandlerEmail(e) {
 
-      // console.log('TARGET:' + e.target.value);
-
       this.setState({email: e.target.value},
 
           function validateEmail() {
@@ -72,8 +70,9 @@ class Newsletter extends Component {
     if (this.state.email !== '' && this.state.newsletterError === '') {
         this.newSubscriber = newsletterService.subscribeNewsletter(this.state.subscribers, this.state.email)
         .then(response => response.text())
-        .then(result => {console.log(result);
-          M.toast({html: 'Thank you for subscribing!'});
+        .then(result => {
+          M.toast({html: 'Thank you for subscribing!'
+        });
   })
         .catch(error => console.log('error', error));
       } else if (this.state.email === ''){

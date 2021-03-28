@@ -2,9 +2,12 @@ import "./Profile.css";
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import userService from "../../services/userService";
+import { UserContext } from "../../services/UserContext";
 
 
 class Profile extends Component {
+  static contextType = UserContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,23 +19,18 @@ class Profile extends Component {
   componentDidMount() {
     userService.userData(this.state.user_id)
     .then(data => this.setState({ user_data: data }))
-    console.log(this.state.user_data)
-    console.log(this.state.user_id)
-    console.log(this.state.params)
   }
 
   componentDidUpdate() {
     if (this.state.user_data === '') {
     userService.userData(this.state.user_id)
     .then(data => this.setState({ user_data: data }))
-    console.log(this.state.user_data)
-    console.log(this.state.user_id)
-    console.log(this.state.params)
     }
 }
 
 
   render() {
+    // console.log(this.context);
   return (
 <div className="profile">
 
@@ -40,7 +38,7 @@ class Profile extends Component {
         <section className="profile-main-left">
          
           <section className="profile-main-left-last-tasks">
-          <h2 className="profile-main-header">User Panel | Hello, {this.state.user_data.name}</h2>
+          <h2 className="profile-main-header">User Panel | Hello, USER</h2>
           <ul className="profile-main-left-last-tasks-list">
                  <Link to={`/user/profile/details/${this.state.user_data.objectId}`}><button className="btn waves-effect waves-light profile-list-item-btn-user">My Details<i className="material-icons right">import_contacts</i></button></Link>
                   <Link to="/user/profile/orders"><button className="btn waves-effect waves-light profile-list-item-btn-user">Orders<i className="material-icons right">import_contacts</i></button></Link>

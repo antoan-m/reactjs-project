@@ -1,6 +1,7 @@
 import "./App.css";
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Route, Switch } from "react-router-dom";
+import { UserContext } from './services/UserContext';
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -37,11 +38,34 @@ import Wishlist from "./components/User/Wishlist";
 import Admin from "./components/User/Admin";
 import Cart from "./components/User/Cart";
 import PageNotFound from "./components/Pages/PageNotFound";
+import userService from "./services/userService";
 
 export function App() {
 
+  let [user, setUser] = useState('guest');
+  const value = useMemo(() => ({user, setUser}), [user, setUser]);
+
+  
+useEffect(() => {
+  const userToken = localStorage.getItem('user-token');
+  const userId = localStorage.getItem('id');
+
+if(userToken) {
+  userService.userValidate(userToken)
+      .then(result => {
+        console.log(result);
+        userService.userData(userId)
+        .then(user => {
+          setUser(JSON.stringify(user))
+          localStorage.setItem('user', JSON.stringify(user))
+        })
+      })
+    }
+})
+
   return (
     <div className="App">
+      <UserContext.Provider value={value}>
       <Header />
       <Switch>
         <Route path="/" exact component={Home} />
@@ -81,6 +105,7 @@ export function App() {
       </Switch>
       <Newsletter />
       <Footer />
+      </UserContext.Provider>
     </div>
   );
 }

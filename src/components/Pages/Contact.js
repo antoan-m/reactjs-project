@@ -4,7 +4,7 @@ import "./Contact.css";
 
 function Contact() {
   return (
-    <fragment>
+    <>
       <h2 className="page-title contact">CONTACT US</h2>
       <article className="about-us about-us">
           <article className="contact-map">
@@ -60,7 +60,7 @@ function Contact() {
                 </form>
         
       </article>
-    </fragment>
+    </>
   );
 }
 
