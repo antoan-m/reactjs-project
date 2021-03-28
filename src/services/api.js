@@ -5,5 +5,6 @@ const USERS_BASE_URL = 'http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04
 export default {
     books: `${DATA_BASE_URL}/books`,
     users: `${USERS_BASE_URL}`,
-    newsletter: `${DATA_BASE_URL}/newsletter`
+    newsletter: `${DATA_BASE_URL}/newsletter`,
+    contact: `${DATA_BASE_URL}/contact`
 };

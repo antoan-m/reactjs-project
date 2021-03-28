@@ -17,7 +17,6 @@ render() {
   return (
   this.props.featuredBooks.map(x => {
     return (
-        <>
         <article className="featured-category-items-item" key={x.objectId}>
         <NavLink to={`books/details/${x.objectId}`}>
             <img src={x.image} className="featured-category-items-item-img" alt={x.title} />
@@ -30,7 +29,6 @@ render() {
           </h5>
           <p>${x.price}</p>
         </article>
-        </>
   )
 })
   )}

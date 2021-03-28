@@ -196,7 +196,3 @@ export default {
     userUpdate,
     userData
 };
-
-
-
-

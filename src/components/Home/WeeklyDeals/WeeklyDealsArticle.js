@@ -14,7 +14,6 @@ render() {
   return (
   this.props.weeklyDealsBooks.map(x => {
     return (
-        <>
       <article className="weekly-deals-items-item" key={x.objectId}>
       <NavLink to={`books/details/${x.objectId}`}>
           <img src={x.image} className="weekly-deals-items-item-img" alt={x.title}
@@ -30,7 +29,6 @@ render() {
           <p>$29.99</p>
         </article>
       </article>
-        </>
   )
 })
   )}

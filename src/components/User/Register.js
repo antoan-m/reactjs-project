@@ -147,12 +147,32 @@ submitHandler(e) {
     
     const { name, email, password, rePassword, country, address, phone } = this.state;
     
+    if(name === '') {
+         return this.setState({register_name_error: "Name is empty!"});
+    };
+
+    if(email === '') {
+        return this.setState({register_email_error: "Email is empty!"});
+    };
+
+    if(password === '') {
+        return this.setState({register_password_error: "Password is empty!"});
+    };
+
     if(password !== rePassword) {
         return this.setState({register_rePassword_error: "Password missmatch!"});
     }
 
     if(country === '' || country === 'Country') {
         return this.setState({register_country_error: "Choose country!"});
+    };
+
+    if(address === '') {
+        return this.setState({register_address_error: "Address is empty!"});
+    };
+
+    if(phone === '') {
+        return this.setState({register_phone_error: "Phone is empty!"});
     };
 
     userService.userRegister(name, email, password, country, address, phone);
@@ -162,6 +182,7 @@ submitHandler(e) {
 
     submitClearHandler = () => { 
         this.setState({
+        errors: 0,
         register_name_error: '',
         register_email_error: '',
         register_password_error: '',

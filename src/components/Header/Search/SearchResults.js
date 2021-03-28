@@ -9,7 +9,7 @@ class SearchResults extends Component {
     }
 
 render() {
-    console.log(this.props.searchData);
+    // console.log(this.props.searchData);
     return(
         this.props.searchData.map(x => {
             return (

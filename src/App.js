@@ -91,7 +91,7 @@ if(userToken) {
         <Route path="/user/profile" exact component={Profile} />
         <Route path="/user/profile/details/:userid" exact component={ProfileDetails} />
         <Route path="/user/profile/details/:userid/edit" exact component={ProfileDetailsEdit} />
-        <Route path="/user/profile/newsletter" exact component={Newsletter} />
+        {/* <Route path="/user/profile/newsletter" exact component={Newsletter} /> */}
         <Route path="/user/profile/user-newsletter" exact component={UserNewsletter} />
         <Route path="/user/profile/addbook" exact component={AddBook} />
         <Route path="/user/profile/editbook/:id" exact component={EditBook} />
