@@ -176,9 +176,10 @@ function sortByPriceDesc() {
 }
 
 
-function AddBook(title, author, category, short_description, long_description, image, format, pages, year, price, featured, promo){
+function addBook(title, author, category, short_description, long_description, image, format, pages, year, price, featured, promo){
 
       let userToken = localStorage.getItem('user-token');
+      let userId = localStorage.getItem('id');
 
       var myHeaders = new Headers();
         myHeaders.append(
@@ -199,7 +200,8 @@ function AddBook(title, author, category, short_description, long_description, i
           "year": Number(year),
           "price": Number(price),
           "featured": featured,
-          "promo": promo
+          "promo": promo,
+          "ownerId": userId
 });
 
 var requestOptions = {
@@ -212,8 +214,88 @@ var requestOptions = {
   return fetch(`${api.books}`, requestOptions)
   .then(response => response.json())
   .then(result => {
-    console.log(result);
   M.toast({html: 'Book added successfully!'});
+})
+  .catch(error => {
+    console.error('error', error);
+    M.toast({html: error.message});
+    return
+  })
+  }
+
+
+  function getMyBooks(user_id) {
+
+    let userToken = localStorage.getItem('user-token');
+
+    let query = `?where=ownerId='2FAEC5F6-C59A-4CD4-8FFD-24522DB02CF3'&sortBy=created%20desc`;
+
+      var myHeaders = new Headers();
+        myHeaders.append(
+          "Content-Type", "application/json",
+          "Access-Control-Allow-Origin", "*",
+          "user-token", userToken
+          );
+  
+        var requestOptions = {
+         method: 'GET',
+         headers: myHeaders,
+         redirect: 'follow'
+        };
+  
+  return fetch(`${api.books}${query}`, requestOptions)
+  .then(res => res.json())
+  .catch(error => {
+    console.error('error', error);
+  })
+  }
+
+  function editBook(book_id) {
+
+    let userToken = localStorage.getItem('user-token');
+
+    let query = `?where=ownerId='2FAEC5F6-C59A-4CD4-8FFD-24522DB02CF3'`;
+
+      var myHeaders = new Headers();
+        myHeaders.append(
+          "Content-Type", "application/json",
+          "Access-Control-Allow-Origin", "*",
+          "user-token", userToken
+          );
+  
+        var requestOptions = {
+         method: 'PUT',
+         headers: myHeaders,
+         redirect: 'follow'
+        };
+  
+  return fetch(`${api.books}${query}`, requestOptions)
+  .then(res => res.json())
+  .catch(error => {
+    console.error('error', error);
+  })
+  }
+
+  function deleteBook(books_id) {
+
+    let userToken = localStorage.getItem('user-token');
+
+      var myHeaders = new Headers();
+        myHeaders.append(
+          "Content-Type", "application/json",
+          "Access-Control-Allow-Origin", "*",
+          "user-token", userToken
+          );
+  
+        var requestOptions = {
+         method: 'DELETE',
+         headers: myHeaders,
+         redirect: 'follow'
+        };
+  
+  return fetch(`${api.books}/${books_id}`, requestOptions)
+  .then(result => {
+  M.toast({html: 'Book deleted successfully!'});
 })
   .catch(error => {
     console.error('error', error);
@@ -240,5 +322,8 @@ export default {
   sortByOldest,
   sortByPriceAsc,
   sortByPriceDesc,
-  AddBook
+  addBook,
+  getMyBooks,
+  editBook,
+  deleteBook
 };

@@ -1,6 +1,5 @@
 import "./AddBook.css";
 import { Component } from 'react';
-import userService from '../../services/userService';
 import bookService from '../../services/booksService';
 import React from 'react';
 import Debounce from 'react-debounce-component';
@@ -44,8 +43,7 @@ class AddBook extends Component {
 componentDidMount() {
 
     bookService.getAuthors()
-    .then(authorList => { this.setState({ authorList });
-    console.log(authorList)})
+    .then(authorList => this.setState({ authorList }))
 
     bookService.getCategories()
     .then(categoryList => this.setState({ categoryList }))
@@ -247,9 +245,9 @@ submitHandler(e) {
         return this.setState({addbook_price_error: "Price is empty!"});
     };
 
-    bookService.AddBook(title, author, category, short_description, long_description, image, format, pages, year, price, featured, promo);
+    bookService.addBook(title, author, category, short_description, long_description, image, format, pages, year, price, featured, promo);
     
-        if (history) { history.push('/user/profile') };
+        if (history) { history.push('/user/profile/mybooks') };
     };
 
     submitClearHandler = () => { 
@@ -287,7 +285,7 @@ render() {
        <h2 className="page-title">ADD NEW BOOK</h2>
        <section className="center">
        <article></article>
-     <form id="user-AddBook">
+     <form id="user-addBook">
                     <div className="row">
                         <div className="form-field-group">
                             <input id="title" type="text" onChange={this.changeHandlerTitle.bind(this)} onBlur={this.changeHandlerTitle.bind(this)} value={this.state.title} className="form-input-field" name="title" placeholder="Title" />
@@ -403,10 +401,10 @@ render() {
                     Yes
                     </label>
                     </div>
-                    <span className="vaidation-error error-text-red form-error">ERROR MESSAGE FROM SERVER</span>
+                    {/* <span className="vaidation-error error-text-red form-error">ERROR MESSAGE FROM SERVER</span> */}
                     <div id="addbook-buttons">
-                        <button onClick={this.submitHandler.bind(this)} className="btn waves-effect waves-light addbook-btn" name="action"><i className="material-icons left">input</i>Add Book</button>
-                        <button onClick={this.submitClearHandler.bind(this)} className="btn waves-effect waves-light addbook-btn" name="action" type="reset"><i className="material-icons left">input</i>Reset</button>
+                        <button onClick={this.submitHandler.bind(this)} className="btn waves-effect waves-light addbook-btn" name="action"><i className="material-icons left">create</i>Add Book</button>
+                        <button onClick={this.submitClearHandler.bind(this)} className="btn waves-effect waves-light addbook-btn" name="action" type="reset"><i className="material-icons left">restore</i>Reset</button>
                     </div>
                 </form>
                 <article></article>

@@ -91,7 +91,7 @@ render() {
                                 <span className="vaidation-error error-text-red">{this.state.login_password_error}</span>
                             </Debounce>
                         </div>
-                        <span className="vaidation-error error-text-red form-error">SERVER ERROR MESSAGE HERE</span>
+                        {/* <span className="vaidation-error error-text-red form-error">SERVER ERROR MESSAGE HERE</span> */}
                     </div>
                     <div className="login-button">
                         <button onClick={this.submitHandler.bind(this)} className="btn waves-effect waves-light login-btn" name="action"><i className="material-icons left">input</i>Login</button>
