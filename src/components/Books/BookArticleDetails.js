@@ -74,7 +74,7 @@ render() {
      <article className="book-article-details-bottom">
      <article className="book-article-details-more-info">
        <h3 className="book-article-details-more-info-h3">Description</h3>
-            <p className="book-article-details-more-info-description">{this.state.BookArticleDetails.description}</p>
+            <p className="book-article-details-more-info-description">{this.state.BookArticleDetails.long_description}</p>
         </article>   
      </article>
      </article>

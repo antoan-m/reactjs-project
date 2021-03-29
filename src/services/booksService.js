@@ -1,4 +1,5 @@
 import api from './api';
+import M from 'materialize-css';
 
 function getAll(current_param) {
 
@@ -175,6 +176,54 @@ function sortByPriceDesc() {
 }
 
 
+function AddBook(title, author, category, short_description, long_description, image, format, pages, year, price, featured, promo){
+
+      let userToken = localStorage.getItem('user-token');
+
+      var myHeaders = new Headers();
+        myHeaders.append(
+          "Content-Type", "application/json",
+          "Access-Control-Allow-Origin", "*",
+          "user-token", userToken
+          );
+  
+        var raw = JSON.stringify({
+          "title": title,
+          "author": author,
+          "category": category,
+          "short_description": short_description,
+          "long_description": long_description,
+          "image": image,
+          "format": format,
+          "pages": Number(pages),
+          "year": Number(year),
+          "price": Number(price),
+          "featured": featured,
+          "promo": promo
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+  
+  return fetch(`${api.books}`, requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    console.log(result);
+  M.toast({html: 'Book added successfully!'});
+})
+  .catch(error => {
+    console.error('error', error);
+    M.toast({html: error.message});
+    return
+  })
+  }
+
+
+
 export default {
   getAll,
   getCategories,
@@ -190,5 +239,6 @@ export default {
   sortByNewest,
   sortByOldest,
   sortByPriceAsc,
-  sortByPriceDesc
+  sortByPriceDesc,
+  AddBook
 };

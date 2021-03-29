@@ -1,0 +1,66 @@
+.featured-switch,
+.promo-switch {
+  padding: 10px 0;
+  border-bottom: 1px solid #9e9e9e;
+  width: 60%;
+  margin: 0 auto 10px auto;
+  position: relative;
+}
+
+.featured-switch-title {
+  position: relative;
+  left: -390px;
+  top: 25px;
+  color: #d1d1d1;
+}
+
+.promo-switch-title {
+  position: relative;
+  left: -398px;
+  top: 25px;
+  color: #d1d1d1;
+}
+
+.row.last {
+  margin-bottom: 0px;
+}
+
+#short-description {
+  height: 100px;
+}
+
+#long-description {
+  height: 150px;
+}
+
+.addbook-counter {
+  font-size: 12px;
+  color: #81b29a;
+  position: relative;
+  top: -26px;
+  right: -404px;
+}
+
+.with-counter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-addbook-dropdown {
+  width: 60%;
+  margin: 0 auto;
+  color: #d1d1d1;
+  border-bottom: 1px solid #9e9e9e;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin-bottom: 10px;
+}
+
+.form-addbook-dropdown option {
+  color: #666;
+}
+
+.addbook-btn {
+    margin: 0 20px;
+}
