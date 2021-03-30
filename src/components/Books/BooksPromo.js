@@ -1,4 +1,4 @@
-import "./BooksDiscounted.css";
+import "./BooksPromo.css";
 import { Component } from 'react';
 import BookArticle from './BookArticle';
 import BooksSidebar from './BooksSidebar/BooksSidebar';
@@ -6,7 +6,7 @@ import BookFilters from './BookFilters/BookFilters';
 import booksService from '../../services/booksService';
 
 
-class BooksDiscounted extends Component {
+class BooksPromo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,4 +66,4 @@ class BooksDiscounted extends Component {
 }
 }
 
-export default BooksDiscounted;
+export default BooksPromo;

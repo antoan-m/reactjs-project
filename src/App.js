@@ -12,7 +12,7 @@ import BooksCategory from "./components/Books/BooksCategory";
 import BooksAuthor from "./components/Books/BooksAuthor";
 import BooksFormat from "./components/Books/BooksFormat";
 import BooksPrice from "./components/Books/BooksPrice";
-import BooksDiscounted from "./components/Books/BooksDiscounted";
+import BooksPromo from "./components/Books/BooksPromo";
 import BooksOldest from "./components/Books/BooksOldest";
 import BooksNewest from "./components/Books/BooksNewest";
 import BooksHighPrice from "./components/Books/BooksHighPrice";
@@ -75,7 +75,7 @@ if(userToken) {
         <Route path="/books/author/:id" exact component={BooksAuthor} />
         <Route path="/books/format/:id" exact component={BooksFormat} />
         <Route path="/books/price/:id" exact component={BooksPrice} />
-        <Route path="/books/discounted" exact component={BooksDiscounted} />
+        <Route path="/books/promo" exact component={BooksPromo} />
         <Route path="/books/oldest" exact component={BooksOldest} />
         <Route path="/books/newest" exact component={BooksNewest} />
         <Route path="/books/highprice" exact component={BooksHighPrice} />

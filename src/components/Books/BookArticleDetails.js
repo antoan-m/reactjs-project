@@ -1,5 +1,6 @@
 import "./BookArticleDetails.css";
 import BooksSidebar from './BooksSidebar/BooksSidebar'
+import bookService from '../../services/booksService';
 import { Component } from 'react';
 import { Link } from "react-router-dom";
 
@@ -13,15 +14,13 @@ class BookArticleDetails extends Component {
 }
 
 
-bookID = this.props.match.params.id;
+book_id = this.props.match.params.id;
 
 componentDidMount() {
-    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books/${this.bookID}`, {
-        headers: { 'Access-Control-Allow-Origin': "*" }
-})
-        .then(res => res.json())
-        .then(BookArticleDetails => this.setState({ BookArticleDetails }))
-        
+
+  bookService.getBookData(this.book_id)
+  .then(BookArticleDetails => this.setState({ BookArticleDetails }))
+
 };
 
 render() {

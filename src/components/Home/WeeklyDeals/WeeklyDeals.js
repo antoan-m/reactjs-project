@@ -31,7 +31,7 @@ render() {
         <h2>Weekly Deals</h2>
       </article>
       <article className="weekly-deals-header-viewall">
-      <NavLink to="/books/discounted">
+      <NavLink to="/books/promo">
           <span>View All</span>
        </NavLink>
       </article>

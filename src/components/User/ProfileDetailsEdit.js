@@ -37,8 +37,8 @@ class ProfileDetailsEdit extends Component {
         userService.userData(this.state.user_id)
         .then(data => this.setState({ user_data: data }))
 
-        if (this.state.contry === 'Country') {
-           this.setState({contry: false});
+        if (this.state.country === 'Country') {
+           this.setState({country: false});
         }
 
             this.setState({countries: countryList});
@@ -49,8 +49,8 @@ class ProfileDetailsEdit extends Component {
 
         componentDidUpdate() {
             if(!this.state.user_data) {
-        userService.userData(this.state.user_id)
-        .then(data => this.setState({ user_data: data }))
+                userService.userData(this.state.user_id)
+                .then(data => this.setState({ user_data: data }))
             }
 
             if (this.state.contry === 'Country' || this.state.contry === '') {
@@ -167,24 +167,10 @@ submitHandler(e) {
         if (history) { history.push('/') };
     };
 
-    submitClearHandler = () => { 
-        this.setState({
-        register_name_error: '',
-        register_email_error: '',
-        register_password_error: '',
-        register_rePassword_error: '',
-        register_country_error: '',
-        register_address_error: '',
-        register_phone_error: '',
-        name: '',
-        email: '',
-        password: '',
-        rePassword: '',
-        country: '',
-        address: '',
-        phone: ''
-    });
-      }
+    cancelHandler = () => { 
+        const { history } = this.props;
+        if (history) { history.push(`/user/profile/details/${this.state.user_id}`) };
+    };
       
 
 
@@ -269,13 +255,12 @@ render() {
                     
                     <span className="vaidation-error error-text-red form-error">{this.state.register_server_error}</span>
                     <div id="register-buttons">
-                    <button onClick={this.submitHandler.bind(this)} disabled={this.state.disable_submit} className="btn waves-effect waves-light register-btn" name="action"><i className="material-icons left">input</i>Register</button>
-                        <button onClick={this.submitClearHandler.bind(this)} className="btn waves-effect waves-light register-btn" name="action" type="reset"><i className="material-icons left">input</i>Reset</button>
+                    <button onClick={this.submitHandler.bind(this)} disabled={this.state.disable_submit} className="btn waves-effect waves-light register-btn" name="action"><i className="material-icons left">input</i>Save</button>
+                    <button onClick={this.cancelHandler.bind(this)} className="btn waves-effect waves-light register-btn" name="action" type="reset"><i className="material-icons left">input</i>Cancel</button>
                     </div>
                 </form>
                 <article></article>
                 </section>
-                <div className="already-registered">Already have an account? <Link to='./login'>LOGIN</Link></div>
     </>
   );
 }
