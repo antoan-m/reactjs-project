@@ -1,0 +1,25 @@
+.profile-main-left-last-orders-list-item {
+  display: flex;
+}
+
+.profile-main-left-last-orders-list-item-image img {
+  width: 120px;
+}
+
+.profile-main-left-last-orders-list-item-title {
+  font-size: 22px;
+  color: #3d405b;
+  padding: 0px 30px;
+}
+
+.profile-main-left-last-orders-list-item-price {
+  font-size: 18px;
+  color: #e07a5f;
+  padding: 20px 30px;
+}
+
+.profile-main-left-last-orders-list-item-buttons {
+  display: flex;
+  border-left: 1px solid #ddd;
+  padding: 0 20px;
+}

@@ -1,0 +1,33 @@
+.profile-main-left {
+  display: flex;
+}
+
+.profile-main-left-last-tasks-list {
+  width: 360px;
+  border-right: 1px solid #ddd;
+  margin-right: 30px;
+}
+
+.profile-main-left-last-tasks-list a,
+.profile-main-left-last-orders-list a,
+.profile-main-left-last-admin-list a {
+  font-size: 18px;
+  color: #e07a5f;
+}
+
+.profile-main-left-last-tasks-list a:hover,
+.profile-main-left-last-orders-list a:hover,
+.profile-main-left-last-admin-list a:hover {
+  font-size: 18px;
+  color: #3d405b;
+}
+
+.profile-main-left-last-tasks-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-list-item-btn-user {
+    width: 160px;
+    margin: 10px 0;
+  }

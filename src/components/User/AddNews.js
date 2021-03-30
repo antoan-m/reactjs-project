@@ -1,10 +1,10 @@
-import "./AddBook.css";
+import "./AddNews.css";
 import { Component } from 'react';
 import bookService from '../../services/booksService';
 import React from 'react';
 import Debounce from 'react-debounce-component';
 
-class AddBook extends Component {
+class AddNews extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -326,7 +326,7 @@ render() {
                     </div>
                     <div className="row">
                         <div className="form-field-group">
-                            <textarea id="short-description" onChange={this.changeHandlerShortDescription.bind(this)} onBlur={this.changeHandlerShortDescription.bind(this)} value={this.state.short_description} maxLength="200" type="text" className="materialize-textarea form-input-field contact-textarea" name="short-description" placeholder="Short Description"></textarea>
+                            <textarea id="short-description" onChange={this.changeHandlerShortDescription.bind(this)} onBlur={this.changeHandlerShortDescription.bind(this)} value={this.state.short_description} maxLength="100" type="text" className="materialize-textarea form-input-field contact-textarea" name="short-description" placeholder="Short Description"></textarea>
                             <span className="vaidation-error error-text-red">
                                 <Debounce ms={1000}>
                                     <span>{this.state.addbook_short_description_error}</span>
@@ -414,4 +414,4 @@ render() {
 }
 }
 
-export default AddBook;
+export default AddNews;

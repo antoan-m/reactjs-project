@@ -15,12 +15,12 @@ function Slider() {
        </section>
        <section className="home-main-sliders-right">
          <article className="home-main-sliders-small">
-         <NavLink to="/news/12esdif2ifsdfsdf23r">
+         <NavLink to="/news/F2EEF62C-8FE1-4881-839B-BEF4F08B625E">
              <img src="slide-small-1.jpg" className="carousel-image" alt="" />
         </NavLink>
          </article>
          <article className="home-main-sliders-small">
-         <NavLink to="/news/sds43589s9dfhniwudhf">
+         <NavLink to="/books/newest">
              <img src="slide-small-2.jpg" className="carousel-image" alt="" />
              </NavLink>
          </article>

@@ -49,6 +49,8 @@
 
 .news-list-item-date {
   font-size: 12px;
+  color: #e07a5f;
+  padding: 5px 0;
 }
 
 .news-list-item-description {

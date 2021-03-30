@@ -22,7 +22,7 @@ render() {
 <article className="news-list-item-details">
 <Link to={`/news/${x.objectId}`}><h3 className="news-list-item-title">{x.title}</h3></Link>
 <p className="news-list-item-date"><i className="material-icons news-list-item-date-icon">access_time</i>12:32 01.10.2020</p>
-<p className="news-list-item-description">{x.description}</p>
+<p className="news-list-item-description">{x.short_description}</p>
 </article>
 <Link to={`/news/${x.objectId}`}><button className="btn waves-effect waves-light news-list-item-btn">Read more<i className="material-icons right">import_contacts</i></button></Link>
 

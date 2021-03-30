@@ -4,13 +4,13 @@
 
 .news-article-details {
   width: 100%;
-  padding: 20px;
+  padding: 20px 0 0 20px;
 }
 
 .news-article-details-title {
   font-size: 28px;
   padding: 0 0 10px 0;
-  color: #3D405B;
+  color: #3d405b;
 }
 
 .news-article-details-date-icon {
@@ -23,11 +23,19 @@
 .news-article-details-date {
   font-size: 12px;
   padding-bottom: 10px;
-  color: #E07A5F;
+  color: #e07a5f;
 }
 
 .news-article-details-image {
-  max-width: 1150px;
+  max-width: 1114px;
+  height: 300px;
+  margin-bottom: 0px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.news-article-details-image img {
+  width: 100%;
 }
 
 .news-article-details-description {

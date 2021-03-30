@@ -31,6 +31,8 @@ import ProfileDetailsEdit from "./components/User/ProfileDetailsEdit";
 import UserNewsletter from "./components/User/UserNewsletter";
 import AddBook from "./components/User/AddBook";
 import EditBook from "./components/User/EditBook";
+import AddNews from "./components/User/AddNews";
+import EditNews from "./components/User/EditNews";
 import MyBooks from "./components/User/MyBooks";
 import Orders from "./components/User/Orders";
 import Order from "./components/User/Order";
@@ -96,6 +98,8 @@ if(userToken) {
         <Route path="/user/profile/addbook" exact component={AddBook} />
         <Route path="/user/profile/editbook/:id" exact component={EditBook} />
         <Route path="/user/profile/mybooks" exact component={MyBooks} />
+        <Route path="/user/profile/addnews" exact component={AddNews} />
+        <Route path="/user/profile/editnews/:id" exact component={EditNews} />
         <Route path="/user/profile/orders" exact component={Orders} />
         <Route path="/user/profile/orders:id" exact component={Order} />
         <Route path="/user/profile/cart" exact component={Cart} />
