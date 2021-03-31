@@ -11,10 +11,9 @@ if (userToken === null || userToken === undefined) {
 
 
 function TopBar() {
-  console.log(userToken)
 
   function logout() {
-    // userService.userLogout(userToken);
+    userService.userLogout(userToken);
   }
 
 const { user, setUser } = useContext(UserContext);
@@ -39,14 +38,14 @@ const guest = 'guest' ? null : user;
         {guest ? <li className="header-top-bar-right-item">
           <NavLink to="/user/profile" exact className="header-top-navigation-menu-item-active">Profile</NavLink>
         </li> : ''}
-        {!guest ? <li className="header-top-bar-right-item">
+        {guest ? <li className="header-top-bar-right-item">
           <NavLink to="/user/login" exact className="header-top-navigation-menu-item-active">Login</NavLink>
         </li> : ''}
-        {!guest ? <li className="header-top-bar-right-item">
+        {guest ? <li className="header-top-bar-right-item">
           <NavLink to="/user/register" exact className="header-top-navigation-menu-item-active">Register</NavLink>
         </li> : ''}
-        {guest ? <li className="header-top-bar-right-item">
-        <NavLink to="/" exact onClick={ logout()} className="header-top-navigation-menu-item-active">Logout</NavLink>
+        {!guest ? <li className="header-top-bar-right-item">
+        <NavLink to="/" exact onClick={() => {logout()}} className="header-top-navigation-menu-item-active">Logout</NavLink>
         </li> : ''}
       </ul>
     </section>

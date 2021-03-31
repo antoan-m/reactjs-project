@@ -6,5 +6,7 @@ export default {
     books: `${DATA_BASE_URL}/books`,
     users: `${USERS_BASE_URL}`,
     newsletter: `${DATA_BASE_URL}/newsletter`,
-    contact: `${DATA_BASE_URL}/contact`
+    contact: `${DATA_BASE_URL}/contact`,
+    wishlist: `${DATA_BASE_URL}/wishlist`,
+    likes: `${DATA_BASE_URL}/likes`
 };

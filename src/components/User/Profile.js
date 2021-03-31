@@ -1,6 +1,5 @@
 import "./Profile.css";
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
 import userService from "../../services/userService";
 import { UserContext } from "../../services/UserContext";
 import UserPanel from "./panels/UserPanel";

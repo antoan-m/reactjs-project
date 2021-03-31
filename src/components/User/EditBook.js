@@ -22,6 +22,7 @@ class EditBook extends Component {
             addbook_pages_error: '',
             addbook_year_error: '',
             addbook_price_error: '',
+            addbook_rrp_error: '',
             short_description_length: 0,
             long_description_length: 0,
             title: '',
@@ -33,6 +34,7 @@ class EditBook extends Component {
             format: '',
             pages: '',
             price: '',
+            rrp: '',
             year: '',
             featured: '',
             promo: ''
@@ -60,6 +62,7 @@ class EditBook extends Component {
                 pages: Number(book_data.pages),
                 year: Number(book_data.year),
                 price: Number(book_data.price),
+                rrp: Number(book_data.rrp),
                 featured: book_data.featured,
                 promo: book_data.promo
             })
@@ -215,6 +218,19 @@ class EditBook extends Component {
             })
     }
 
+    changeHandlerRRP(e) {
+        this.setState({ rrp: e.target.value },
+
+            function validatePrice() {
+
+                let rrpMatch = /[0-9]+.?[0-9]?/;
+
+                if (!this.state.rrp.match(rrpMatch)) { this.setState({ addbook_rrp_error: "Price is not valid!" }) }
+                else if (this.state.rrp.length !== 0) { this.setState({ addbook_rrp_error: "" }) }
+                else { this.setState({ addbook_rrp_error: "" }) }
+            })
+    }
+
     changeHandlerFeatured(e) {
         this.setState({ featured: !this.state.featured });
     }
@@ -228,7 +244,7 @@ class EditBook extends Component {
 
         const { history } = this.props;
 
-        const { title, author, category, short_description, long_description, image, format, pages, year, price, featured, promo } = this.state;
+        const { title, author, category, short_description, long_description, image, format, pages, year, price, rrp, featured, promo } = this.state;
 
         if (title === '') {
             return this.setState({ addbook_title_error: "Title is empty!" });
@@ -270,7 +286,7 @@ class EditBook extends Component {
             return this.setState({ addbook_price_error: "Price is empty!" });
         };
 
-        bookService.editBook(this.state.book_data.objectId, title, author, category, short_description, long_description, image, format, pages, year, price, featured, promo);
+        bookService.editBook(this.state.book_data.objectId, title, author, category, short_description, long_description, image, format, pages, year, price, rrp, featured, promo);
 
         if (history) { history.push('/user/profile/mybooks') };
     };
@@ -388,6 +404,15 @@ class EditBook extends Component {
                                 <input id="price" type="text" onChange={this.changeHandlerPrice.bind(this)} onBlur={this.changeHandlerPrice.bind(this)} defaultValue={this.state.book_data.price} className="form-input-field" name="price" placeholder="Price" />
                                 <Debounce ms={1000}>
                                     <span className="vaidation-error error-text-red">{this.state.addbook_price_error}</span>
+                                </Debounce>
+                            </div>
+                        </div>
+
+                        <div className="row last">
+                            <div className="form-field-group">
+                                <input id="rrp" type="text" onChange={this.changeHandlerRRP.bind(this)} onBlur={this.changeHandlerRRP.bind(this)} defaultValue={this.state.book_data.rrp} className="form-input-field" name="rrp" placeholder="RRP" />
+                                <Debounce ms={1000}>
+                                    <span className="vaidation-error error-text-red">{this.state.addbook_rrp_error}</span>
                                 </Debounce>
                             </div>
                         </div>

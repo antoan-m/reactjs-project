@@ -17,7 +17,6 @@ function userRegister(name, email, password, country, address, phone) {
     "country": country,
     "address": address,
     "phone": phone,
-    "wishlist": "",
     "orders": "",
     "cart": "",
     "user_type": "user"

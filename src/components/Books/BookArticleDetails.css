@@ -27,6 +27,7 @@
   flex-direction: column;
   padding: 0 40px;
   /* position: relative; */
+  width: 762px;
 }
 
 .book-article-details-info-title {
@@ -55,6 +56,17 @@
   top: 250px;
   padding: 10px 30px;
   background: linear-gradient(220deg, transparent 24px, #f4f1de 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.book-article-details-info-rrp {
+  border-right: 1px solid #ddd;
+  font-size: 12px;
+  padding-right: 5px;
+  margin-right: 10px;
+  color: #e07a5f;
 }
 
 .book-article-details-info-short-description {
@@ -104,21 +116,33 @@
 .book-article-details-info-buttons-wishlist-btn {
   color: #333;
   background-color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 20px;
 }
 
 .book-article-details-info-buttons-wishlist-btn:hover {
   color: #333;
   background-color: #f4f1de;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 20px;
 }
 
 .book-article-details-info-buttons-like-btn {
   color: #333;
-  background-color: #fff;
+  background-color: #f4f1de;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 20px;
 }
 
 .book-article-details-info-buttons-like-btn:hover {
   color: #333;
   background-color: #f4f1de;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 20px;
 }
 
 .book-article-details-more-info {
@@ -131,4 +155,14 @@
   line-height: 22px;
   padding: 0 0 10px 0;
   border-bottom: 1px solid #ddd;
+}
+
+.add-to-wishlist-btn-icon,
+.add-to-likes-btn-icon {
+  color: #e07a5f;
+}
+
+.remove-from-wishlist-btn-icon,
+.remove-from-likes-btn-icon {
+  color: #81b29a;
 }

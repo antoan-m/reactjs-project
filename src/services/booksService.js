@@ -181,14 +181,15 @@ function sortByPriceDesc() {
         .catch((error) => console.error(error));
 }
 
-function addBook(title, author, category, short_description, long_description, image, format, pages, year, price, featured, promo) {
+function addBook(title, author, category, short_description, long_description, image, format, pages, year, price, rrp, featured, promo) {
     let userToken = localStorage.getItem("user-token");
     let userId = localStorage.getItem("id");
 
     var myHeaders = new Headers();
     myHeaders.append(
         "Content-Type", "application/json",
-        "Access-Control-Allow-Origin", "*", "user-token", userToken
+        "Access-Control-Allow-Origin", "*", 
+        "user-token", userToken
     );
 
     var raw = JSON.stringify({
@@ -202,6 +203,7 @@ function addBook(title, author, category, short_description, long_description, i
         pages: Number(pages),
         year: Number(year),
         price: Number(price),
+        rrp: Number(rrp),
         featured: featured,
         promo: promo,
         ownerId: userId,
@@ -226,7 +228,7 @@ function addBook(title, author, category, short_description, long_description, i
         });
 }
 
-function editBook(book_id, title, author, category, short_description, long_description, image, format, pages, year, price, featured, promo) {
+function editBook(book_id, title, author, category, short_description, long_description, image, format, pages, year, price, rrp, featured, promo) {
     
     let userToken = localStorage.getItem("user-token");
 
@@ -248,6 +250,7 @@ function editBook(book_id, title, author, category, short_description, long_desc
         pages: Number(pages),
         year: Number(year),
         price: Number(price),
+        rrp: Number(rrp),
         featured: featured,
         promo: promo,
     });

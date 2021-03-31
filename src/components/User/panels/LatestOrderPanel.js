@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 
 function LatestOrderPanel(props) {
 
+  function myOrders(user_id, limit) {
+    
+    // booksService.getMyOrders(user_id, limit);
+  }
+
   return (
 
 <section className="profile-main-left-last-orders">
