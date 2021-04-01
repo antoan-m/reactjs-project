@@ -1,0 +1,29 @@
+.books {
+    display: flex;
+    padding-top: 20px;
+  }
+  
+  .books-main {
+    width: 1150px;
+  }
+  
+  .books-filter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 60px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
+  
+  .books-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-width: 1150px;
+    padding: 0;
+  }
+  
+  
+  

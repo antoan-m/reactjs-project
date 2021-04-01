@@ -3,8 +3,10 @@ import BooksSidebar from './BooksSidebar/BooksSidebar'
 import bookService from '../../services/booksService';
 import booksWishlistService from '../../services/booksWishlistService';
 import booksLikesService from '../../services/booksLikesService';
+import booksCartService from '../../services/booksCartService';
 import { Component } from 'react';
 import { Link } from "react-router-dom";
+
 
 class BookArticleDetails extends Component {
   constructor(props) {
@@ -14,7 +16,8 @@ class BookArticleDetails extends Component {
       bookArticleDetails: {},
       already_in_wishlist: '',
       already_in_likes: '',
-      likes: ''
+      likes: '',
+      already_in_cart: false
   };
 }
 
@@ -26,7 +29,6 @@ componentDidMount() {
   bookService.getBookData(this.book_id)
   .then(bookArticleDetails => {
     this.setState({ bookArticleDetails: bookArticleDetails, likes: bookArticleDetails.likes });
-    console.log(this.state.likes)
   });
 
 
@@ -40,6 +42,13 @@ componentDidMount() {
     this.setState({ already_in_likes: result });
    
   });
+
+  this.setState({ already_in_cart: booksCartService.checkIfInCart(this.book_id)})
+  // .then(result => {
+  //   this.setState({ already_in_cart: result })
+  // });
+
+
 };
 
 
@@ -80,6 +89,12 @@ likeArticleHandler(e, book_id) {
 }
 
 
+addToCartHandler(e, book_id) {
+ 
+  booksCartService.addToCart(book_id);
+  this.setState({ already_in_cart: true });
+
+}
 
 
 render() {
@@ -106,9 +121,12 @@ render() {
             </article>
         <article className="book-article-details-info-buttons">
 
-          <Link to="#" className="book-article-details-info-buttons-cart" title="Add to Cart">
-            <button className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Add to cart</button>
-	        </Link>
+        {!this.state.already_in_cart ? <span className="book-article-details-info-buttons-cart" title="Add to Cart">
+            <button onClick={() => {this.addToCartHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Add to cart</button>
+	        </span> :
+          <span className="book-article-details-info-buttons-cart" title="Add to Cart">
+            <button onClick={() => {this.addToCartHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Added to cart</button>
+	        </span>}
          
           <article className="book-article-details-info-buttons-wishlist">
             {!this.state.already_in_wishlist ? <span className="book-article-details-info-buttons-wishlist-link" title="Add book to your Wishlist">

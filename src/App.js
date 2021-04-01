@@ -12,6 +12,9 @@ import BooksCategory from "./components/Books/BooksCategory";
 import BooksAuthor from "./components/Books/BooksAuthor";
 import BooksFormat from "./components/Books/BooksFormat";
 import BooksPrice from "./components/Books/BooksPrice";
+import BooksPriceBelow10 from "./components/Books/BooksPriceBelow10";
+import BooksPriceBetween10AND20 from "./components/Books/BooksPriceBetween10AND20";
+import BooksPriceOver20 from "./components/Books/BooksPriceOver20";
 import BooksPromo from "./components/Books/BooksPromo";
 import BooksOldest from "./components/Books/BooksOldest";
 import BooksNewest from "./components/Books/BooksNewest";
@@ -34,6 +37,7 @@ import EditBook from "./components/User/EditBook";
 import AddNews from "./components/User/AddNews";
 import EditNews from "./components/User/EditNews";
 import MyBooks from "./components/User/MyBooks";
+import MyNews from "./components/User/MyNews";
 import Orders from "./components/User/Orders";
 import Order from "./components/User/Order";
 import Wishlist from "./components/User/Wishlist";
@@ -78,13 +82,16 @@ useEffect(() => {
         <Route path="/books/author/:id" exact component={BooksAuthor} />
         <Route path="/books/format/:id" exact component={BooksFormat} />
         <Route path="/books/price/:id" exact component={BooksPrice} />
+        <Route path="/books/price/below-10" exact component={BooksPriceBelow10} />
+        <Route path="/books/price/between-10-20" exact component={BooksPriceBetween10AND20} />
+        <Route path="/books/price/over-20" exact component={BooksPriceOver20} />
         <Route path="/books/promo" exact component={BooksPromo} />
         <Route path="/books/oldest" exact component={BooksOldest} />
         <Route path="/books/newest" exact component={BooksNewest} />
         <Route path="/books/highprice" exact component={BooksHighPrice} />
         <Route path="/books/lowprice" exact component={BooksLowPrice} />
         <Route path="/news" exact component={News} />
-        <Route path="/news/:id" exact component={NewsArticleDetails} />
+        <Route path="/news/details/:id" exact component={NewsArticleDetails} />
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/terms" exact component={Terms} />
@@ -101,6 +108,7 @@ useEffect(() => {
         <Route path="/user/profile/mybooks" exact component={MyBooks} />
         <Route path="/user/profile/addnews" exact component={AddNews} />
         <Route path="/user/profile/editnews/:id" exact component={EditNews} />
+        <Route path="/user/profile/mynews" exact component={MyNews} />
         <Route path="/user/profile/orders" exact component={Orders} />
         <Route path="/user/profile/orders:id" exact component={Order} />
         <Route path="/user/profile/cart" exact component={Cart} />

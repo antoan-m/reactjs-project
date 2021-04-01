@@ -33,7 +33,7 @@
   height: 150px;
 }
 
-.addbook-counter {
+.addnews-counter {
   font-size: 12px;
   color: #81b29a;
   position: relative;
@@ -46,7 +46,7 @@
   justify-content: space-between;
 }
 
-.form-addbook-dropdown {
+.form-addnews-dropdown {
   width: 60%;
   margin: 0 auto;
   color: #d1d1d1;
@@ -57,10 +57,10 @@
   margin-bottom: 10px;
 }
 
-.form-addbook-dropdown option {
+.form-addnews-dropdown option {
   color: #666;
 }
 
-.addbook-btn {
+.addnews-btn {
     margin: 0 20px;
 }

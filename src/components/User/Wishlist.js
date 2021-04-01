@@ -28,12 +28,11 @@ class Wishlist extends Component {
 }
 
 
-  render() {
+render() {
   return (
 <div className="wishlist">
 
     <section className="wishlist-main">
-        <section className="wishlist-main-left">
          
         <UserPanel userData={this.state.user_data} />
 
@@ -41,7 +40,6 @@ class Wishlist extends Component {
 
         <AdminPanel userData={this.state.user_data} />
 
-        </section>
     </section>
 </div>
   );

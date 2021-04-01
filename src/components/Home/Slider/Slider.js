@@ -3,6 +3,7 @@ import "./Slider.css";
 import { NavLink } from 'react-router-dom';
 
 function Slider() {
+  
   return (
 
     <article className="home-main-sliders">

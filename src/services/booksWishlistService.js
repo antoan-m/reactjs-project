@@ -1,5 +1,6 @@
 import api from "./api";
 import M from "materialize-css";
+import Backendless from 'backendless';
 
 function checkIfInWishlist(ownerId, book_id) {
 
@@ -127,9 +128,70 @@ return fetch(`${api.wishlist}/${result[0].objectId}`, requestOptions)
 }
 
 
+function getWishlistBookIds(user_id) {
+
+  let query = `?where=ownerId%3D'${user_id}'&property=book_id&sortBy=created%20desc`;
+
+  let userToken = localStorage.getItem("user-token");
+
+  var myHeaders = new Headers();
+
+  myHeaders.append(
+      "Content-Type", "application/json",
+      "Access-Control-Allow-Origin", "*", 
+      "user-token", userToken
+  );
+
+      var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+      };
+      let array = [];
+ fetch(`${api.wishlist}${query}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+          console.log(result);
+          for (let i = 0; i < result.length; i++) {
+            const el = result[i].book_id;
+            array.push(el);
+          }
+          return getWishlistBooksInfo(array);
+      })
+      .catch(error => console.log('error', error));
+
+}
+
+function getWishlistBooksInfo(array) {
+
+    let ids = '';
+    for (let i = 0; i < array.length; i++) {
+      const el = array[i];
+      if (i !== array.length - 1) {
+      ids += `objectId%20%3D%20'${el}'%20OR%20`;
+      } else {
+        ids += `objectId%20%3D%20'${el}'`;
+      }
+    }
+    
+    let query = `?where=${ids}`;
+    let userToken = localStorage.getItem("user-token");
+    var myHeaders = new Headers();
+    myHeaders.append( "Content-Type", "application/json", "Access-Control-Allow-Origin", "*", "user-token", userToken, "charset", "utf-8" );
+    var requestOptions = { method: 'GET', headers: myHeaders, redirect: 'follow' };
+  
+  return fetch(`${api.books}${query}`, requestOptions)
+        .then(response => response.json())
+        .catch(error => console.log('error', error));
+
+}
+
+
 
 export default {
     checkIfInWishlist,
     addToWishlist,
-    removeFromWishlist
+    removeFromWishlist,
+    getWishlistBookIds,
+    getWishlistBooksInfo
 };

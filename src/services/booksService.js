@@ -65,6 +65,21 @@ function getAllByPrice(current_param) {
         .catch((error) => console.error(error));
 }
 
+function getAllByPriceLowHigh(low, high) {
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+return fetch(`${api.books}?where=price%20%3E%20${low}%20AND%20price%20%3C%${high}10&sortBy=created%20desc`, requestOptions) 
+    .then((res) => res.json())
+    .catch((error) => console.error(error));
+}
+
+
 function getFeaturedBooks(limit) {
     let query = `pageSize=${limit}&where=featured%3Dtrue&`;
 
@@ -360,6 +375,7 @@ export default {
     getAllByAuthor,
     getAllByFormat,
     getAllByPrice,
+    getAllByPriceLowHigh,
     getFeaturedBooks,
     getBestSellersBooks,
     getWeeklyDealsBooks,

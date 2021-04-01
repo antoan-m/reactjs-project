@@ -31,7 +31,7 @@ render() {
 
      <article className="news-article-details">
        <h2 className="news-article-details-title">{this.state.newsArticleDetails.title}</h2>
-	   <p className="news-article-details-date"><i className="material-icons news-article-details-date-icon">access_time</i>12:32 01.10.2020</p>
+	   <p className="news-article-details-date"><i className="material-icons news-article-details-date-icon">access_time</i>{new Date(this.state.newsArticleDetails.created).toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'})}</p>
        <article className="news-article-details-image">
          <img src={this.state.newsArticleDetails.image} alt={this.state.newsArticleDetails.title} />
        </article>
