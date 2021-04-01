@@ -10,6 +10,8 @@ import ScrollToTop from 'react-router-scroll-top'
 
 Backendless.initApp('7ECE9EFE-DB9E-D320-FF17-04C136319800', 'D25AC5BB-3B9F-4F71-866A-6F9F6ED00656');
 
+Backendless.serverURL = 'https://eu-api.backendless.com';
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>

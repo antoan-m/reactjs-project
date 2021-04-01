@@ -3,18 +3,21 @@ import { NavLink } from "react-router-dom";
 import userService from "../../../services/userService";
 import { useContext } from "react";
 import { UserContext } from "../../../services/UserContext";
+import Backendless from 'backendless';
+
+
 
 let userToken = localStorage.getItem('user-token');
 if (userToken === null || userToken === undefined) {
   userToken = false;
 }
 
-
 function TopBar() {
 
   function logout() {
-    userService.userLogout(userToken);
-  }
+     userService.userLogout();
+   }
+   
 
 const { user, setUser } = useContext(UserContext);
 
@@ -35,13 +38,13 @@ const guest = 'guest' ? null : user;
         <li className="header-top-bar-right-item">
           <NavLink to="/contact" exact className="header-top-navigation-menu-item-active">Store Location</NavLink>
         </li>
-        {guest ? <li className="header-top-bar-right-item">
+        {!guest ? <li className="header-top-bar-right-item">
           <NavLink to="/user/profile" exact className="header-top-navigation-menu-item-active">Profile</NavLink>
         </li> : ''}
-        {guest ? <li className="header-top-bar-right-item">
+        {!guest ? <li className="header-top-bar-right-item">
           <NavLink to="/user/login" exact className="header-top-navigation-menu-item-active">Login</NavLink>
         </li> : ''}
-        {guest ? <li className="header-top-bar-right-item">
+        {!guest ? <li className="header-top-bar-right-item">
           <NavLink to="/user/register" exact className="header-top-navigation-menu-item-active">Register</NavLink>
         </li> : ''}
         {!guest ? <li className="header-top-bar-right-item">

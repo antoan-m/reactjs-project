@@ -175,7 +175,9 @@ submitHandler(e) {
         return this.setState({register_phone_error: "Phone is empty!"});
     };
 
-    userService.userRegister(name, email, password, country, address, phone);
+    let user = { "name": name, "email": email, "password": password, "country": country, "address": address, "phone": phone, "user_type": "user" };
+
+    userService.userRegister(user);
     
         if (history) { history.push('/') };
     };

@@ -24,7 +24,11 @@ book_id = this.props.match.params.id;
 componentDidMount() {
 
   bookService.getBookData(this.book_id)
-  .then(bookArticleDetails => this.setState({ bookArticleDetails }));
+  .then(bookArticleDetails => {
+    this.setState({ bookArticleDetails: bookArticleDetails, likes: bookArticleDetails.likes });
+    console.log(this.state.likes)
+  });
+
 
   let userId = localStorage.getItem("id");
   booksWishlistService.checkIfInWishlist(userId, this.book_id)
@@ -32,17 +36,12 @@ componentDidMount() {
   );
 
   booksLikesService.checkIfInLikes(userId, this.book_id)
-  .then(result => this.setState({ already_in_likes: result })
-  );
+  .then(result => {
+    this.setState({ already_in_likes: result });
+   
+  });
 };
 
-componentDidUpdate() {
-  
-    if (this.state.likes !== this.state.bookArticleDetails.likes) {
-      bookService.getBookData(this.book_id)
-      .then(bookArticleDetails => this.setState({ bookArticleDetails }));
-    }
-}
 
 
 wishlistArticleHandler(e, book_id) {
@@ -64,21 +63,19 @@ likeArticleHandler(e, book_id) {
 
   if (!this.state.already_in_likes) {
      
-      booksLikesService.addLikeToBook(book_id, this.state.bookArticleDetails.likes);
-      this.setState({ likes: this.state.likes + 1 });
+      booksLikesService.addLikeToBook(book_id, this.state.likes);
 
       booksLikesService.addToLikes(userId, this.state.bookArticleDetails.objectId, this.state.bookArticleDetails.title, this.state.bookArticleDetails.author);
 
       booksLikesService.checkIfInLikes(userId, book_id);
-      this.setState({ already_in_likes: true });
+      this.setState({ already_in_likes: true, likes: this.state.likes + 1 });
 
   } else {
     
-    booksLikesService.removeLikeToBook(book_id, this.state.bookArticleDetails.likes);
-    this.setState({ likes: this.state.likes - 1 });
+    booksLikesService.removeLikeToBook(book_id, this.state.likes)
     
     booksLikesService.removeFromLikes(userId, book_id);
-    this.setState({ already_in_likes: false });
+    this.setState({ already_in_likes: false, likes: this.state.likes - 1 });
   }
 }
 
@@ -114,24 +111,25 @@ render() {
 	        </Link>
          
           <article className="book-article-details-info-buttons-wishlist">
-            {!this.state.already_in_wishlist ? <Link to="#" className="book-article-details-info-buttons-wishlist-link" title="Add book to your Wishlist">
+            {!this.state.already_in_wishlist ? <span className="book-article-details-info-buttons-wishlist-link" title="Add book to your Wishlist">
             <button onClick={() => {this.wishlistArticleHandler(this, this.state.bookArticleDetails.objectId)}} type="button" className="btn waves-effect btn-large book-article-details-info-buttons-wishlist-btn">
               <i className="material-icons left add-to-wishlist-btn-icon">favorite</i>Add to Wishlist
             </button>
-            </Link> : <button onClick={() => {this.wishlistArticleHandler(this, this.state.bookArticleDetails.objectId)}} type="button" className="btn waves-effect btn-large book-article-details-info-buttons-wishlist-btn">
+            </span> : <button onClick={() => {this.wishlistArticleHandler(this, this.state.bookArticleDetails.objectId)}} type="button" className="btn waves-effect btn-large book-article-details-info-buttons-wishlist-btn">
               <i className="material-icons left remove-from-wishlist-btn-icon">favorite</i>Remove from Wishlist
             </button>}
           </article>
 
           <article className="book-article-details-info-buttons-like">
-          {!this.state.already_in_likes ? <Link to="#" className="book-article-details-info-buttons-like-link" title="Like the book">
+          {!this.state.already_in_likes ? <span className="book-article-details-info-buttons-like-link" title="Like the book">
              <button onClick={() => {this.likeArticleHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-like-btn">
               <i className="material-icons left add-to-likes-btn-icon">sentiment_very_satisfied</i>
-            <span className="book-article-details-info-buttons-like-btn-text">Like | {this.state.bookArticleDetails.likes}</span>
+            <span className="book-article-details-info-buttons-like-btn-text">Like | {this.state.likes}</span>
             </button>
-            </Link> : <button onClick={() => {this.likeArticleHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-like-btn">
+            </span> :
+            <button onClick={() => {this.likeArticleHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-like-btn">
               <i className="material-icons left remove-from-likes-btn-icon">sentiment_very_satisfied</i>
-            <span className="book-article-details-info-buttons-like-btn-text">Liked | {this.state.bookArticleDetails.likes}</span>
+            <span className="book-article-details-info-buttons-like-btn-text">Liked | {this.state.likes}</span>
             </button>}
           </article>
         </article>  

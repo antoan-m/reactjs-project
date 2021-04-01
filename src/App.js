@@ -52,17 +52,18 @@ useEffect(() => {
   const userToken = localStorage.getItem('user-token');
   const userId = localStorage.getItem('id');
 
-if(userToken) {
-  userService.userValidate(userToken)
-      .then(result => {
-        console.log(result);
-        userService.userData(userId)
-        .then(user => {
-          setUser(JSON.stringify(user))
-          localStorage.setItem('user', JSON.stringify(user))
-        })
-      })
-    }
+// if(userToken) {
+//   userService.userValidate(userToken)
+//       .then(result => {
+//         console.log(result);
+//         userService.userData(userId)
+//         .then(user => {
+//           setUser(JSON.stringify(user))
+//           localStorage.setItem('user', JSON.stringify(user))
+//         })
+//       })
+//     }
+
 })
 
   return (

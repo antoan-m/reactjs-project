@@ -5,6 +5,7 @@ import userService from "../../services/userService";
 import React from 'react';
 import Debounce from 'react-debounce-component';
 import M from 'materialize-css';
+import Backendless from 'backendless';
 
 class Login extends Component {
     constructor(props) {
@@ -18,6 +19,13 @@ class Login extends Component {
         login_email_error: '',
         login_password_error: '',
       }
+    }
+
+    userToken = localStorage.getItem('user-token');
+
+    componentDidMount() {
+
+        userService.userValidate(this.userToken);
     }
 
     changeHandlerEmail(e) {
@@ -56,16 +64,37 @@ class Login extends Component {
         const { history } = this.props;
 
         const { email, password } = this.state;
-        
-        userService.userLogin(email, password, true)
-        .then(user => {
-            this.setState({ current_user: user})
-            })
-            .catch(error => {
-                this.setState({ error: error })
-            });
 
+    Backendless.UserService.login( email, password, false )
+    .then(loggedInUser => {
+        console.log(loggedInUser)
+        M.toast({html: 'Hello, ' + loggedInUser['name'] + '!'})
+        localStorage.name = loggedInUser['name'];
+        localStorage.email = loggedInUser['email'];
+        localStorage.id = loggedInUser['objectId'];
+        localStorage['user-token'] = loggedInUser['user-token'];
         if (history) { history.push('/') };
+   })
+    .catch(error => {
+        console.error(error)
+        M.toast({html: error.message})
+   });
+        
+        // userService.userLogin(email, password, true)
+        // .then(user => {
+        //     this.setState({ current_user: user});
+        //     console.log(user);
+        // M.toast({html: 'Hello, ' + user['name'] + '!'})
+        // localStorage.name = user['name'];
+        // localStorage.email = user['email'];
+        // localStorage.id = user['objectId'];
+        // localStorage['user-token'] = user['user-token']
+        //     })
+        //     .catch(error => {
+        //         this.setState({ error: error })
+        //         M.toast({html: error.message})
+        //     });
+
     };
 
 
