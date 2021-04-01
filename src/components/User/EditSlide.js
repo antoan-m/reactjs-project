@@ -112,7 +112,7 @@ class EditSlide extends Component {
             return this.setState({ addSlide_url_error: "URL is empty!" });
         };
 
-        slidesService.editNews(this.state.slide_data.objectId, title, short_description, image, url);
+        slidesService.editSlide(this.state.slide_data.objectId, title, short_description, image, url);
 
         if (history) { history.push('/user/profile/myslides') };
     };

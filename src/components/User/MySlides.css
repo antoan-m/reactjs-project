@@ -17,7 +17,7 @@
     font-size: 30px;
   }
 
-  .profile-main-my-books-list {
+  .profile-main-my-slides-list {
       width: 530px;
   }
   
@@ -28,14 +28,14 @@
   }
   
   .profile-main-left-last-tasks-list a,
-  .profile-main-my-books-list a,
+  .profile-main-my-slides-list a,
   .profile-main-left-last-admin-list a {
     font-size: 18px;
     color: #e07a5f;
   }
   
   .profile-main-left-last-tasks-list a:hover,
-  .profile-main-my-books-list a:hover,
+  .profile-main-my-slides-list a:hover,
   .profile-main-left-last-admin-list a:hover {
     font-size: 18px;
     color: #3d405b;
@@ -51,46 +51,46 @@
     margin: 10px 0;
   }
   
-  .profile-main-my-books-list-item-main {
+  .profile-main-my-slides-list-item-main {
     display: flex;
     border-bottom: 1px solid #ddd;
     margin-bottom: 10px;
     justify-content: space-between;
   }
 
-  .profile-main-my-books-list-item {
+  .profile-main-my-slides-list-item {
     display: flex;
   }
   
-  .profile-main-my-books-list-item-image img {
+  .profile-main-my-slides-list-item-image img {
     width: 80px;
   }
   
-  .profile-main-my-books-list-item-title {
+  .profile-main-my-slides-list-item-title {
     font-size: 14px;
     color: #3d405b;
     padding: 0px 10px;
   }
 
-  .profile-main-my-books-list-item-author {
+  .profile-main-my-slides-list-item-author {
     font-size: 12px;
     color: #3d405b;
     padding: 5px 10px 0 10px;
   }
 
-  .profile-main-my-books-list-item-category {
+  .profile-main-my-slides-list-item-category {
     font-size: 12px;
     color: #3d405b;
     padding: 0px 10px;
   }
   
-  .profile-main-my-books-list-item-price {
+  .profile-main-my-slides-list-item-price {
     font-size: 12px;
     color: #e07a5f;
     padding: 0px 10px;
   }
   
-  .profile-main-my-books-list-item-buttons {
+  .profile-main-my-slides-list-item-buttons {
     display: flex;
     border-left: 1px solid #ddd;
     padding: 0 20px;
@@ -101,7 +101,7 @@
     margin: 10px 0;
   }
 
-  .profile-main-my-books-list-item-book-buttons {
+  .profile-main-my-slides-list-item-book-buttons {
       display: flex;
       flex-direction: column;
   }

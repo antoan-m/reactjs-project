@@ -95,7 +95,7 @@ submitHandler(e) {
         return this.setState({addSlide_url_error: "URL is empty!"});
     };
 
-    slidesService.addslide(title, short_description, image, url);
+    slidesService.addSlide(title, short_description, image, url);
     
         if (history) { history.push('/user/profile/myslides') };
     };
