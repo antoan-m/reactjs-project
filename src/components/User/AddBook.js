@@ -74,7 +74,7 @@ componentDidUpdate() {
 changeHandlerTitle(e) {
     this.setState({title: e.target.value},
 
-        function validateShortTitle() {
+        function validateTitle() {
            if (this.state.title.length === 0) { this.setState({addbook_title_error: "Title is required!"}) }
            else if (this.state.title.length !== 0) { this.setState({addbook_title_error: ""}) }
            else { this.setState({addbook_title_error: ""}) }
@@ -84,7 +84,7 @@ changeHandlerTitle(e) {
 changeHandlerCategory(e) {
     this.setState({category: e.target.value},
 
-        function validateShortcateogry() {
+        function validateCateogry() {
             if (this.state.category.length === 0) { this.setState({addbook_category_error: "Category is required!"}) }
             else if (this.state.category.length !== 0) { this.setState({addbook_category_error: ""}) }
             else { this.setState({addbook_category_error: ""}) }
@@ -294,6 +294,11 @@ submitHandler(e) {
     });
       }
 
+      cancelHandler = () => {
+        const { history } = this.props;
+        if (history) { history.push(`/user/profile/mybooks/`) };
+    };
+
 
 
 render() {
@@ -431,6 +436,7 @@ render() {
                     <div id="addbook-buttons">
                         <button onClick={this.submitHandler.bind(this)} className="btn waves-effect waves-light addbook-btn" name="action"><i className="material-icons left">create</i>Add Book</button>
                         <button onClick={this.submitClearHandler.bind(this)} className="btn waves-effect waves-light addbook-btn" name="action" type="reset"><i className="material-icons left">restore</i>Reset</button>
+                        <button onClick={this.cancelHandler.bind(this)} className="btn waves-effect waves-light addnews-btn" name="action" type="reset"><i className="material-icons left">input</i>Cancel</button>
                     </div>
                 </form>
                 <article></article>

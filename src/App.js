@@ -38,6 +38,9 @@ import AddNews from "./components/User/AddNews";
 import EditNews from "./components/User/EditNews";
 import MyBooks from "./components/User/MyBooks";
 import MyNews from "./components/User/MyNews";
+import MySlides from "./components/User/MySlides";
+import AddSlide from "./components/User/AddSlide";
+import EditSlide from "./components/User/EditSlide";
 import Orders from "./components/User/Orders";
 import Order from "./components/User/Order";
 import Wishlist from "./components/User/Wishlist";
@@ -82,9 +85,9 @@ useEffect(() => {
         <Route path="/books/author/:id" exact component={BooksAuthor} />
         <Route path="/books/format/:id" exact component={BooksFormat} />
         <Route path="/books/price/:id" exact component={BooksPrice} />
-        <Route path="/books/price/below-10" exact component={BooksPriceBelow10} />
-        <Route path="/books/price/between-10-20" exact component={BooksPriceBetween10AND20} />
-        <Route path="/books/price/over-20" exact component={BooksPriceOver20} />
+        <Route path="/books/price/below/10" exact component={BooksPriceBelow10} />
+        <Route path="/books/price/10/20" exact component={BooksPriceBetween10AND20} />
+        <Route path="/books/price/over/20" exact component={BooksPriceOver20} />
         <Route path="/books/promo" exact component={BooksPromo} />
         <Route path="/books/oldest" exact component={BooksOldest} />
         <Route path="/books/newest" exact component={BooksNewest} />
@@ -109,6 +112,9 @@ useEffect(() => {
         <Route path="/user/profile/addnews" exact component={AddNews} />
         <Route path="/user/profile/editnews/:id" exact component={EditNews} />
         <Route path="/user/profile/mynews" exact component={MyNews} />
+        <Route path="/user/profile/myslides" exact component={MySlides} />
+        <Route path="/user/profile/addslide" exact component={AddSlide} />
+        <Route path="/user/profile/editslide/:id" exact component={EditSlide} />
         <Route path="/user/profile/orders" exact component={Orders} />
         <Route path="/user/profile/orders:id" exact component={Order} />
         <Route path="/user/profile/cart" exact component={Cart} />

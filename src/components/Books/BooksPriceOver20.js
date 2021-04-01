@@ -18,7 +18,7 @@ class BooksPriceOver20 extends Component {
 
   componentDidMount() {
 
-    booksService.getAllByPriceLowHigh(19.99, 1000000000000000000000)
+    booksService.getAllByPriceLowHigh(19.99, 1000000)
     .then(books => this.setState({ books }))
   };
 

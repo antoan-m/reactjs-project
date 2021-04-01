@@ -100,7 +100,7 @@ class EditBook extends Component {
     changeHandlerTitle(e) {
         this.setState({ title: e.target.value },
 
-            function validateShortTitle() {
+            function validateTitle() {
                 if (this.state.title.length === 0) { this.setState({ addbook_title_error: "Title is required!" }) }
                 else if (this.state.title.length !== 0) { this.setState({ addbook_title_error: "" }) }
                 else { this.setState({ addbook_title_error: "" }) }
@@ -110,7 +110,7 @@ class EditBook extends Component {
     changeHandlerCategory(e) {
         this.setState({ category: e.target.value },
 
-            function validateShortcateogry() {
+            function validateCateogry() {
                 if (this.state.category.length === 0) { this.setState({ addbook_category_error: "Category is required!" }) }
                 else if (this.state.category.length !== 0) { this.setState({ addbook_category_error: "" }) }
                 else { this.setState({ addbook_category_error: "" }) }

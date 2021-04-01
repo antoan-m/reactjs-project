@@ -66,15 +66,22 @@ function getAllByPrice(current_param) {
 }
 
 function getAllByPriceLowHigh(low, high) {
+
 var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+myHeaders.append(
+    "Content-Type", "application/json",
+    "Access-Control-Allow-Origin", "*"
+);
+
+var query = `?where=price > ${Number(low)} AND price < ${Number(high)}`;
 
 var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
-return fetch(`${api.books}?where=price%20%3E%20${low}%20AND%20price%20%3C%${high}10&sortBy=created%20desc`, requestOptions) 
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+
+return fetch(`${api.books}${query}`, requestOptions) 
     .then((res) => res.json())
     .catch((error) => console.error(error));
 }

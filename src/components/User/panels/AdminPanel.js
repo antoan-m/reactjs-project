@@ -25,8 +25,12 @@ function AdminPanel(props) {
                       <button className="btn waves-effect waves-light profile-list-item-btn-admin">Add News<i className="material-icons right">import_contacts</i></button>
                   </Link></li>
 
-                  <li><Link to="/user/profile/slides">
-                      <button className="btn waves-effect waves-light profile-list-item-btn-admin">Slides<i className="material-icons right">import_contacts</i></button>
+                  <li><Link to="/user/profile/myslides">
+                      <button className="btn waves-effect waves-light profile-list-item-btn-admin">My Slides<i className="material-icons right">import_contacts</i></button>
+                  </Link></li>
+
+                  <li><Link to="/user/profile/addslide">
+                      <button className="btn waves-effect waves-light profile-list-item-btn-admin">Add Slide<i className="material-icons right">import_contacts</i></button>
                   </Link></li>
                 </ul>
 </section>

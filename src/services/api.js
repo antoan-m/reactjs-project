@@ -9,5 +9,6 @@ export default {
     newsletter: `${DATA_BASE_URL}/newsletter`,
     contact: `${DATA_BASE_URL}/contact`,
     wishlist: `${DATA_BASE_URL}/wishlist`,
-    likes: `${DATA_BASE_URL}/likes`
+    likes: `${DATA_BASE_URL}/likes`,
+    slides: `${DATA_BASE_URL}/slides`
 };

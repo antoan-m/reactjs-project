@@ -10,8 +10,7 @@ class BooksPriceBelow10 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [],
-      current_price: this.props.match.params.id
+      books: []
     };
   }
 
@@ -20,10 +19,11 @@ class BooksPriceBelow10 extends Component {
 
     booksService.getAllByPriceLowHigh(0, 10)
     .then(books => this.setState({ books }))
+   
   };
 
 
-render() {
+render() { console.log('etetet')
   return (
 <div className="books">
 
