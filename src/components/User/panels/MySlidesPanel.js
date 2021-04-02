@@ -9,7 +9,7 @@ function MySlidesPanel(props) {
         slidesService.deleteSlide(slide_id);
       }
      
-      
+
   return (
 <section className="profile-main-my-slides">
           <h2 className="profile-main-header">My Slides</h2>
@@ -22,6 +22,14 @@ function MySlidesPanel(props) {
                          <img src={x.cover} alt={x.title} />
                      </article>
                      <article className="profile-main-my-slides-list-item-details">
+                       
+                       {x.published ?
+                       <article className="profile-main-my-slides-list-item-published"><span className="new badge green" data-badge-caption="">On</span></article>
+                      :
+                        <article className="profile-main-my-slides-list-item-published"><span className="new badge red" data-badge-caption="">Off</span></article>
+                      }
+                       <article className="profile-main-my-slides-list-item-priority badge">{x.priority}</article>
+                       <article className="profile-main-my-slides-list-item-created badge">{new Date(x.created).toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'})}</article>
                          <h5 className="profile-main-my-slides-list-item-title">{x.title}</h5>
                          <p className="profile-main-my-slides-list-item-description">{x.description}</p>
                      </article>

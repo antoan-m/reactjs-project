@@ -13,12 +13,16 @@ class AddSlide extends Component {
         addSlide_cover_error: '',
         addSlide_background_error: '',
         addSlide_description_error: '',
+        addSlide_priority_error: '',
+        addSlide_published_error: '',
         addSlide_url_error: '',
         description_length: 0,
         title: '',
         image: '',
         background: '',
         description: '',
+        priority: '',
+        published: true,
         url: ''
       }
     }
@@ -74,6 +78,29 @@ changeHandlerBackground(e) {
          })
 }
 
+changeHandlerPriority(e) {
+    this.setState({priority: e.target.value},
+
+        function validatePriority() {
+
+            let priorityMatch = /[0-9]+/;
+
+            if (this.state.priority.length === 0) { this.setState({addSlide_priority_error: "Priority is required!"}) }
+            else if (!this.state.priority.match(priorityMatch)) { this.setState({addSlide_priority_error: "Priority is invalid!"}) }
+            else if (this.state.priority.length !== 0) { this.setState({addSlide_priority_error: ""}) }
+            else { this.setState({addSlide_priority_error: ""}) }
+         })
+}
+
+changeHandlerPublished(e) {
+    this.setState({published: e.target.value},
+
+    function validatePublished() {
+        if (this.state.published === 'yes' || this.state.published === 'true') { this.setState({published: true}) }
+        else if (this.state.published === 'no' || this.state.published === 'false') { this.setState({published: false}) }
+     })
+}
+
 changeHandlerURL(e) {
     this.setState({url: e.target.value},
 
@@ -93,7 +120,7 @@ submitHandler(e) {
 
     const { history } = this.props;
 
-    const { title, description, cover, background, url } = this.state;
+    const { title, description, cover, background, url, priority, published} = this.state;
         
     if(title === '') {
          return this.setState({addSlide_title_error: "Title is required!"});
@@ -111,11 +138,19 @@ submitHandler(e) {
         return this.setState({addSlide_cover_error: "Background is required!"});
     };
 
+    if(priority === '') {
+        return this.setState({addSlide_priority_error: "Priority is required!"});
+    };
+
+    if(published === '') {
+        return this.setState({addSlide_published_error: "Published is required!"});
+    };
+
     if(url === '') {
         return this.setState({addSlide_url_error: "URL is required!"});
     };
 
-    slidesService.addSlide(title, description, cover, background, url);
+    slidesService.addSlide(title, description, cover, background, url, priority, published);
     
         if (history) { history.push('/user/profile/myslides') };
     };
@@ -126,11 +161,15 @@ submitHandler(e) {
             addSlide_cover_error: '',
             addSlide_background_error: '',
             addSlide_description_error: '',
+            addSlide_priority_error: '',
+            addSlide_published_error: '',
             addSlide_url_error: '',
             title: '',
             image: '',
             background: '',
             description: '',
+            priority: '',
+            published: '',
             url: ''
     });
       }
@@ -181,6 +220,29 @@ render() {
                                 </Debounce>
                             </span>
                             <span className="addnews-counter">{this.state.description_length}/100</span>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="form-field-group">
+                            <input id="priority" onChange={this.changeHandlerPriority.bind(this)} onBlur={this.changeHandlerPriority.bind(this)} value={this.state.priority} type="text" className="materialize-textarea form-input-field contact-textarea" name="priority" placeholder="Priority" />
+                            <span className="vaidation-error error-text-red">
+                                <Debounce ms={1000}>
+                                    <span>{this.state.addSlide_priority_error}</span>
+                                </Debounce>
+                            </span>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="form-field-group">
+                            <select className="browser-default form-dropdown" onChange={this.changeHandlerPublished.bind(this)} onBlur={this.changeHandlerPublished.bind(this)} id="published" value={this.state.published} name="published" placeholder="Published">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                            <span className="vaidation-error error-text-red">
+                                <Debounce ms={1000}>
+                                    <span>{this.state.addSlide_published_error}</span>
+                                </Debounce>
+                            </span>
                         </div>
                     </div>
                     <div className="row">

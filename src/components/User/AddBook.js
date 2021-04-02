@@ -157,7 +157,7 @@ changeHandlerPages(e) {
             let pagesMatch = /[0-9]+/;
 
             if (this.state.pages.length === 0) { this.setState({addbook_pages_error: "Pages is required!"}) }
-            else if (!this.state.pages.match(pagesMatch)) { this.setState({addbook_pages_error: "Year is invalid!"}) }
+            else if (!this.state.pages.match(pagesMatch)) { this.setState({addbook_pages_error: "Pages is invalid!"}) }
             else if (this.state.pages.length !== 0) { this.setState({addbook_pages_error: ""}) }
             else { this.setState({addbook_pages_error: ""}) }
          })

@@ -1,24 +1,52 @@
 .profile-main-my-slides-list-item {
-    display: flex;
-    width: 400px;
-    height: 136px;
-    padding: 10px;
+  display: flex;
+  width: 400px;
+  height: 136px;
+  padding: 10px;
 }
 
 .profile-main-my-slides-list-item-title {
-    background-color: rgb(255 255 255 / 55%);
-    color: rgb(255, 255, 255);
-    font-size: 12px;
-    font-weight: 400;
-    padding: 5px;
-    text-shadow: 2px 2px #888888;
+  background-color: rgb(255 255 255 / 55%);
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px;
 }
 
 .profile-main-my-slides-list-item-description {
-    background-color: rgb(255 255 255 / 35%);
-    color: #000;
-    font-size: 12px;
-    padding: 5px;
+  background-color: rgb(255 255 255 / 35%);
+  color: #000;
+  font-size: 12px;
+  padding: 5px;
 }
 
+.profile-main-my-slides-list-item-published {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
 
+.profile-main-my-slides-list-item-priority {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  font-size: 11px;
+  color: white;
+  background-color: #000;
+  opacity: 0.6;
+  border-radius: 3px;
+  padding: 2px 5px;
+}
+
+.profile-main-my-slides-list-item-created {
+    position: absolute;
+    right: 50px;
+    bottom: 4px;
+    font-size: 11px;
+    color: white;
+    background-color: #000;
+    opacity: 0.6;
+    border-radius: 3px;
+    padding: 2px 5px;
+  }
+  

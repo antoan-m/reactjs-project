@@ -60,6 +60,7 @@
 
   .profile-main-my-slides-list-item {
     display: flex;
+    position: relative;
   }
   
   .profile-main-my-slides-list-item-image img {

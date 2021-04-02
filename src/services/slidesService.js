@@ -3,7 +3,7 @@ import M from "materialize-css";
 
 function getAllSlides() {
 
-    return fetch(`${api.slides}?sortBy=created%20desc`, {
+    return fetch(`${api.slides}?where=published%3Dtrue&sortBy=priority%20desc`, {
             headers: { "Access-Control-Allow-Origin": "*" },
         })
         .then((res) => res.json())
@@ -11,7 +11,7 @@ function getAllSlides() {
 }
 
 
-function addSlide(title, description, cover, background, url) {
+function addSlide(title, description, cover, background, url, priority, published) {
     let userToken = localStorage.getItem("user-token");
     let userId = localStorage.getItem("id");
 
@@ -28,6 +28,8 @@ function addSlide(title, description, cover, background, url) {
         "cover": cover,
         "background": background,
         "url": url,
+        "priority": Number(priority),
+        "published": published,
         "ownerId": userId
     });
 
@@ -50,7 +52,7 @@ function addSlide(title, description, cover, background, url) {
         });
 }
 
-function editSlide(slide_id, title, description, cover, background, url) {
+function editSlide(slide_id, title, description, cover, background, url, priority, published) {
     
     let userToken = localStorage.getItem("user-token");
 
@@ -66,6 +68,8 @@ function editSlide(slide_id, title, description, cover, background, url) {
         "description": description,
         "cover": cover,
         "background": background,
+        "priority": Number(priority),
+        "published": published,
         "url": url
     });
 

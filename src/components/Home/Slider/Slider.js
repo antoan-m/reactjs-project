@@ -17,8 +17,8 @@ function Slider() {
   }, []);
 
   const sliderProperties = {
-    duration: 3000,
-    transitionDuration: 500,
+    duration: 5000,
+    transitionDuration: 1000,
     pauseOnHover: true,
     easing: 'ease',
     infinite: true,

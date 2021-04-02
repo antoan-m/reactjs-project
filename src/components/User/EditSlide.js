@@ -12,12 +12,16 @@ class EditSlide extends Component {
             addSlide_cover_error: '',
             addSlide_background_error: '',
             addSlide_description_error: '',
+            addSlide_priority_error: '',
+            addSlide_published_error: '',
             addSlide_url_error: '',
             description_length: 0,
             title: '',
             cover: '',
             background: '',
             description: '',
+            priority: '',
+            published: '',
             url: ''
         }
     }
@@ -36,9 +40,12 @@ class EditSlide extends Component {
                 description: slide_data.description,
                 cover: slide_data.cover,
                 background: slide_data.background,
-                url: slide_data.url 
-            })
+                priority: slide_data.priority,
+                published: slide_data.published,
+                url: slide_data.url
+            });
         })
+       
     }
 
 
@@ -92,6 +99,29 @@ class EditSlide extends Component {
             })
     }
 
+    changeHandlerPriority(e) {
+        this.setState({ priority: e.target.value },
+    
+            function validatePriority() {
+    
+                let priorityMatch = /[0-9]+/;
+    
+                if (this.state.priority.length === 0) { this.setState({addSlide_priority_error: "Priority is required!"}) }
+                else if (!this.state.priority.match(priorityMatch)) { this.setState({addSlide_priority_error: "Priority is invalid!"}) }
+                else if (this.state.priority.length !== 0) { this.setState({addSlide_priority_error: ""}) }
+                else { this.setState({addSlide_priority_error: ""}) }
+             })
+    }
+    
+    changeHandlerPublished(e) {
+        this.setState({ published: e.target.value },
+    
+        function validatePublished() {
+            if (this.state.published === 'yes' || this.state.published === 'true') { this.setState({published: true}) }
+            else if (this.state.published === 'no' || this.state.published === 'false') { this.setState({published: false}) }
+         })
+    }
+
     changeHandlerURL(e) {
         this.setState({ url: e.target.value },
 
@@ -111,7 +141,7 @@ class EditSlide extends Component {
 
         const { history } = this.props;
 
-        const { title, description, cover, background, url } = this.state;
+        const { title, description, cover, background, url, priority, published} = this.state;
 
         if (title === '') {
             return this.setState({ addSlide_title_error: "Title is required!" });
@@ -129,11 +159,19 @@ class EditSlide extends Component {
             return this.setState({ addSlide_cover_error: "Background is required!" });
         };
 
+        if(priority === '') {
+            return this.setState({addSlide_priority_error: "Priority is required!"});
+        };
+    
+        if(published === '') {
+            return this.setState({addSlide_published_error: "Published is required!"});
+        };
+
         if (url === '') {
             return this.setState({ addSlide_url_error: "URL is required!" });
         };
 
-        slidesService.editSlide(this.state.slide_data.objectId, title, description, cover, background, url);
+        slidesService.editSlide(this.state.slide_data.objectId, title, description, cover, background, url, priority, published);
 
         if (history) { history.push('/user/profile/myslides') };
     };
@@ -188,6 +226,29 @@ class EditSlide extends Component {
                                 <span className="addslide-counter">{this.state.description_length}/100</span>
                             </div>
                         </div>
+                        <div className="row">
+                        <div className="form-field-group">
+                            <input id="priority" onChange={this.changeHandlerPriority.bind(this)} onBlur={this.changeHandlerPriority.bind(this)} onBlur={this.changeHandlerPriority.bind(this)} defaultValue={this.state.slide_data.priority} type="text" className="materialize-textarea form-input-field contact-textarea" name="priority" placeholder="Priority" />
+                            <span className="vaidation-error error-text-red">
+                                <Debounce ms={1000}>
+                                    <span>{this.state.addSlide_priority_error}</span>
+                                </Debounce>
+                            </span>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="form-field-group">
+                            <select className="browser-default form-dropdown" onChange={this.changeHandlerPublished.bind(this)} onBlur={this.changeHandlerPublished.bind(this)} id="published" value={this.state.published} name="published" placeholder="Published">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                            <span className="vaidation-error error-text-red">
+                                <Debounce ms={1000}>
+                                    <span>{this.state.addSlide_published_error}</span>
+                                </Debounce>
+                            </span>
+                        </div>
+                    </div>
                         <div className="row">
                             <div className="form-field-group">
                                 <textarea id="url" onChange={this.changeHandlerURL.bind(this)} onBlur={this.changeHandlerURL.bind(this)} defaultValue={this.state.slide_data.url} maxLength="2000" type="text" className="materialize-textarea form-input-field contact-textarea" name="url" placeholder="URL"></textarea>
