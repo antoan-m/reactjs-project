@@ -1,16 +1,52 @@
 import "./Slider.css";
-
-import { NavLink } from 'react-router-dom';
+import 'react-slideshow-image/dist/styles.css';
+import { useState, useEffect } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import slidesService from '../../../services/slidesService';
+import { Slide } from 'react-slideshow-image';
 
 function Slider() {
-  
+
+  const [slides, setSlides] = useState([]);
+
+  useEffect(() => {
+    
+    slidesService.getAllSlides()
+    .then(slidesList => setSlides(slidesList));
+    
+  }, []);
+
+  const sliderProperties = {
+    duration: 3000,
+    transitionDuration: 500,
+    pauseOnHover: true,
+    easing: 'ease',
+    infinite: true,
+    indicators: true,
+    prevArrow: <i className="material-icons slide-prev">play_circle_filled</i>,
+    nextArrow: <i className="material-icons slide-next">play_circle_filled</i>
+  };
+
+
   return (
 
     <article className="home-main-sliders">
        <section className="home-main-sliders-left">
          <article className="home-main-sliders-big">
-           <div className="main-carousel">
-             <img src="slide1.jpg" className="carousel-image" style={{height: "530px"}} alt="" />
+           <div className="slideshow-container">
+             <Slide {...sliderProperties}>
+             {slides.map(x => {
+      return (
+          <div className="each-slide each-slide-background" style={{backgroundImage: `url(${x.background})`}} key={x.objectId}>
+              <Link to={x.url}><h2 className="each-slide-title">{x.title}</h2></Link>
+              <div className="each-slide-cover">
+              <Link to={x.url}><img className="each-slide-cover-img" src={x.cover} alt={x.title} /></Link>
+                </div>
+              <p className="each-slide-description">{x.description}</p>
+              <Link to={x.url}><p className="each-slide-readmore">READ MORE</p></Link>
+          </div>
+            )})}
+            </Slide>
            </div>
          </article>
        </section>

@@ -8,9 +8,14 @@
 .home-main-sliders-big {
   width: 1040px;
   height: 530px;
-
   /* padding: 20px 10px 20px 0; */
 }
+
+/* .home-main-sliders-big img {
+  max-width: 1040px;
+  height: 530px; */
+/* padding: 20px 10px 20px 0;
+} */
 
 .home-main-sliders-right {
   display: flex;
@@ -23,4 +28,140 @@
   width: 330px;
   height: 250px;
   /* padding: 20px 0 20px 10px; */
+}
+
+/* Slider CSS */
+
+.each-slide {
+  position: relative;
+  max-width: 1040px;
+  height: 530px;
+}
+
+/* .each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+} */
+
+.each-slide span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+
+.each-slide-cover {
+  top: 25px;
+  left: 150px;
+  position: absolute;
+}
+
+.each-slide-cover-img {
+  width: auto;
+  height: 380px;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.each-slide-background {
+  background-size: cover;
+}
+
+.each-slide-title {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  color: #fff;
+  font-size: 22px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 25px 100px 25px 25px;
+}
+
+.each-slide-description {
+  position: absolute;
+  bottom: 20px;
+  right: 0px;
+  width: 100%;
+  color: #fff;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px 20px;
+}
+
+.each-slide-readmore {
+  position: absolute;
+  bottom: 120px;
+  right: 0px;
+  width: 170px;
+  color: #81b29a;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px 20px;
+  border: 1px solid #81b29a;
+}
+
+.each-slide-readmore:hover {
+  background-color: rgba(129, 178, 154, 0.5);
+  color: #3d405b;
+}
+
+.react-slideshow-container + ul.indicators {
+  margin-top: 6px;
+  font-size: 10px;
+}
+
+.indicators {
+  margin-top: 17px;
+}
+
+.indicator {
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  border: 1px #3d405b solid;
+}
+
+.indicator.active {
+  color: #fff;
+  background: #3d405b;
+}
+
+.react-slideshow-container + ul.indicators li,
+.react-slideshow-container + ul.indicators .each-slideshow-indicator:before {
+  width: 12px;
+  height: 12px;
+  padding: 5px;
+  margin: 2px !important;
+}
+
+.slide-prev {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  width: 70px;
+  font-size: 60px;
+  margin-right: -70px;
+  color: #3d405b;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.slide-next {
+  width: 70px;
+  font-size: 60px;
+  margin-left: -70px;
+  color: #3d405b;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.slide-prev:hover {
+  color: #ee6e73;
+  opacity: 1;
+}
+
+.slide-next:hover {
+  color: #ee6e73;
+  opacity: 1;
 }

@@ -1,0 +1,24 @@
+.profile-main-my-slides-list-item {
+    display: flex;
+    width: 400px;
+    height: 136px;
+    padding: 10px;
+}
+
+.profile-main-my-slides-list-item-title {
+    background-color: rgb(255 255 255 / 55%);
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: 400;
+    padding: 5px;
+    text-shadow: 2px 2px #888888;
+}
+
+.profile-main-my-slides-list-item-description {
+    background-color: rgb(255 255 255 / 35%);
+    color: #000;
+    font-size: 12px;
+    padding: 5px;
+}
+
+

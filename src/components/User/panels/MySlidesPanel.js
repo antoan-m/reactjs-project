@@ -17,15 +17,13 @@ function MySlidesPanel(props) {
                 {props.mySlides.map(x => {
                 return (
                     <li className="profile-main-my-slides-list-item-main" key={x.objectId}>
-                     <article className="profile-main-my-slides-list-item">   
+                     <article className="profile-main-my-slides-list-item" style={{backgroundImage: `url(${x.background})`}}>   
                      <article className="profile-main-my-slides-list-item-image">
-                         <img src={x.image} alt={x.title} />
+                         <img src={x.cover} alt={x.title} />
                      </article>
                      <article className="profile-main-my-slides-list-item-details">
                          <h5 className="profile-main-my-slides-list-item-title">{x.title}</h5>
-                         <p className="profile-main-my-slides-list-item-author">Author: {x.author}</p>
-                         <p className="profile-main-my-slides-list-item-category">Category: {x.category}</p>
-                         <p className="profile-main-my-slides-list-item-price">Price: {x.price}</p>
+                         <p className="profile-main-my-slides-list-item-description">{x.description}</p>
                      </article>
                      </article>
                      <article className="profile-main-my-slides-list-item-book-buttons">

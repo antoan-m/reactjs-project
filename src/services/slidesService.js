@@ -11,7 +11,7 @@ function getAllSlides() {
 }
 
 
-function addSlide(title, short_description, image, url) {
+function addSlide(title, description, cover, background, url) {
     let userToken = localStorage.getItem("user-token");
     let userId = localStorage.getItem("id");
 
@@ -24,8 +24,9 @@ function addSlide(title, short_description, image, url) {
 
     var raw = JSON.stringify({
         "title": title,
-        "short_description": short_description,
-        "image": image,
+        "description": description,
+        "cover": cover,
+        "background": background,
         "url": url,
         "ownerId": userId
     });
@@ -49,7 +50,7 @@ function addSlide(title, short_description, image, url) {
         });
 }
 
-function editSlide(slide_id, title, short_description, image, url) {
+function editSlide(slide_id, title, description, cover, background, url) {
     
     let userToken = localStorage.getItem("user-token");
 
@@ -62,8 +63,9 @@ function editSlide(slide_id, title, short_description, image, url) {
 
     var raw = JSON.stringify({
         "title": title,
-        "short_description": short_description,
-        "image": image,
+        "description": description,
+        "cover": cover,
+        "background": background,
         "url": url
     });
 
