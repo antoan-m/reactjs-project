@@ -14,14 +14,14 @@ coolors.co
 
 ### `Types of Users`
 
-Guets: 
+### Guets: 
 can view and like products,
 register new account,
 subscribe to newsletter,
 contact publisher,
 add products to cart
 
-Registered Users:
+### Registered Users:
 can view, like/unlike, buy products,
 add products to cart,
 add to and remove from Wishlist,
@@ -29,7 +29,7 @@ edit account information,
 view orders,
 subscribe to newsletter
 
-Admin:
+### Admin:
 can create/edit/delete news,
 can create/edit/delete products,
 add/edit/remove slides on frontpage,
@@ -42,7 +42,6 @@ view most liked/added to Wishlist
 Controlled forms with validation,
 used debounce component for input feedback
 
-### `More Features`
+### Dynamic Search
 
-Dynamic Search
-Dynamic Filters
+### Dynamic Filters
