@@ -7,7 +7,7 @@ This project is based on React.
 Backendless\
 Netlify\
 Materialize\
-Mapbox API
+Mapbox API\
 react-router-scroll-top\
 react-debounce\
 coolors.co
