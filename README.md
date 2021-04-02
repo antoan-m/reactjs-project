@@ -4,13 +4,13 @@ This project is based on React.
 
 ## `Used Libraries`
 
-Backendless
-Netlify
-Materialize
+Backendless\
+Netlify\
+Materialize\
 Mapbox API
-react-router-scroll-top
-react-debounce
-coolors.co
+react-router-scroll-top\
+react-debounce\
+coolors.co\
 
 ### `Types of Users`
 
