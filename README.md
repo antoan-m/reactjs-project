@@ -42,6 +42,6 @@ view most liked/added to Wishlist
 Controlled forms with validation,\
 used debounce component for input feedback
 
-### Dynamic Search
+### `Dynamic Search`
 
-### Dynamic Filters
+### `Dynamic Filters`
