@@ -31,7 +31,7 @@ import Register from "./components/User/Register";
 import Profile from "./components/User/Profile";
 import ProfileDetails from "./components/User/ProfileDetails";
 import ProfileDetailsEdit from "./components/User/ProfileDetailsEdit";
-import UserNewsletter from "./components/User/UserNewsletter";
+import MyNewsletters from "./components/User/MyNewsletters";
 import AddBook from "./components/User/AddBook";
 import EditBook from "./components/User/EditBook";
 import AddNews from "./components/User/AddNews";
@@ -104,8 +104,8 @@ useEffect(() => {
         <Route path="/user/profile" exact component={Profile} />
         <Route path="/user/profile/details/:userid" exact component={ProfileDetails} />
         <Route path="/user/profile/details/:userid/edit" exact component={ProfileDetailsEdit} />
-        {/* <Route path="/user/profile/newsletter" exact component={Newsletter} /> */}
-        <Route path="/user/profile/user-newsletter" exact component={UserNewsletter} />
+        <Route path="/user/profile/mynewsletters" exact component={MyNewsletters} />
+        {/* <Route path="/user/profile/user-newsletter" exact component={UserNewsletter} /> */}
         <Route path="/user/profile/addbook" exact component={AddBook} />
         <Route path="/user/profile/editbook/:id" exact component={EditBook} />
         <Route path="/user/profile/mybooks" exact component={MyBooks} />

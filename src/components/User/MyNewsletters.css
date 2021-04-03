@@ -1,0 +1,116 @@
+.profile-main {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    margin-top: 40px;
+    padding: 20px 20px;
+  }
+  
+  .profile-main-left {
+    display: flex;
+  }
+  
+  .profile-main-header {
+    font-weight: 600;
+    padding: 0 40px 20px 0;
+    color: #3d405b;
+    font-size: 30px;
+  }
+
+  .profile-main-my-books-list {
+      width: 530px;
+  }
+  
+  .profile-main-left-last-tasks-list {
+    width: 360px;
+    border-right: 1px solid #ddd;
+    margin-right: 30px;
+  }
+  
+  .profile-main-left-last-tasks-list a,
+  .profile-main-my-books-list a,
+  .profile-main-left-last-admin-list a {
+    font-size: 18px;
+    color: #e07a5f;
+  }
+  
+  .profile-main-left-last-tasks-list a:hover,
+  .profile-main-my-books-list a:hover,
+  .profile-main-left-last-admin-list a:hover {
+    font-size: 18px;
+    color: #3d405b;
+  }
+  
+  .profile-main-left-last-tasks-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-list-item-btn-user {
+    width: 160px;
+    margin: 10px 0;
+  }
+  
+  .profile-main-my-books-list-item-main {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    justify-content: space-between;
+  }
+
+  .profile-main-my-books-list-item {
+    display: flex;
+  }
+  
+  .profile-main-my-books-list-item-image img {
+    width: 80px;
+  }
+  
+  .profile-main-my-books-list-item-title {
+    font-size: 14px;
+    color: #3d405b;
+    padding: 0px 10px;
+  }
+
+  .profile-main-my-books-list-item-author {
+    font-size: 12px;
+    color: #3d405b;
+    padding: 5px 10px 0 10px;
+  }
+
+  .profile-main-my-books-list-item-category {
+    font-size: 12px;
+    color: #3d405b;
+    padding: 0px 10px;
+  }
+  
+  .profile-main-my-books-list-item-price {
+    font-size: 12px;
+    color: #e07a5f;
+    padding: 0px 10px;
+  }
+  
+  .profile-main-my-books-list-item-buttons {
+    display: flex;
+    border-left: 1px solid #ddd;
+    padding: 0 20px;
+  }
+  
+  .profile-list-item-btn-admin {
+    width: 160px;
+    margin: 10px 0;
+  }
+
+  .profile-main-my-books-list-item-book-buttons {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .edit-book-btn {
+    width: 110px;
+    margin-bottom: 10px
+  }
+
+  .delete-book-btn {
+    width: 110px;
+}

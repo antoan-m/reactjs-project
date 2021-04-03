@@ -34,7 +34,7 @@ function deleteFormWishlistHandler(e, book_id) {
   return (
  
 <section className="profile-main-my-books">
-          <h2 className="profile-main-header">My Books</h2>
+          <h2 className="profile-main-header">Wishlist</h2>
                 <ul className="profile-main-my-books-list">
                 {my_wishlist.map(x => {
                 return (

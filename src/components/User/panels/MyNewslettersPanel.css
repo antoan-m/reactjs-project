@@ -1,0 +1,21 @@
+.profile-main-my-books-list-item-details {
+    display: flex;
+    align-items: center;
+}
+
+.profile-main-my-books-list-item-main {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    justify-content: space-between;
+}
+
+.unsubscribe-btn {
+    width: 155px;
+    background-color: #E07A5F;
+}
+
+.unsubscribe-btn:hover {
+    background-color: #3D405B;
+}

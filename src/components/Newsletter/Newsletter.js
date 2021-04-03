@@ -21,8 +21,6 @@ class Newsletter extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({subscribers: res.subscribers})
-        // M.toast({html: JSON.stringify(res)});
-        // M.toast({html: JSON.stringify(this.state.subscribers)});
     });
     }
 
@@ -79,10 +77,17 @@ class Newsletter extends Component {
         this.setState({newsletterError: "Enter valid email!"})
         return
     }
+
+    let userId = localStorage.getItem('id');
+    let userEmail = localStorage.getItem('email');
+    if(userId && userEmail === email ) {
+      newsletterService.updateUserNewsletterStatus(userId, true);
+    } else {
+      return
+    }
       
       };
 
-      
 
 render() {
       return (
@@ -94,7 +99,7 @@ render() {
     <article className="newsletter-section">
        <form className="newsletter-form">
          <input type="text" className="newsletter-input" id="uesr-email" name="user-email" onChange={this.changeHandlerEmail.bind(this)} value={this.state.email} placeholder="Enter your email..." />
-         <button type="submit" name="subscribe" disabled={this.state.newsletterError} onClick={this.subscribeNewsletter.bind(this)} className="newsletter-button">SUBSCRIBE</button>
+         <button type="button" name="subscribe" disabled={this.state.newsletterError} onClick={this.subscribeNewsletter.bind(this)} className="newsletter-button">SUBSCRIBE</button>
        </form>
        <Debounce ms={1000}>
           <p className="newsletter-error">{this.state.newsletterError}</p>
