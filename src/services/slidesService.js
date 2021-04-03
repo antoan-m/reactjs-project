@@ -95,7 +95,7 @@ function editSlide(slide_id, title, description, cover, background, url, priorit
 function getMySlides(user_id) {
     let userToken = localStorage.getItem("user-token");
 
-    let query = `?where=ownerId%3D'2FAEC5F6-C59A-4CD4-8FFD-24522DB02CF3'&sortBy=created%20desc`;
+    let query = `?where=ownerId%3D'2FAEC5F6-C59A-4CD4-8FFD-24522DB02CF3'&sortBy=priority%20desc&sortBy=created%20desc`;
 
     var myHeaders = new Headers();
     myHeaders.append(

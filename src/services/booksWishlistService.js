@@ -74,7 +74,9 @@ return fetch(`${api.wishlist}`, requestOptions)
         });
 }
 
-function removeFromWishlist(ownerId, book_id) {
+function removeFromWishlist(book_id) {
+
+    let ownerId = localStorage.getItem("id");
 
     let query = `?where=ownerId%3D'${ownerId}'%26%26book_id%3D'${book_id}'`;
 
@@ -147,17 +149,9 @@ function getWishlistBookIds(user_id) {
       headers: myHeaders,
       redirect: 'follow'
       };
-      let array = [];
- fetch(`${api.wishlist}${query}`, requestOptions)
+      
+ return fetch(`${api.wishlist}${query}`, requestOptions)
       .then(response => response.json())
-      .then(result => {
-          console.log(result);
-          for (let i = 0; i < result.length; i++) {
-            const el = result[i].book_id;
-            array.push(el);
-          }
-          return getWishlistBooksInfo(array);
-      })
       .catch(error => console.log('error', error));
 
 }
@@ -185,7 +179,6 @@ function getWishlistBooksInfo(array) {
         .catch(error => console.log('error', error));
 
 }
-
 
 
 export default {
