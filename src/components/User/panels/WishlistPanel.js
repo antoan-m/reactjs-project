@@ -24,9 +24,6 @@ useEffect(() => {
 });
 
 function deleteFormWishlistHandler(e, book_id) {
-  console.log(e.target);
-  console.log(book_id);
-  console.log(props);
   e.target.parentNode.parentNode.remove();
   booksWishlistService.removeFromWishlist(book_id);
 }

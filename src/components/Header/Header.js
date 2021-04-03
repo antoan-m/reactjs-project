@@ -6,14 +6,14 @@ import Search from './Search/Search';
 
 import { NavLink } from 'react-router-dom';
 
-function Header() {
+function Header(props) {
   return (
     <header id="site-header">
-       <TopBar />
+       <TopBar userData={props.userData} loggedIn={props.loggedIn} />
        <section className="header-top-block">
           <NavLink to="/" exact><img src={process.env.PUBLIC_URL + '/logo.jpg'} alt="Book Store" /></NavLink>
           <Search />
-          <TopBlockUserMenu />
+          <TopBlockUserMenu userData={props.userData} loggedIn={props.loggedIn} />
        </section>
        <Navigation />
      </header>

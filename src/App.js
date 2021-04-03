@@ -52,6 +52,7 @@ import userService from "./services/userService";
 export function App() {
 
   let [user, setUser] = useState('guest');
+  let [loggedIn, setLoggedIn] = useState('guest');
   const value = useMemo(() => ({user, setUser}), [user, setUser]);
 
   
@@ -59,24 +60,26 @@ useEffect(() => {
   const userToken = localStorage.getItem('user-token');
   const userId = localStorage.getItem('id');
 
-// if(userToken) {
-//   userService.userValidate(userToken)
-//       .then(result => {
-//         console.log(result);
-//         userService.userData(userId)
-//         .then(user => {
-//           setUser(JSON.stringify(user))
-//           localStorage.setItem('user', JSON.stringify(user))
-//         })
-//       })
-//     }
+if(userToken) {
+  userService.userValidate(userToken)
+      .then(result => {
+        console.log(result);
+        setLoggedIn(result);
+        userService.userData(userId)
+        .then(user => {
+          setUser(user);
+          //setUser(JSON.stringify(user))
+          // localStorage.setItem('user', JSON.stringify(user))
+        })
+      })
+    }
 
 })
 
   return (
     <div className="App">
       <UserContext.Provider value={value}>
-      <Header />
+      <Header userData={user} loggedIn={loggedIn} />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/books" exact component={Books} />

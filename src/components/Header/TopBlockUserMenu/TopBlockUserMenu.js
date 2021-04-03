@@ -2,7 +2,7 @@ import './TopBlockUserMenu.css';
 
 import { NavLink } from 'react-router-dom';
 
-function TopBlockUserMenu() {
+function TopBlockUserMenu(props) {
     return (
         <ul className="header-top-block-right">
            <li className="header-top-block-right-item">
