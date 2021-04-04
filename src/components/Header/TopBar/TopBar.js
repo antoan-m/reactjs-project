@@ -26,7 +26,7 @@ function TopBar(props) {
         <span className="header-top-bar-left-item">+359 333 555 999</span>
       </article>
       <ul className="header-top-bar-right">
-        <li>Hello, {props.userData.name}</li>
+        <li>Hello, {props.userData.name ? props.userData.name : 'Guest'}</li>
         <li className="header-top-bar-right-item">
           <NavLink to="/contact" exact className="header-top-navigation-menu-item-active">Store Location</NavLink>
         </li>

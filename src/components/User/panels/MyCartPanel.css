@@ -1,0 +1,33 @@
+.cart-order-btn {
+    width: 200px;
+    height: 55px;
+    font-size: 20px;
+    color: #f4f1de;
+    background-color: #3D405B;
+    border: 0px;
+    margin-left: 30px;
+  }
+  
+  .cart-order-btn:hover {
+    cursor: pointer;
+    color: #F4F1DE;
+    background-color: #E07A5F;
+  }
+
+  .cart-order-confirm {
+
+  }
+
+  .agree-btn {
+    font-size: 14px;
+    color: #000000;
+    border: 0px;
+    margin: 0 10px !important;
+    background-color: #F2CC8F;
+  }
+  
+  .agree-btn:hover {
+    cursor: pointer;
+    color: #F4F1DE;
+    background-color: #81B29A;
+  }

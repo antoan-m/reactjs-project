@@ -65,16 +65,17 @@ if(userToken) {
       .then(result => {
         console.log(result);
         setLoggedIn(result);
-        userService.userData(userId)
-        .then(user => {
-          setUser(user);
+      userService.userData(userId)
+      .then(user => {
+        setUser(user);
+          
           //setUser(JSON.stringify(user))
           // localStorage.setItem('user', JSON.stringify(user))
         })
       })
     }
 
-})
+},[])
 
   return (
     <div className="App">
