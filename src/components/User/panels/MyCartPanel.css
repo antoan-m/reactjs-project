@@ -31,3 +31,13 @@
     color: #F4F1DE;
     background-color: #81B29A;
   }
+
+  .cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-empty img {
+    width: 40%;
+  }

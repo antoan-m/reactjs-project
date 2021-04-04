@@ -2,38 +2,56 @@ import "./Orders.css";
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserPanel from "./panels/UserPanel";
-import OrdersPanel from "./panels/OrdersPanel";
+import MyOrdersPanel from "./panels/MyOrdersPanel";
 import AdminPanel from "./panels/AdminPanel";
+import cartService from "../../services/cartService";
+import userService from "../../services/userService";
 
 
 class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user_data: '',
+      user_id: localStorage.getItem('id'),
       orders: []
     };
   }
 
   componentDidMount() {
 
+    userService.userData(this.state.user_id)
+    .then(data => this.setState({ user_data: data }))
+
+    cartService.getMyOrders(this.state.user_id)
+    .then(result => this.setState({ orders: result }));
+
   }
 
   componentDidUpdate() {
+    if (this.state.user_data === '') {
+      userService.userData(this.state.user_id)
+      .then(data => this.setState({ user_data: data }))
+      }
 
+    if (this.state.orders === '') {
+      cartService.getMyOrders(this.state.user_id)
+      .then(result => this.setState({ orders: result }));
+      }
 }
 
 
   render() {
   return (
-<div className="Orders">
+<div className="profile">
 
-    <section className="Orders-main">
+    <section className="profile-main">
         
-        <UserPanel />
+        <UserPanel userData={this.state.user_data} />
 
-        {/* <OrdersPanel myOrders={this.state.orders} /> */}
+        <MyOrdersPanel userData={this.state.user_data} myOrders={this.state.orders} />
 
-        <AdminPanel />
+        <AdminPanel userData={this.state.user_data} />
 
     </section>
 </div>

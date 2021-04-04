@@ -7,8 +7,7 @@ class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Order: [],
-      current_category: this.props.match.params.category
+      myOrder: ''
     };
   }
 
@@ -21,43 +20,36 @@ class Order extends Component {
 }
 
 
-  render() {
+render() {
   return (
 <div className="Order">
 
     <section className="Order-main">
         <section className="Order-main-left">
          
-          <section className="Order-main-left-last-tasks">
-          <h2 className="Order-main-header">User Panel</h2>
-          <ul className="Order-main-left-last-tasks-list">
-                 <Link to="/user/Order/details/ID"><button className="btn waves-effect waves-light Order-list-item-btn-user">My Details<i className="material-icons right">import_contacts</i></button></Link>
-                  <Link to="/user/Order/orders"><button className="btn waves-effect waves-light Order-list-item-btn-user">Orders<i className="material-icons right">import_contacts</i></button></Link>
-                  <Link to="/user/Order/wishlist"><button className="btn waves-effect waves-light Order-list-item-btn-user">Wishlist<i className="material-icons right">import_contacts</i></button></Link>
-                  <Link to="/user/Order/reviews"><button className="btn waves-effect waves-light Order-list-item-btn-user">My Reviews<i className="material-icons right">import_contacts</i></button></Link>
-                  <Link to="/user/Order/user-newsletter"><button className="btn waves-effect waves-light Order-list-item-btn-user">Newsletters<i className="material-icons right">import_contacts</i></button></Link>
-                </ul>
-          </section>
+          
           <section className="Order-main-left-last-orders">
           <h2 className="Order-main-header">Last Order</h2>
-                <ul className="Order-main-left-last-orders-list">
-                  <li>
-                    <article className="Order-main-left-last-orders-list-item"><article className="Order-main-left-last-orders-list-item-image"><img src="https://demo4.madrasthemes.com/bookworm/wp-content/uploads/2020/08/50-300x444.jpg" alt="###" /></article><article><h3 className="Order-main-left-last-orders-list-item-title">The book</h3><p className="Order-main-left-last-orders-list-item-price">$20.34</p></article><article className="Order-main-left-last-orders-list-item-buttons">
-                      <Link to="#"><button className="btn waves-effect waves-light Order-list-item-btn">View Details<i className="material-icons right">import_contacts</i></button></Link>
-                      </article>
-                      </article>
-                  </li>
+          <ul className="profile-main-my-books-list">
+                {/* {this.props.myOrder.map(x => {
+                return (
+                    <li className="profile-main-my-books-list-item-main" key={x.objectId}>
+                     <article className="profile-main-my-books-list-item">   
+                     <article className="profile-main-my-books-list-item-details">
+                         <h5 className="profile-main-my-books-list-item-title">{x.objectId}</h5>
+                         <p className="profile-main-my-books-list-item-items">{x.book_ids.split(',').length}</p>
+                         <p className="profile-main-my-books-list-item-price">{x.order_total}</p>
+                         <p className="profile-main-my-books-list-item-date">{new Date(x.created).toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'})}</p>
+                     </article>
+                     </article>
+                     <article className="profile-main-my-books-list-item-book-buttons">
+                     <Link to={`/user/profile/orders/${x.objectId}`}><button className="btn waves-effect waves-light btn-small edit-book-btn">View<i className="material-icons right">zoom_in</i></button></Link>
+                     </article>
+                    </li>
+                  )})} */}
                 </ul>
           </section>
           
-        </section>
-     <section className="Order-main-right">
-       <h2 className="Order-main-header">Admin Panel</h2>
-                <ul className="Order-main-left-last-admin-list">
-                  <li><Link to="/user/Order/addbook"><button className="btn waves-effect waves-light Order-list-item-btn-admin">Add Book<i className="material-icons right">import_contacts</i></button></Link></li>
-                  <li><Link to="/user/Order/editbook/###"><button className="btn waves-effect waves-light Order-list-item-btn-admin">Edit Book<i className="material-icons right">import_contacts</i></button></Link></li>
-                  <li><Link to="/user/Order/mybooks"><button className="btn waves-effect waves-light Order-list-item-btn-admin">All Books<i className="material-icons right">import_contacts</i></button></Link></li>
-                </ul>
         </section>
 
 </section>

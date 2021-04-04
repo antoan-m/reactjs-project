@@ -25,24 +25,72 @@ function getCartBooksInfo(array) {
 }
 
 
-function removeFromCart(cart, book_id) {
+function cartCompleteOrder(user_id, book_ids, order_total) {
 
-  // let usercart = cart;
-  // let deleteFromCart = book_id;
+    let userToken = localStorage.getItem("user-token");
 
+    var myHeaders = new Headers();
+    myHeaders.append(
+        "Content-Type", "application/json",
+        "Access-Control-Allow-Origin", "*", 
+        "user-token", userToken
+    );
 
+    var raw = JSON.stringify({
+        "ownerId": user_id,
+        "book_ids": book_ids.toString(),
+        "order_total": order_total
+      });
 
+    var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+    };
 
-
-
-  // M.toast({ html: "Book removed from your Cart!" });
- 
-
-
+return fetch(`${api.orders}`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            M.toast({ html: "Order completed successfuly!" });
+            return true
+        })
+        .catch((error) => {
+            console.error("error", error);
+            M.toast({ html: error.message });
+            return false;
+        });
 }
+
+function getMyOrders(user_id) {
+
+  let query = `?where=ownerId%3D'${user_id}'&property=book_ids&property=created&property=order_total&property=objectId&sortBy=created%20desc`;
+
+  let userToken = localStorage.getItem("user-token");
+
+  var myHeaders = new Headers();
+
+  myHeaders.append(
+      "Content-Type", "application/json",
+      "Access-Control-Allow-Origin", "*", 
+      "user-token", userToken
+  );
+
+      var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+      };
+      
+ return fetch(`${api.orders}${query}`, requestOptions)
+      .then(response => response.json())
+      .catch(error => console.log('error', error));
+}
+
 
 
 export default {
     getCartBooksInfo,
-    removeFromCart
+    cartCompleteOrder,
+    getMyOrders
 }

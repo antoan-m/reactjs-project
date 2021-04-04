@@ -94,22 +94,36 @@ function deleteFormCartHandler(e, book_id, book_price) {
 }
 
 function orderHandler(e) {
-  console.log(e);
-  console.log(props.userData)
-  console.log(loggedIn)
-  console.log(localCart);
-  console.log(my_cart);
-  console.log(cartEmpty);
 
+  let order_total = 0;
 
+  if(my_total > 0) {
+    order_total = my_total;
+  } else {
+    order_total = newTotal;
+  }
 
-  
+  cartService.cartCompleteOrder(user.objectId, localCart, order_total)
+  .then(result => console.log(result));
+
+  localStorage.setItem('cart', '');
+  setMyCart([]);
+  setLocalCart([]);
+  setNewTotal(0);
+  setTotal(0);
+  setCartEmpty(true);
+
 }
 
 return (
 
 <section className="profile-main-my-cart">
-{!cartEmpty ? <h2 className="profile-main-header">Cart</h2> : <h2 className="profile-main-header">Cart is empty...</h2>}
+{!cartEmpty ? <h2 className="profile-main-header">Cart</h2> : 
+                          
+                          <article className="cart-empty"><h2 className="profile-main-header">Cart is empty...</h2>
+                              <img src={process.env.PUBLIC_URL + '/empty_cart.png'} alt="Cart is empty..." />
+                          </article>
+}
           {!cartEmpty ? 
                 <ul className="profile-main-my-cart-list">
                 {my_cart.map(x => {
@@ -139,18 +153,18 @@ return (
                 <article className="profile-main-my-cart-total">Total: <span className="total-price">${newTotal ? newTotal.toFixed(2) : my_total.toFixed(2)}</span></article>
                 : ''}
                 {!cartEmpty && loggedIn ?
-                <button onClick={(e) => {orderHandler(e)}} type="button" data-target="confirm-order-modal" className="cart-order-btn modal-trigger">COMPLETE ORDER</button>
+                <button type="button" data-target="confirm-order-modal" className="cart-order-btn modal-trigger">COMPLETE ORDER</button>
                 : ''}
                 <div id="confirm-order-modal" className="modal cart-order-confirm">
                   <div className="modal-content">
                     <h4>Confirm Order</h4>
-                    <div class="progress">
-                      <div class="indeterminate"></div>
+                    <div className="progress">
+                      <div className="indeterminate"></div>
                     </div>
                     <p>Please, confirm your order...</p>
                   </div>
                   <div className="modal-footer">
-                    <Link to="/user/profile/orders" className="modal-close waves-effect waves-green btn-flat agree-btn">Agree</Link>
+                    <Link to="/user/profile/orders" onClick={(e) => {orderHandler(e)}} className="modal-close waves-effect waves-green btn-flat agree-btn">CONFIRM</Link>
                   </div>
                 </div>
                 {!cartEmpty && !loggedIn ?

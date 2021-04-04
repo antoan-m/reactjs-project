@@ -120,7 +120,7 @@ if(userToken) {
         <Route path="/user/profile/addslide" exact component={AddSlide} />
         <Route path="/user/profile/editslide/:id" exact component={EditSlide} />
         <Route path="/user/profile/orders" exact component={Orders} />
-        <Route path="/user/profile/orders:id" exact component={Order} />
+        <Route path="/user/profile/orders/:id" exact component={Order} />
         <Route path="/user/profile/cart" exact component={Cart} />
         <Route path="/user/profile/wishlist" exact component={Wishlist} />
         <Route path="/user/profile/admin" exact component={Admin} />
