@@ -9,6 +9,9 @@ function AdminPanel(props) {
 <section className="profile-main-right">
        <h2 className="profile-main-header">Admin Panel</h2>
                 <ul className="profile-main-left-last-admin-list">
+                <li><Link to="/user/profile/orders-seller">
+                      <button className="btn waves-effect waves-light profile-list-item-btn-admin">My ORders<i className="material-icons right">import_contacts</i></button>
+                  </Link></li>
                   <li><Link to="/user/profile/mybooks">
                       <button className="btn waves-effect waves-light profile-list-item-btn-admin">My Books<i className="material-icons right">import_contacts</i></button>
                   </Link></li>

@@ -2,8 +2,7 @@ import "./Order.css";
 import { Component } from 'react';
 import userService from '../../services/userService';
 import cartService from '../../services/cartService';
-import MyOrderPanel from '../User/panels/MyOrderPanel';
-import { data } from "flickity";
+import MyOrderPanel from './panels/MyOrderPanel';
 
 class Order extends Component {
   constructor(props) {

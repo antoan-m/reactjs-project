@@ -13,8 +13,6 @@ function TopBar(props) {
      userService.userLogout();
    }
 
-   console.log(props.userData);
-
   return (
     <section className="header-top-bar">
       <article className="header-top-bar-left">

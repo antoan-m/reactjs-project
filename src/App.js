@@ -43,6 +43,8 @@ import AddSlide from "./components/User/AddSlide";
 import EditSlide from "./components/User/EditSlide";
 import Orders from "./components/User/Orders";
 import Order from "./components/User/Order";
+import OrdersSeller from "./components/User/OrdersSeller";
+import OrderSeller from "./components/User/OrderSeller";
 import Wishlist from "./components/User/Wishlist";
 import Admin from "./components/User/Admin";
 import Cart from "./components/User/Cart";
@@ -109,7 +111,6 @@ if(userToken) {
         <Route path="/user/profile/details/:userid" exact component={ProfileDetails} />
         <Route path="/user/profile/details/:userid/edit" exact component={ProfileDetailsEdit} />
         <Route path="/user/profile/mynewsletters" exact component={MyNewsletters} />
-        {/* <Route path="/user/profile/user-newsletter" exact component={UserNewsletter} /> */}
         <Route path="/user/profile/addbook" exact component={AddBook} />
         <Route path="/user/profile/editbook/:id" exact component={EditBook} />
         <Route path="/user/profile/mybooks" exact component={MyBooks} />
@@ -121,6 +122,8 @@ if(userToken) {
         <Route path="/user/profile/editslide/:id" exact component={EditSlide} />
         <Route path="/user/profile/orders" exact component={Orders} />
         <Route path="/user/profile/orders/:id" exact component={Order} />
+        <Route path="/user/profile/orders-seller" exact component={OrdersSeller} />
+        <Route path="/user/profile/orders-seller/:id" exact component={OrderSeller} />
         <Route path="/user/profile/cart" exact component={Cart} />
         <Route path="/user/profile/wishlist" exact component={Wishlist} />
         <Route path="/user/profile/admin" exact component={Admin} />

@@ -5,7 +5,7 @@ import { UserContext } from "../../services/UserContext";
 import UserPanel from "./panels/UserPanel";
 import AdminPanel from "./panels/AdminPanel";
 import LatestOrderPanel from "./panels/LatestOrderPanel";
-
+import AdminDashboardPanel from "./panels/AdminDashboardPanel";
 
 class Profile extends Component {
   static contextType = UserContext;
@@ -40,7 +40,7 @@ class Profile extends Component {
 
         <UserPanel userData={this.state.user_data} />
 
-        <LatestOrderPanel userData={this.state.user_data} />
+        <AdminDashboardPanel userData={this.state.user_data} />
 
         <AdminPanel userData={this.state.user_data} />
 

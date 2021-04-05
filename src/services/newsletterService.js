@@ -126,10 +126,31 @@ function updateUserNewsletterStatus(userId, newsletter) {
     })
 }
 
+
+function countSubscribers() {
+
+    var myHeaders = new Headers();
+    myHeaders.append(
+    "Content-Type", "application/json",
+    "Access-Control-Allow-Origin", "*"
+    );
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+return fetch(`${api.newsletter}/806D122F-68AB-4492-8B86-1160EE870E88?property=subscribers`, requestOptions)
+  .then(response => response.json())
+  .catch(error => console.log('error', error));
+}
+
 export default {
     getNewsletter,
     subscribeNewsletter,
     getSubscribers,
     updateNewsletter,
-    updateUserNewsletterStatus
+    updateUserNewsletterStatus,
+    countSubscribers
 };
