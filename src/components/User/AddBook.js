@@ -52,7 +52,6 @@ componentDidMount() {
 
     bookService.getFormats()
     .then(formatList => this.setState({ formatList }))
-
 }
 
 componentDidUpdate() {
@@ -69,6 +68,7 @@ componentDidUpdate() {
     bookService.getFormats()
     .then(formatList => this.setState({ formatList }))
     }
+
 }
 
 changeHandlerTitle(e) {
@@ -237,7 +237,7 @@ submitHandler(e) {
     };
 
     if(long_description === '') {
-        return this.setState({addbook_long_description_error: "Long Description country!"});
+        return this.setState({addbook_long_description_error: "Long Description is empty!"});
     };
 
     if(image === '') {
