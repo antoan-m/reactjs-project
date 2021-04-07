@@ -225,7 +225,7 @@
   -webkit-transform: translate3d(0, 0, 20px);
   -moz-transform: translate3d(0, 0, 20px);
   transform: translate3d(0, 0, 20px);
-  z-index: 10;
+  z-index: 2;
 }
 
 .book-details-cover-container .book-itm-front > div {

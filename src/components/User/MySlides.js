@@ -40,7 +40,7 @@ class MySlides extends Component {
   }
 
   render() {
-    console.log(this.state.my_slides);
+    // console.log(this.state.my_slides);
   return (
 <div className="profile">
 

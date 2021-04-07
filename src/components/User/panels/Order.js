@@ -47,7 +47,7 @@ componentDidUpdate() {
 
 
 render() {
-  console.log(this.state.my_order);
+  // console.log(this.state.my_order);
 
   return (
 <div className="profile">

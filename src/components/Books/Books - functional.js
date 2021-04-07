@@ -13,14 +13,14 @@ function Books() {
   //let booksQuery = `price%3E%3D0%20AND%20price%20%3C%3D%2020`; //between
 
   useEffect(() => {
-    fetch(`http://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?where=${booksQuery}`, {
+    fetch(`https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?where=${booksQuery}`, {
     headers: { 'Access-Control-Allow-Origin': "*" }
   })
  .then(res => res.json())
  .then(result => setBooks(result))
   }, [])
 
-    console.log(books);
+    // console.log(books);
 
 
   return (

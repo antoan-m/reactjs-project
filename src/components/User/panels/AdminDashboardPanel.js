@@ -60,7 +60,7 @@ function AdminDashboardPanel(props) {
            .then(result => setUsersSubscribed(result.subscribers.split(',').length));
         }
     })
-console.log(user.user_type)
+// console.log(user.user_type)
 return (
     <>
     {user.user_type == 'admin' ?

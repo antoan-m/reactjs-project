@@ -40,7 +40,7 @@ class MyNews extends Component {
   }
 
   render() {
-    console.log(this.state.my_news);
+    // console.log(this.state.my_news);
   return (
 <div className="profile">
 

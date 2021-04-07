@@ -24,7 +24,7 @@ function Login(props) {
     //     userService.userValidate(this.userToken);
     // }
 
-    const [user, setUser] = useContext(UserContext);
+    const [user, setUser, loggedIn, setLoggedIn, cartItems, setCartItems] = useContext(UserContext);
 
 
     function changeHandlerEmail(e) {
@@ -58,6 +58,7 @@ function Login(props) {
     .then(loggedInUser => {
         
         setUser(loggedInUser);
+        setLoggedIn(true);
 
         M.toast({html: 'Hello, ' + loggedInUser['name'] + '!'})
         localStorage.name = loggedInUser['name'];

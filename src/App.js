@@ -1,6 +1,6 @@
 import "./App.css";
-import React, { useEffect, useMemo, useState, useContext } from 'react';
-import { Route, Switch } from "react-router-dom";
+import React, { useEffect, useMemo, useState, useContext, Component } from 'react';
+import { Route, Switch, Redirect } from "react-router-dom";
 import { UserContext } from './context/UserContext';
 
 import Header from "./components/Header/Header";
@@ -50,6 +50,8 @@ import Admin from "./components/User/Admin";
 import Cart from "./components/User/Cart";
 import PageNotFound from "./components/Pages/PageNotFound";
 import userService from "./services/userService";
+import { ProtectedRoute, ProtectedRouteUser } from "./context/ProtectedRoute";
+
 
 export function App() {
 
@@ -67,15 +69,12 @@ useEffect(() => {
 if(userToken) {
   userService.userValidate(userToken)
       .then(result => {
-        console.log(result);
         setLoggedIn(result);
+        console.log('check user: ', result)
         
       userService.userData(userId)
       .then(user => {
         setUser(user);
-          console.log(user);
-          //setUser(JSON.stringify(user))
-          // localStorage.setItem('user', JSON.stringify(user))
         })
       })
     }
@@ -88,11 +87,10 @@ if(userToken) {
     } else {
       setCart(false)
     }
-      console.log('Cart ', cart)
-      console.log('Cart Items: ', cartItems)
   }
-
 },[])
+
+console.log('logged: ', loggedIn);
 
   return (
     <div className="App">
@@ -119,29 +117,29 @@ if(userToken) {
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/terms" exact component={Terms} />
-        <Route path="/user/login" exact component={Login} />
-        <Route path="/user/register" exact component={Register} />
-        <Route path="/user/logout" exact component={Home} />
-        <Route path="/user/profile" exact component={Profile} />
-        <Route path="/user/profile/details/:userid" exact component={ProfileDetails} />
-        <Route path="/user/profile/details/:userid/edit" exact component={ProfileDetailsEdit} />
-        <Route path="/user/profile/mynewsletters" exact component={MyNewsletters} />
-        <Route path="/user/profile/addbook" exact component={AddBook} />
-        <Route path="/user/profile/editbook/:id" exact component={EditBook} />
-        <Route path="/user/profile/mybooks" exact component={MyBooks} />
-        <Route path="/user/profile/addnews" exact component={AddNews} />
-        <Route path="/user/profile/editnews/:id" exact component={EditNews} />
-        <Route path="/user/profile/mynews" exact component={MyNews} />
-        <Route path="/user/profile/myslides" exact component={MySlides} />
-        <Route path="/user/profile/addslide" exact component={AddSlide} />
-        <Route path="/user/profile/editslide/:id" exact component={EditSlide} />
-        <Route path="/user/profile/orders" exact component={Orders} />
-        <Route path="/user/profile/orders/:id" exact component={Order} />
-        <Route path="/user/profile/orders-seller" exact component={OrdersSeller} />
-        <Route path="/user/profile/orders-seller/:id" exact component={OrderSeller} />
-        <Route path="/user/profile/cart" exact component={Cart} />
-        <Route path="/user/profile/wishlist" exact component={Wishlist} />
-        <Route path="/user/profile/admin" exact component={Admin} />
+        <ProtectedRouteUser path="/user/login" loggedIn={loggedIn} exact component={Login} />
+        <ProtectedRouteUser path="/user/register" loggedIn={loggedIn} exact component={Register} />
+        <ProtectedRoute path="/user/logout" loggedIn={loggedIn} exact component={Home} />
+        <ProtectedRoute path="/user/profile" loggedIn={loggedIn} exact component={Profile} />
+        <ProtectedRoute path="/user/profile/details/:userid" loggedIn={loggedIn} exact component={ProfileDetails} />
+        <ProtectedRoute path="/user/profile/details/:userid/edit" loggedIn={loggedIn} exact component={ProfileDetailsEdit} />
+        <ProtectedRoute path="/user/profile/mynewsletters" loggedIn={loggedIn} exact component={MyNewsletters} />
+        <ProtectedRoute path="/user/profile/addbook" loggedIn={loggedIn} exact component={AddBook} />
+        <ProtectedRoute path="/user/profile/editbook/:id" loggedIn={loggedIn} exact component={EditBook} />
+        <ProtectedRoute path="/user/profile/mybooks" loggedIn={loggedIn} exact component={MyBooks} />
+        <ProtectedRoute path="/user/profile/addnews" loggedIn={loggedIn} exact component={AddNews} />
+        <ProtectedRoute path="/user/profile/editnews/:id" loggedIn={loggedIn} exact component={EditNews} />
+        <ProtectedRoute path="/user/profile/mynews" loggedIn={loggedIn} exact component={MyNews} />
+        <ProtectedRoute path="/user/profile/myslides" loggedIn={loggedIn} exact component={MySlides} />
+        <ProtectedRoute path="/user/profile/addslide" loggedIn={loggedIn} exact component={AddSlide} />
+        <ProtectedRoute path="/user/profile/editslide/:id" loggedIn={loggedIn} exact component={EditSlide} />
+        <ProtectedRoute path="/user/profile/orders" loggedIn={loggedIn} exact component={Orders} />
+        <ProtectedRoute path="/user/profile/orders/:id" loggedIn={loggedIn} exact component={Order} />
+        <ProtectedRoute path="/user/profile/orders-seller" loggedIn={loggedIn} exact component={OrdersSeller} />
+        <ProtectedRoute path="/user/profile/orders-seller/:id" loggedIn={loggedIn} exact component={OrderSeller} />
+        <ProtectedRoute path="/user/profile/cart" exact component={Cart} />
+        <ProtectedRoute path="/user/profile/wishlist" loggedIn={loggedIn} exact component={Wishlist} />
+        {/* <Route path="/user/profile/admin" loggedIn={loggedIn} exact component={Admin} /> */}
         <Route path="/" component={PageNotFound} />
       </Switch>
       <Newsletter />

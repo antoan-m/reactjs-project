@@ -29,7 +29,7 @@ class BooksLowPrice extends Component {
 
   componentDidUpdate() {
 
-    console.log(this.props.match.params)
+    // console.log(this.props.match.params)
 
     if (this.props.match.params.category !== this.state.current_category) {
 

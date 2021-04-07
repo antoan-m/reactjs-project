@@ -7,7 +7,7 @@ function userRegister(user) {
 
   Backendless.UserService.register(user)
   .then(registeredUser => {
-    console.log(registeredUser);
+    // console.log(registeredUser);
     M.toast({html: 'Registration successful!'})
     })
   .catch(error => {
@@ -101,9 +101,6 @@ var requestOptions = {
 };
   return fetch(`${api.users}/isvalidusertoken/${token}`, requestOptions)
   .then(response => response.json())
-  .then(result => {
-    console.log(result);
-  })
   .catch(error => {
     console.log('error', error);
     localStorage.removeItem('name');

@@ -184,7 +184,7 @@ class EditSlide extends Component {
 
 
     render() {
-        console.log(this.state);
+        // console.log(this.state);
         return (
             <>
                 <h2 className="page-title">EDIT NEWS ARTICLE</h2>

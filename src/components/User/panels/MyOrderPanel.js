@@ -20,10 +20,10 @@ function MyOrdersPanel(props) {
             setMyOrder(props.myOrder);
             setMyOrderData(props.myOrderData);
     }
-    console.log(my_order_data.order_total)
-    console.log(my_order_data.created);
-    console.log(my_order)
-    console.log(my_order_data)
+    // console.log(my_order_data.order_total)
+    // console.log(my_order_data.created);
+    // console.log(my_order)
+    // console.log(my_order_data)
     })
     
 return (

@@ -40,7 +40,7 @@ class MyBooks extends Component {
   }
 
   render() {
-    console.log(this.state.my_books);
+    // console.log(this.state.my_books);
   return (
 <div className="profile">
 

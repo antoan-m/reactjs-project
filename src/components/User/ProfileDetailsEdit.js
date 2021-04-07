@@ -164,7 +164,7 @@ submitHandler(e) {
 
     userService.userUpdate(this.state.user_data.objectId, name, password, country, address, phone);
     
-        if (history) { history.push('/') };
+        if (history) { history.push(`/user/profile/details/${this.state.user_id}`) };
     };
 
     cancelHandler = () => { 

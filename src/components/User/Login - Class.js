@@ -101,7 +101,7 @@ class Login extends Component {
 
 
 render() {
-        console.log(this.context);
+        // console.log(this.context);
     return (
    <>
        <h2 className="page-title">LOG IN</h2>

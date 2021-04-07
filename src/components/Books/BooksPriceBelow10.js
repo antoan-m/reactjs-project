@@ -23,7 +23,7 @@ class BooksPriceBelow10 extends Component {
   };
 
 
-render() { console.log('etetet')
+render() { 
   return (
 <div className="books">
 

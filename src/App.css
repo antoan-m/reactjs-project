@@ -53,3 +53,36 @@ h6 {
   margin-bottom: 50px;
   background-color: #f4f1de;
 }
+
+
+.search-result-panel,
+.news-article-details,
+.book-details,
+.book-article-details-image,
+.user-profile-logo,
+.profile-main-left-last-orders-list,
+.profile-main-my-books-list,
+.profile-main-admin-dashboard,
+.profile-main-my-slides-list,
+.profile-main-my-news-list,
+.profile-main-my-cart {
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.slide, .each-slide each-slide-background {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
