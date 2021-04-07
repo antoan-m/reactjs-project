@@ -140,7 +140,7 @@ render() {
     <>
       <h2 className="page-title contact">CONTACT US</h2>
       <article className="about-us about-us">
-          <article id="contact-map-placeholder" className="contact-map">
+          <article id="contact-map-placeholder" className="contact-map" style={{backgroundColor: `process.env.PUBLIC_URL + '/payments.png'}`}}>
 
           </article>
 
