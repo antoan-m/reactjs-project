@@ -31,7 +31,7 @@ function MyNewslettersPanel(props) {
      
       
   return (
-<section className="profile-main-my-books">
+<section className="profile-main-my-newsletter">
           <h2 className="profile-main-header">Newsletters</h2>
                 <ul className="profile-main-my-books-list">
                      <li className="profile-main-my-books-list-item-main" key='{x.objectId}'>

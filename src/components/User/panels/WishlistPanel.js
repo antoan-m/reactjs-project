@@ -1,11 +1,14 @@
 import "./WishlistPanel.css";
 import { Link } from 'react-router-dom';
 import booksWishlistService from "../../../services/booksWishlistService";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../../context/UserContext';
 
 function WishlistPanel(props) {
    
     const [my_wishlist, setMyWishlist] = useState([]);
+    
+    const [user] = useContext(UserContext);
 
 useEffect(() => {
       booksWishlistService.getWishlistBooksInfo(props.myWishlist)
@@ -25,12 +28,12 @@ useEffect(() => {
 
 function deleteFormWishlistHandler(e, book_id) {
   e.target.parentNode.parentNode.remove();
-  booksWishlistService.removeFromWishlist(book_id);
+  booksWishlistService.removeFromWishlist(user.objectId, book_id);
 }
 
   return (
  
-<section className="profile-main-my-books">
+<section className="profile-main-my-wishlist-panel">
           <h2 className="profile-main-header">Wishlist</h2>
                 <ul className="profile-main-my-books-list">
                 {my_wishlist.map(x => {
@@ -42,9 +45,9 @@ function deleteFormWishlistHandler(e, book_id) {
                      </article>
                      <article className="profile-main-my-books-list-item-details">
                          <h5 className="profile-main-my-books-list-item-title">{x.title}</h5>
-                         <p className="profile-main-my-books-list-item-author">Author: {x.author}</p>
-                         <p className="profile-main-my-books-list-item-category">Category: {x.category}</p>
-                         <p className="profile-main-my-books-list-item-price">Price: {x.price}</p>
+                         <p className="profile-main-my-books-list-item-author">{x.author}</p>
+                         <p className="profile-main-my-books-list-item-category">{x.category}</p>
+                         <p className="profile-main-my-books-list-item-price">{x.price}</p>
                      </article>
                      </article>
                      <article className="profile-main-my-books-list-item-book-buttons">

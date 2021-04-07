@@ -5,6 +5,10 @@
     margin-top: 40px;
     padding: 20px 20px;
   }
+
+  .profile-main-my-wishlist-panel {
+    width: 960px;
+  }
   
   .wishlist-main-header {
     font-weight: 600;

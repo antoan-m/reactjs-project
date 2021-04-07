@@ -6,7 +6,7 @@ function MyDetailsPanel(props) {
 
   return (
 
-<section className="profile-main-left-last-orders">
+<section className="profile-main-left-my-details-panel">
           <h2 className="profile-main-header">My Details</h2>
                 <ul className="profile-main-left-last-orders-list">
                   <li className="profile-details-list-item"><span className="profile-details-list-item-label">Email: </span><span className="profile-details-list-item-value">{props.userData.email}</span></li>

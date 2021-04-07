@@ -11,7 +11,7 @@ function MyNewsPanel(props) {
    
       
   return (
-<section className="profile-main-my-news">
+<section className="profile-main-my-news-panel">
           <h2 className="profile-main-header">My News</h2>
                 <ul className="profile-main-my-news-list">
                 {props.myNews.map(x => {

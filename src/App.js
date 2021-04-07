@@ -1,7 +1,7 @@
 import "./App.css";
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useContext } from 'react';
 import { Route, Switch } from "react-router-dom";
-import { UserContext } from './services/UserContext';
+import { UserContext } from './context/UserContext';
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -54,8 +54,10 @@ import userService from "./services/userService";
 export function App() {
 
   let [user, setUser] = useState('guest');
-  let [loggedIn, setLoggedIn] = useState('guest');
-  const value = useMemo(() => ({user, setUser}), [user, setUser]);
+  let [loggedIn, setLoggedIn] = useState(false);
+  let [cart, setCart] = useState(false);
+  let [cartItems, setCartItems] = useState(false);
+  // const value = useMemo(() => ({user, setUser}), [user, setUser]);
 
   
 useEffect(() => {
@@ -67,21 +69,34 @@ if(userToken) {
       .then(result => {
         console.log(result);
         setLoggedIn(result);
+        
       userService.userData(userId)
       .then(user => {
         setUser(user);
-          
+          console.log(user);
           //setUser(JSON.stringify(user))
           // localStorage.setItem('user', JSON.stringify(user))
         })
       })
     }
+    checkCartIfFull();
+    
+    function checkCartIfFull() {
+      if (localStorage.getItem('cart')) {
+      setCart(true) 
+      setCartItems(localStorage.getItem('cart').split(','))
+    } else {
+      setCart(false)
+    }
+      console.log('Cart ', cart)
+      console.log('Cart Items: ', cartItems)
+  }
 
 },[])
 
   return (
     <div className="App">
-      <UserContext.Provider value={value}>
+      <UserContext.Provider value={[user, setUser, loggedIn, setLoggedIn, cartItems, setCartItems]}>
       <Header userData={user} loggedIn={loggedIn} />
       <Switch>
         <Route path="/" exact component={Home} />

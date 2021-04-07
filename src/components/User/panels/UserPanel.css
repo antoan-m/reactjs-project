@@ -1,5 +1,6 @@
 .profile-main-left {
   display: flex;
+  border-right: 1px solid #ddd;
 }
 
 .profile-main-left-last-tasks-list {

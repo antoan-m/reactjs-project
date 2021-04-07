@@ -6,68 +6,59 @@ import React from 'react';
 import Debounce from 'react-debounce-component';
 import M from 'materialize-css';
 import Backendless from 'backendless';
+import { UserContext } from "../../context/UserContext";
+import { useState, useEffect, useContext } from 'react';
 
-class Login extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        current_user: '',
-        error: '',
-        email: '',
-        password: '',
-        stayLoggedIn: true,
-        login_email_error: '',
-        login_password_error: '',
-      }
-    }
+function Login(props) {
 
-    userToken = localStorage.getItem('user-token');
+    const [current_user, setCurrentUser] = useState();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [login_email_error, setEmailError] = useState('');
+    const [login_password_error, setPasswordError] = useState('');
 
-    componentDidMount() {
+    // userToken = localStorage.getItem('user-token');
 
-        userService.userValidate(this.userToken);
-    }
+    // function componentDidMount() {
+    //     console.log('Login: ', this.context.user);
+    //     userService.userValidate(this.userToken);
+    // }
 
-    changeHandlerEmail(e) {
+    const [user, setUser] = useContext(UserContext);
+
+
+    function changeHandlerEmail(e) {
         
-        this.setState({email: e.target.value},
-  
-            function validateEmail() {
-  
-                if (!this.state.email.includes('@')) { this.setState({login_email_error: "Email should contain '@'!"}) } 
-                else if (!this.state.email.includes('.')) { this.setState({login_email_error: "Invalid email!"}) }
-                else if (this.state.email.indexOf(' ') !== -1) { this.setState({login_email_error: "Invalid email!"}) }
-                else if (this.state.email.length < 6) { this.setState({login_email_error: "Invalid email!"}) }
-                else if (this.state.email === '') { this.setState({login_email_error: ""}) }
-                else { this.setState({login_email_error: ""}) }
-            }
-        )
+        setEmail(e.target.value);
+
+                if (!email.includes('@')) { setEmailError("Email should contain '@'!") } 
+                else if (!email.includes('.')) { setEmailError("Invalid email!") }
+                else if (email.indexOf(' ') !== -1) { setEmailError("Invalid email!") }
+                else if (email.length < 6) { setEmailError("Invalid email!") }
+                else if (email === '') { setEmailError("") }
+                else { setEmailError("") }
     }
 
-    changeHandlerPass(e) {
+    function changeHandlerPass(e) {
 
-        this.setState({password: e.target.value},
-  
-            function validatePassword() {
-  
-              if (this.state.password.length < 6) { this.setState({login_password_error: "Password should be at least 6 characters long!"}) }
-              else if (this.state.password.indexOf(' ') !== -1) { this.setState({login_password_error: "Password should not contain spaces!"}) }
-              else if (this.state.password === '') { this.setState({login_password_error: ""}) }
-              else { this.setState({login_password_error: ""}) }
-            }
-        )
+        setPassword(e.target.value);
+
+              if (password.length < 6) { setPasswordError("Password should be at least 6 characters long!") }
+              else if (password.indexOf(' ') !== -1) { setPasswordError("Password should not contain spaces!") }
+              else if (password === '') { setPasswordError("") }
+              else { setPasswordError("") }
     }
 
-    submitHandler(e) {
+    function submitHandler(e) {
         e.preventDefault();
 
-        const { history } = this.props;
-
-        const { email, password } = this.state;
+        const { history } = props;
 
     Backendless.UserService.login( email, password, false )
     .then(loggedInUser => {
-        console.log(loggedInUser)
+        
+        setUser(loggedInUser);
+
         M.toast({html: 'Hello, ' + loggedInUser['name'] + '!'})
         localStorage.name = loggedInUser['name'];
         localStorage.email = loggedInUser['email'];
@@ -79,26 +70,10 @@ class Login extends Component {
         console.error(error)
         M.toast({html: error.message})
    });
-        
-        // userService.userLogin(email, password, true)
-        // .then(user => {
-        //     this.setState({ current_user: user});
-        //     console.log(user);
-        // M.toast({html: 'Hello, ' + user['name'] + '!'})
-        // localStorage.name = user['name'];
-        // localStorage.email = user['email'];
-        // localStorage.id = user['objectId'];
-        // localStorage['user-token'] = user['user-token']
-        //     })
-        //     .catch(error => {
-        //         this.setState({ error: error })
-        //         M.toast({html: error.message})
-        //     });
+    
 
     };
 
-
-render() {
     return (
    <>
        <h2 className="page-title">LOG IN</h2>
@@ -107,23 +82,23 @@ render() {
                 <form>
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="email" type="email" className="form-input-field" name="email" value={this.state.email} onChange={this.changeHandlerEmail.bind(this)} />
+                            <input id="email" type="email" className="form-input-field" name="email" value={email} onChange={changeHandlerEmail} />
                             <Debounce ms={1000}>
-                                <span className="vaidation-error error-text-red">{this.state.login_email_error}</span>
+                                <span className="vaidation-error error-text-red">{login_email_error}</span>
                             </Debounce>
                         </div>
                     </div>
                     <div className="row">
                         <div className="form-field-group">
-                            <input id="password" type="password" className="form-input-field" name="password" value={this.state.password} onChange={this.changeHandlerPass.bind(this)} />
+                            <input id="password" type="password" className="form-input-field" name="password" value={password} onChange={changeHandlerPass} />
                             <Debounce ms={1000}>
-                                <span className="vaidation-error error-text-red">{this.state.login_password_error}</span>
+                                <span className="vaidation-error error-text-red">{login_password_error}</span>
                             </Debounce>
                         </div>
-                        {/* <span className="vaidation-error error-text-red form-error">SERVER ERROR MESSAGE HERE</span> */}
+                       
                     </div>
                     <div className="login-button">
-                        <button onClick={this.submitHandler.bind(this)} className="btn waves-effect waves-light login-btn" name="action"><i className="material-icons left">input</i>Login</button>
+                        <button onClick={submitHandler} className="btn waves-effect waves-light login-btn" name="action"><i className="material-icons left">input</i>Login</button>
                     </div>
                 </form>
             </section>
@@ -131,7 +106,6 @@ render() {
             <article></article>
     </>
   );
-}
 }
 
 export default Login;

@@ -6,9 +6,9 @@
     padding: 20px 20px;
   }
   
-  .profile-main-left {
+  /* .profile-main-left {
     display: flex;
-  }
+  } */
   
   .profile-main-header {
     font-weight: 600;
@@ -17,8 +17,12 @@
     font-size: 30px;
   }
 
+  .profile-main-my-slides-panel {
+    width: 960px;
+}
+
   .profile-main-my-slides-list {
-      width: 530px;
+      width: 730px;
   }
   
   .profile-main-left-last-tasks-list {

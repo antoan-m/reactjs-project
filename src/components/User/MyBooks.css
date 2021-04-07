@@ -6,9 +6,9 @@
     padding: 20px 20px;
   }
   
-  .profile-main-left {
+  /* .profile-main-left {
     display: flex;
-  }
+  } */
   
   .profile-main-header {
     font-weight: 600;
@@ -18,7 +18,7 @@
   }
 
   .profile-main-my-books-list {
-      width: 530px;
+      width: 960px;
   }
   
   .profile-main-left-last-tasks-list {

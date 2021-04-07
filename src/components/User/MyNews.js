@@ -50,7 +50,7 @@ class MyNews extends Component {
 
         <MyNewsPanel myNews={this.state.my_news} />
 
-        <AdminPanel userData={this.state.user_data} />
+        {/* <AdminPanel userData={this.state.user_data} /> */}
 
       </section>
     

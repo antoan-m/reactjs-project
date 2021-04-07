@@ -1,6 +1,6 @@
 import api from './api';
 import { useContext } from "react";
-import { UserContext } from "../../../services/UserContext";
+import { UserContext } from "../../../context/UserContext";
 
 
 export function userProfileService() {

@@ -6,10 +6,10 @@
     padding: 20px 20px;
   }
   
-  .profile-main-left {
+  /* .profile-main-left {
     display: flex;
   }
-  
+   */
   .profile-main-header {
     font-weight: 600;
     padding: 0 40px 20px 0;
@@ -17,8 +17,8 @@
     font-size: 30px;
   }
 
-  .profile-main-my-books-list {
-      width: 530px;
+  .profile-main-my-newsletter {
+      width: 960px;
   }
   
   .profile-main-left-last-tasks-list {

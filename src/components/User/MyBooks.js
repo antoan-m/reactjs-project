@@ -50,7 +50,7 @@ class MyBooks extends Component {
 
         <MyBooksPanel myBooks={this.state.my_books} />
 
-        <AdminPanel userData={this.state.user_data} />
+        {/* <AdminPanel userData={this.state.user_data} /> */}
 
       </section>
     

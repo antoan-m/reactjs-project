@@ -6,9 +6,13 @@ import booksLikesService from '../../services/booksLikesService';
 import booksCartService from '../../services/booksCartService';
 import { Component } from 'react';
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 
 class BookArticleDetails extends Component {
+
+  static contextType = UserContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +21,8 @@ class BookArticleDetails extends Component {
       already_in_wishlist: '',
       already_in_likes: '',
       likes: '',
-      already_in_cart: false
+      already_in_cart: false,
+      user_type: ''
   };
 }
 
@@ -25,7 +30,9 @@ class BookArticleDetails extends Component {
 book_id = this.props.match.params.id;
 
 componentDidMount() {
-
+  
+  this.setState({ user_type: this.context[0].user_type })
+  
   bookService.getBookData(this.book_id)
   .then(bookArticleDetails => {
     this.setState({ bookArticleDetails: bookArticleDetails, likes: bookArticleDetails.likes });
@@ -106,7 +113,23 @@ render() {
      <article className="book-article-details">
       <article className="book-article-details-top">
         <article className="book-article-details-image">
-          <img src={this.state.bookArticleDetails.image} alt={this.state.bookArticleDetails.title} />
+          {/* <img src={this.state.bookArticleDetails.image} alt={this.state.bookArticleDetails.title} /> */}
+          <div className="book-details-cover-container">
+		<div className="book-itm">
+			<div className="book-itm-front">
+				<div className="book-itm-front-cover">
+                    <img src={this.state.bookArticleDetails.image} alt={this.state.bookArticleDetails.title} />
+                    
+				</div>
+			</div>
+			<div className="left-side">
+				<h2>
+					<span>{this.state.bookArticleDetails.author}</span>
+					<span>{this.state.bookArticleDetails.title}</span>
+				</h2>
+			</div>
+		</div>
+	</div>
         </article>
         <article className="book-article-details-info">
             <h1 className="book-article-details-info-title">{this.state.bookArticleDetails.title}</h1>
@@ -119,15 +142,15 @@ render() {
               <p className="book-article-details-info-bullets-bullet"><span className="book-article-details-info-bullets-bullet-label">Pages: </span>{this.state.bookArticleDetails.pages}</p>
               <p className="book-article-details-info-bullets-bullet"><span className="book-article-details-info-bullets-bullet-label">Year: </span>{this.state.bookArticleDetails.year}</p>
             </article>
+            
+        {this.state.user_type != 'admin' ?
         <article className="book-article-details-info-buttons">
-
         {!this.state.already_in_cart ? <span className="book-article-details-info-buttons-cart" title="Add to Cart">
             <button onClick={() => {this.addToCartHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Add to cart</button>
 	        </span> :
           <span className="book-article-details-info-buttons-cart" title="Add to Cart">
             <button onClick={() => {this.addToCartHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Added to cart</button>
 	        </span>}
-         
           <article className="book-article-details-info-buttons-wishlist">
             {!this.state.already_in_wishlist ? <span className="book-article-details-info-buttons-wishlist-link" title="Add book to your Wishlist">
             <button onClick={() => {this.wishlistArticleHandler(this, this.state.bookArticleDetails.objectId)}} type="button" className="btn waves-effect btn-large book-article-details-info-buttons-wishlist-btn">
@@ -150,7 +173,15 @@ render() {
             <span className="book-article-details-info-buttons-like-btn-text">Liked | {this.state.likes}</span>
             </button>}
           </article>
-        </article>  
+        </article>
+        :
+        <article className="book-article-details-info-buttons">
+          <button className="btn waves-effect btn-large book-article-details-info-buttons-like-btn" style={{width: '655px'}}>
+              <i className="material-icons left remove-from-likes-btn-icon">sentiment_very_satisfied</i>
+            <span className="book-article-details-info-buttons-like-btn-text" style={{width: '655px'}}>Likes | {this.state.likes}</span>
+            </button>
+        </article>
+        }
      </article>
      </article>
      <article className="book-article-details-bottom">

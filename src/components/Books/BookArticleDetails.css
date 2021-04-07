@@ -8,6 +8,7 @@
   margin-top: 56px;
   border-top: 1px solid #ddd;
   padding-top: 40px;
+  max-width: 1078px;
 }
 
 .book-article-details-top {
@@ -16,6 +17,7 @@
   border-bottom: 1px solid #ddd;
   margin-bottom: 35px;
   position: relative;
+  max-width: 1060px
 }
 
 .book-article-details-bottom {
@@ -52,7 +54,7 @@
   font-size: 30px;
   font-weight: 600;
   position: absolute;
-  right: 66px;
+  right: 15px;
   top: 250px;
   padding: 10px 30px;
   background: linear-gradient(220deg, transparent 24px, #f4f1de 0);
@@ -165,4 +167,170 @@
 .remove-from-wishlist-btn-icon,
 .remove-from-likes-btn-icon {
   color: #81b29a;
+}
+
+
+
+/* BOOK COVER */
+
+.book-details-cover-container {
+  z-index: 1;
+  perspective: 3000px;
+}
+
+.book-details-cover-container .book-itm {
+  position: relative;
+  display: block;
+  width: 310px;
+  height: 450px;
+  /* margin: 5% auto; */
+  border-radius: 2px 4px 4px 2px;
+  /* background: linear-gradient(45deg, #dad5dc 0%, #f2ebf4 100%); */
+  font-family: acumin-pro, sans-serif;
+  /* -webkit-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153, 0.6);
+  -moz-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153, 0.6);
+  box-shadow: 13px 13px 8px 0px rgba(151, 146, 153, 0.6); */
+  font-weight: 400;
+  color: #2b2b2b;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.5s;
+  -moz-transition: -moz-transform 0.5s;
+  transition: transform 0.5s;
+}
+
+.book-details-cover-container .book-itm:hover {
+  -webkit-transform: rotate3d(0, 1, 0, 35deg);
+  -moz-transform: rotate3d(0, 1, 0, 35deg);
+  transform: rotate3d(0, 1, 0, 35deg);
+}
+
+.book-details-cover-container .book-itm > div,
+.book-details-cover-container .book-itm-front > div {
+  display: block;
+  position: absolute;
+}
+
+.book-details-cover-container .book-itm-front {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 0% 50%;
+  -moz-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-transition: -webkit-transform 0.5s;
+  -moz-transition: -moz-transform 0.5s;
+  transition: transform 0.5s;
+  -webkit-transform: translate3d(0, 0, 20px);
+  -moz-transform: translate3d(0, 0, 20px);
+  transform: translate3d(0, 0, 20px);
+  z-index: 10;
+}
+
+.book-details-cover-container .book-itm-front > div {
+  width: 310px;
+  height: 450px;
+}
+
+.book-details-cover-container .left-side {
+  width: 40px;
+  left: -20px;
+  height: 450px;
+  background-color: rgba(232, 229, 234);
+  -webkit-transform: rotate3d(0, 1, 0, -90deg);
+  -moz-transform: rotate3d(0, 1, 0, -90deg);
+  transform: rotate3d(0, 1, 0, -90deg);
+}
+
+.book-itm-front-cover svg {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  margin-top: -100px;
+  margin-left: -110px;
+  width: 300px;
+}
+
+#eye-right {
+  padding-left: 185px;
+}
+
+.book-itm-front-cover .num-up {
+  position: absolute;
+  top: 64px;
+  left: 47px;
+  letter-spacing: 50px;
+  transform: rotate(-90deg);
+}
+
+.book-itm-front-cover .num-down {
+  position: relative;
+  top: 65px;
+  left: -95px;
+  transform: rotate(-90deg);
+}
+
+.author {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 400;
+  position: absolute;
+  top: 475px;
+  left: 50px;
+  opacity: 0.8;
+}
+
+.book-details-cover-container .book-itm-front > div {
+  border-radius: 0 3px 3px 0;
+  /* box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+.book-details-cover-container .book-itm-front:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: -1px;
+  width: 1px;
+}
+
+.book-details-cover-container .book-itm-front-cover:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  width: 3px;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.book-details-cover-container h2 {
+  width: 450px;
+  height: 40px;
+  color: #2b2b2b;
+  font-size: 15px;
+  line-height: 40px;
+  padding-right: 10px;
+  text-align: right;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: rotate(90deg) translateY(-40px);
+  -moz-transform: rotate(90deg) translateY(-40px);
+  transform: rotate(90deg) translateY(-40px);
+}
+
+.book-itm-front-cover {
+  /* background: linear-gradient(45deg, #dad5dc 0%, #f2ebf4 100%); */
+}
+
+.left-side h2 span:first-child {
+  font-weight: 600;
+  font-size: 13px;
+  padding-right: 20px;
+}
+
+.left-side h2 span:last-child {
+  font-family: acumin-pro, sans-serif;
 }

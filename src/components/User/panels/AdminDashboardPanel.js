@@ -3,9 +3,13 @@ import cartService from "../../../services/cartService";
 import React, { useState, useEffect } from 'react';
 import Backendless from 'backendless';
 import newsletterService from "../../../services/newsletterService";
-
+import MyOrdersPanel from "../../User/panels/MyOrdersPanel"
+import { UserContext } from "../../../context/UserContext";
+import { useContext } from 'react';
 
 function AdminDashboardPanel(props) {
+
+    const [user, setUser, admin, setAdmin] = useContext(UserContext);
   
     // const [user, setUser] = useState(null);
     const [total_orders, setTotalOrders] = useState();
@@ -56,9 +60,10 @@ function AdminDashboardPanel(props) {
            .then(result => setUsersSubscribed(result.subscribers.split(',').length));
         }
     })
-
+console.log(user.user_type)
 return (
-
+    <>
+    {user.user_type == 'admin' ?
 <section className="profile-main-admin-dashboard">
         <article className="profile-main-admin-dashboard-row">
             <article className="admin-dashboard-sales admin-panel">
@@ -80,7 +85,12 @@ return (
                 <p>{users_subscribed}</p>
             </article>
         </article>   
-</section>
+</section> : 
+    <section className="user-profile-logo">
+        <img src={process.env.PUBLIC_URL + '/user-profile-logo.jpg'} alt="Book Store" />
+    </section> 
+    }
+</>
 )
 }
 

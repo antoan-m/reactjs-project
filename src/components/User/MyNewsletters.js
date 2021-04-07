@@ -50,7 +50,7 @@ render() {
 
         <MyNewslettersPanel myNewsletters={this.state.newsletter_subscribers} userData={this.state.user_data} />
 
-        <AdminPanel userData={this.state.user_data} />
+        {/* <AdminPanel userData={this.state.user_data} /> */}
 
       </section>
     

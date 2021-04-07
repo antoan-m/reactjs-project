@@ -74,9 +74,9 @@ return fetch(`${api.wishlist}`, requestOptions)
         });
 }
 
-function removeFromWishlist(book_id) {
+function removeFromWishlist(ownerId, book_id) {
 
-    let ownerId = localStorage.getItem("id");
+    // let ownerId = localStorage.getItem("id");
 
     let query = `?where=ownerId%3D'${ownerId}'%26%26book_id%3D'${book_id}'`;
 
@@ -109,13 +109,13 @@ fetch(`${api.wishlist}${query}`, requestOptions)
             "user-token", userToken
         );
 
-        var requestOptions = {
+        var requestOptionsDel = {
         method: 'DELETE',
         headers: myHeaders,
         redirect: 'follow'
 };
 
-return fetch(`${api.wishlist}/${result[0].objectId}`, requestOptions)
+return fetch(`${api.wishlist}/${result[0].objectId}`, requestOptionsDel)
   .then(response => response.json())
   .then(result => {
     M.toast({ html: "Book removed from your Wishlist!" });

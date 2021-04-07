@@ -51,7 +51,7 @@ class Orders extends Component {
 
         <MyOrdersPanel userData={this.state.user_data} myOrders={this.state.orders} />
 
-        <AdminPanel userData={this.state.user_data} />
+        {/* <AdminPanel userData={this.state.user_data} /> */}
 
     </section>
 </div>

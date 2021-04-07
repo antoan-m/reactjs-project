@@ -156,7 +156,7 @@ function userLogout(token) {
   // })
   //}
 
-  function userUpdate(userId, name, country, address, phone) {
+  function userUpdate(userId, name, password, country, address, phone) {
     var myHeaders = new Headers();
     myHeaders.append(
       "Content-Type", "application/json",
@@ -165,6 +165,7 @@ function userLogout(token) {
     
     var raw = JSON.stringify({
       "name": name,
+      "password": password,
       "country": country,
       "address": address,
       "phone": phone

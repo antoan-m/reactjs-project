@@ -162,7 +162,7 @@ submitHandler(e) {
         return this.setState({country: this.state.user_data.country});
     };
 
-    userService.userUpdate(this.state.user_data.objectId, name, country, address, phone);
+    userService.userUpdate(this.state.user_data.objectId, name, password, country, address, phone);
     
         if (history) { history.push('/') };
     };

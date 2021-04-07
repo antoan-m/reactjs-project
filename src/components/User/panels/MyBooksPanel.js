@@ -11,7 +11,7 @@ function MyBooksPanel(props) {
      
       
   return (
-<section className="profile-main-my-books">
+<section className="profile-main-my-books-panel">
           <h2 className="profile-main-header">My Books</h2>
                 <ul className="profile-main-my-books-list">
                 {props.myBooks.map(x => {

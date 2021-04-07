@@ -49,3 +49,11 @@
   position: relative;
   top: 60px;
 }
+
+.user-profile-logo {
+  width: 900px;
+}
+
+.user-profile-logo img {
+  width: 860px;
+}

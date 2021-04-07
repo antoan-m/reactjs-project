@@ -6,9 +6,9 @@
   padding: 20px 20px;
 }
 
-.profile-main-left {
+/* .profile-main-left {
   display: flex;
-}
+} */
 
 .profile-main-header {
   font-weight: 600;
@@ -17,8 +17,8 @@
   font-size: 30px;
 }
 
-.profile-main-my-books {
-  width: 670px;
+.profile-main-my-orders-panel {
+  width: 960px;
 }
 
 .profile-main-my-books-list {

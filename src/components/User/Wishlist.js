@@ -71,7 +71,7 @@ render() {
 
         <WishlistPanel myWishlist={this.state.my_wishlist_ids} />
 
-        <AdminPanel userData={this.state.user_data} />
+        {/* <AdminPanel userData={this.state.user_data} /> */}
 
     </section>
 </div>

@@ -11,7 +11,7 @@ function MySlidesPanel(props) {
      
 
   return (
-<section className="profile-main-my-slides">
+<section className="profile-main-my-slides-panel">
           <h2 className="profile-main-header">My Slides</h2>
                 <ul className="profile-main-my-slides-list">
                 {props.mySlides.map(x => {

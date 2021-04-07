@@ -8,7 +8,7 @@ function MyOrdersPanel(props) {
 
 return (
  
-<section className="profile-main-my-books">
+<section className="profile-main-my-orders-panel">
           <h2 className="profile-main-header">My Orders</h2>
           <li className="profile-main-my-books-list-item-main">
                      <article className="profile-main-my-books-list-item">   

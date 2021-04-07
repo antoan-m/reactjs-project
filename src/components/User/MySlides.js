@@ -50,7 +50,7 @@ class MySlides extends Component {
 
         <MySlidesPanel mySlides={this.state.my_slides} />
 
-        <AdminPanel userData={this.state.user_data} />
+        {/* <AdminPanel userData={this.state.user_data} /> */}
 
       </section>
     
