@@ -137,9 +137,8 @@ console.log('logged: ', loggedIn);
         <ProtectedRoute path="/user/profile/orders/:id" loggedIn={loggedIn} exact component={Order} />
         <ProtectedRoute path="/user/profile/orders-seller" loggedIn={loggedIn} exact component={OrdersSeller} />
         <ProtectedRoute path="/user/profile/orders-seller/:id" loggedIn={loggedIn} exact component={OrderSeller} />
-        <ProtectedRoute path="/user/profile/cart" exact component={Cart} />
         <ProtectedRoute path="/user/profile/wishlist" loggedIn={loggedIn} exact component={Wishlist} />
-        {/* <Route path="/user/profile/admin" loggedIn={loggedIn} exact component={Admin} /> */}
+        <Route path="/user/profile/cart" exact component={Cart} />
         <Route path="/" component={PageNotFound} />
       </Switch>
       <Newsletter />
