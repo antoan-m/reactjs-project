@@ -6,6 +6,7 @@ import booksLikesService from '../../services/booksLikesService';
 import booksCartService from '../../services/booksCartService';
 import { Component } from 'react';
 import { Link } from "react-router-dom";
+import M from 'materialize-css';
 import { UserContext } from "../../context/UserContext";
 
 
@@ -64,6 +65,8 @@ wishlistArticleHandler(e, book_id) {
 
 let userId = localStorage.getItem("id");
 
+if (this.context[2]) {
+
 if (!this.state.already_in_wishlist) {
 booksWishlistService.addToWishlist(userId, this.state.bookArticleDetails.objectId, this.state.bookArticleDetails.title, this.state.bookArticleDetails.author);
 booksWishlistService.checkIfInWishlist(userId, book_id);
@@ -72,6 +75,9 @@ this.setState({ already_in_wishlist: true });
   booksWishlistService.removeFromWishlist(userId, book_id);
   this.setState({ already_in_wishlist: false })
   }
+} else {
+  return M.toast({ html: "You are not logged in!" });
+}
 }
 
 likeArticleHandler(e, book_id) {
@@ -151,6 +157,7 @@ render() {
           <span className="book-article-details-info-buttons-cart" title="Add to Cart">
             <button onClick={() => {this.addToCartHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Added to cart</button>
 	        </span>}
+        
           <article className="book-article-details-info-buttons-wishlist">
             {!this.state.already_in_wishlist ? <span className="book-article-details-info-buttons-wishlist-link" title="Add book to your Wishlist">
             <button onClick={() => {this.wishlistArticleHandler(this, this.state.bookArticleDetails.objectId)}} type="button" className="btn waves-effect btn-large book-article-details-info-buttons-wishlist-btn">

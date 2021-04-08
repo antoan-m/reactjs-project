@@ -125,7 +125,7 @@ function getWeeklyDealsBooks(limit) {
 
 function getCategories() {
     return fetch(
-            `https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=category&groupBy=category&sortBy=category`, {
+            `${api.books}?property=category&groupBy=category&sortBy=category`, {
                 headers: { "Access-Control-Allow-Origin": "*" },
             }
         )
@@ -135,7 +135,7 @@ function getCategories() {
 
 function getAuthors() {
     return fetch(
-            `https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=author&groupBy=author&sortBy=author`, {
+            `${api.books}?property=author&groupBy=author&sortBy=author`, {
                 headers: { "Access-Control-Allow-Origin": "*" },
             }
         )
@@ -145,7 +145,7 @@ function getAuthors() {
 
 function getFormats() {
     return fetch(
-            `https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=format&groupBy=format&sortBy=format`, {
+            `${api.books}?property=format&groupBy=format&sortBy=format`, {
                 headers: { "Access-Control-Allow-Origin": "*" },
             }
         )
@@ -155,7 +155,7 @@ function getFormats() {
 
 function getPrices() {
     return fetch(
-            `https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?property=price&groupBy=price&sortBy=price`, {
+            `${api.books}?property=price&groupBy=price&sortBy=price`, {
                 headers: { "Access-Control-Allow-Origin": "*" },
             }
         )
@@ -165,7 +165,7 @@ function getPrices() {
 
 function sortByNewest() {
     return fetch(
-            `https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?sortBy=created%20desc`, {
+            `${api.books}?sortBy=created%20desc`, {
                 headers: { "Access-Control-Allow-Origin": "*" },
             }
         )
@@ -175,7 +175,7 @@ function sortByNewest() {
 
 function sortByOldest() {
     return fetch(
-            `https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?sortBy=created%20`, {
+            `${api.books}?sortBy=created%20`, {
                 headers: { "Access-Control-Allow-Origin": "*" },
             }
         )
@@ -185,7 +185,7 @@ function sortByOldest() {
 
 function sortByPriceAsc() {
     return fetch(
-            `https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?sortBy=price%20asc`, {
+            `${api.books}?sortBy=price%20asc`, {
                 headers: { "Access-Control-Allow-Origin": "*" },
             }
         )
@@ -195,7 +195,7 @@ function sortByPriceAsc() {
 
 function sortByPriceDesc() {
     return fetch(
-            `https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/books?sortBy=price%20desc`, {
+            `${api.books}?sortBy=price%20desc`, {
                 headers: { "Access-Control-Allow-Origin": "*" },
             }
         )

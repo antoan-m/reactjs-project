@@ -13,7 +13,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-return fetch(`${api.newsletter}/806D122F-68AB-4492-8B86-1160EE870E88`, requestOptions)
+return fetch(`${api.newsletter}/D01ED013-DBA0-43D7-BED0-14E241F87934`, requestOptions)
   .catch(error => {console.log('error', error);
   M.toast({html: error.message})
 })
@@ -39,7 +39,7 @@ function subscribeNewsletter(updated_subscribers, email) {
         redirect: 'follow'
       };
 
-return fetch(`${api.newsletter}/806D122F-68AB-4492-8B86-1160EE870E88`, requestOptions)
+return fetch(`${api.newsletter}/D01ED013-DBA0-43D7-BED0-14E241F87934`, requestOptions)
 .catch(error => {console.log('error', error);
   M.toast({html: error.message})
 })
@@ -58,7 +58,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-return fetch(`${api.newsletter}/806D122F-68AB-4492-8B86-1160EE870E88?property=subscribers`, requestOptions)
+return fetch(`${api.newsletter}/D01ED013-DBA0-43D7-BED0-14E241F87934?property=subscribers`, requestOptions)
   .then(result => result.json())
   .catch(error => {console.log('error', error);
   M.toast({html: error.message})
@@ -89,7 +89,7 @@ function updateNewsletter(email, updated_subscribers) {
       redirect: 'follow'
     };
 
-return fetch(`${api.newsletter}/806D122F-68AB-4492-8B86-1160EE870E88`, requestOptions)
+return fetch(`${api.newsletter}/D01ED013-DBA0-43D7-BED0-14E241F87934`, requestOptions)
     .then(result => result.json())
     .catch(error => {console.log('error', error)
     M.toast({html: error.message})
@@ -141,7 +141,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-return fetch(`${api.newsletter}/806D122F-68AB-4492-8B86-1160EE870E88?property=subscribers`, requestOptions)
+return fetch(`${api.newsletter}/D01ED013-DBA0-43D7-BED0-14E241F87934?property=subscribers`, requestOptions)
   .then(response => response.json())
   .catch(error => console.log('error', error));
 }

@@ -1,6 +1,7 @@
 import "./NewsArticleDetails.css";
 import { Component } from 'react';
 import BooksSidebar from "../Books/BooksSidebar/BooksSidebar"
+import api from "../../services/api";
 
 class NewsArticleDetails extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class NewsArticleDetails extends Component {
 articleID = this.props.match.params.id;
 
 componentDidMount() {
-    fetch(`https://eu-api.backendless.com/7ECE9EFE-DB9E-D320-FF17-04C136319800/D25AC5BB-3B9F-4F71-866A-6F9F6ED00656/data/news/${this.articleID}`, {
+    fetch(`${api.news}/${this.articleID}`, {
         headers: { 'Access-Control-Allow-Origin': "*" }
 })
         .then(res => res.json())

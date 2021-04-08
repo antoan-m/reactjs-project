@@ -8,7 +8,7 @@ import Backendless from 'backendless'
 import ScrollToTop from 'react-router-scroll-top'
 
 
-Backendless.initApp('7ECE9EFE-DB9E-D320-FF17-04C136319800', 'D25AC5BB-3B9F-4F71-866A-6F9F6ED00656');
+Backendless.initApp('C7A24F3C-33CE-35BA-FF4A-7C481F350D00', '7CE8EFC6-36B6-40D6-A318-0A35F1491D94');
 
 Backendless.serverURL = 'https://eu-api.backendless.com';
 

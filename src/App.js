@@ -50,7 +50,7 @@ import Admin from "./components/User/Admin";
 import Cart from "./components/User/Cart";
 import PageNotFound from "./components/Pages/PageNotFound";
 import userService from "./services/userService";
-import { ProtectedRoute, ProtectedRouteUser } from "./context/ProtectedRoute";
+import { ProtectedRoute, ProtectedRouteUser } from "./components/utils/ProtectedRoute";
 
 
 export function App() {

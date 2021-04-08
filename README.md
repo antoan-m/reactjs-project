@@ -45,3 +45,11 @@ used debounce component for input feedback
 ### `Dynamic Search`
 
 ### `Dynamic Filters`
+
+### `Context API for User state`
+
+### `Persistent User state`
+
+### `Protected Routes`
+
+### `Deployed`

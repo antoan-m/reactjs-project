@@ -54,7 +54,7 @@ h6 {
   background-color: #f4f1de;
 }
 
-
+.site-loader,
 .search-result-panel,
 .news-article-details,
 .book-details,
@@ -85,4 +85,12 @@ h6 {
     100% {
         opacity: 1;
      }
+}
+
+
+/* SITE LOADER */
+#root {
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
