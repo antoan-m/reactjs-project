@@ -4,6 +4,7 @@ import React from 'react';
 import contactService from "../../services/contactService";
 import { contactMap } from "../../services/contactMapService";
 import Debounce from 'react-debounce-component';
+import { Link } from 'react-router-dom';
 
 
 class Contact extends Component {
@@ -140,8 +141,8 @@ render() {
     <>
       <h2 className="page-title contact">CONTACT US</h2>
       <article className="about-us about-us">
-          <article id="contact-map-placeholder" className="contact-map" style={{backgroundColor: `process.env.PUBLIC_URL + '/payments.png'}`}}>
 
+          <article id="contact-map-placeholder" className="contact-map" style={{display: this.state.mapbox, backgroundColor: `process.env.PUBLIC_URL + '/payments.png'}`}}>
           </article>
 
           <h2 className="contact-h2">Contact Information</h2>
