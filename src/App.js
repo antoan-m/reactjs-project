@@ -46,8 +46,9 @@ import Order from "./components/User/Order";
 import OrdersSeller from "./components/User/OrdersSeller";
 import OrderSeller from "./components/User/OrderSeller";
 import Wishlist from "./components/User/Wishlist";
-import Admin from "./components/User/Admin";
+import CartSuccess from "./components/User/CartSuccess";
 import Cart from "./components/User/Cart";
+
 import PageNotFound from "./components/Pages/PageNotFound";
 import userService from "./services/userService";
 import { ProtectedRoute, ProtectedRouteUser } from "./components/utils/ProtectedRoute";
@@ -139,6 +140,7 @@ console.log('logged: ', loggedIn);
         <ProtectedRoute path="/user/profile/orders-seller/:id" loggedIn={loggedIn} exact component={OrderSeller} />
         <ProtectedRoute path="/user/profile/wishlist" loggedIn={loggedIn} exact component={Wishlist} />
         <Route path="/user/profile/cart" exact component={Cart} />
+        <Route path="/user/profile/cart-success" exact component={CartSuccess} />
         <Route path="/" component={PageNotFound} />
       </Switch>
       <Newsletter />

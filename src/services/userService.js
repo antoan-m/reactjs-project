@@ -13,42 +13,6 @@ function userRegister(user) {
   .catch(error => {
     M.toast({html: error.message})
     });
-
-
-  // var myHeaders = new Headers();
-  // myHeaders.append(
-  //   "Content-Type", "application/json",
-  //   "Access-Control-Allow-Origin", "*",
-  //   );
-  
-  // var raw = JSON.stringify({
-  //   "name": name,
-  //   "email": email,
-  //   "password": password,
-  //   "country": country,
-  //   "address": address,
-  //   "phone": phone,
-  //   "orders": "",
-  //   "cart": "",
-  //   "user_type": "user"
-  // });
-  
-  // var requestOptions = {
-  //   method: 'POST',
-  //   headers: myHeaders,
-  //   body: raw,
-  //   redirect: 'follow'
-  // };
-  
-  // return fetch(`${api.users}/register`, requestOptions)
-  //   .then(response => response.json())
-  //   .then(result => {
-  //     console.log(result);
-  //     M.toast({html: 'Registration successful!'})
-  // })
-  //   .catch(error => {console.log('error', error);
-  //     M.toast({html: error.message})
-  // })
   }
 
 

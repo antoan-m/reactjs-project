@@ -12,8 +12,6 @@ import { UserContext } from "../../context/UserContext";
 
 class BookArticleDetails extends Component {
 
-  static contextType = UserContext;
-
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +21,8 @@ class BookArticleDetails extends Component {
       already_in_likes: '',
       likes: '',
       already_in_cart: false,
-      user_type: ''
+      user_type: '',
+      updateCart: this.props.updateCart
   };
 }
 
@@ -152,7 +151,7 @@ render() {
         {this.state.user_type != 'admin' ?
         <article className="book-article-details-info-buttons">
         {!this.state.already_in_cart ? <span className="book-article-details-info-buttons-cart" title="Add to Cart">
-            <button onClick={() => {this.addToCartHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Add to cart</button>
+            <button onClick={() => {this.addToCartHandler(this, this.state.bookArticleDetails.objectId, this.state.updateCart)}} className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Add to cart</button>
 	        </span> :
           <span className="book-article-details-info-buttons-cart" title="Add to Cart">
             <button onClick={() => {this.addToCartHandler(this, this.state.bookArticleDetails.objectId)}} className="btn waves-effect btn-large book-article-details-info-buttons-cart-btn">Added to cart</button>
@@ -203,5 +202,7 @@ render() {
   );
 }
 }
+
+BookArticleDetails.contextType = UserContext;
 
 export default BookArticleDetails;

@@ -1,8 +1,6 @@
 import api from "./api";
 import M from "materialize-css";
 
-
-
 function checkIfInCart(book_id) {
 
     let cart = localStorage.getItem('cart');
@@ -33,7 +31,7 @@ function getItemsInCart() {
 
 
 function addToCart(book_id) {
-   
+
     let cart = localStorage.getItem('cart');
 
   if (!cart) {

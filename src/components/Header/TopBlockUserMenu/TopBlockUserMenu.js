@@ -31,9 +31,11 @@ function TopBlockUserMenu(props) {
            </li>: ''}
            {cart ?
            <li className="header-top-block-right-item">
-             <NavLink to="/user/profile/cart" exact className="header-top-navigation-menu-item-active">Cart ({cartItems.length})</NavLink>
+             <NavLink to="/user/profile/cart" exact className="header-top-navigation-menu-item-active">Cart</NavLink>
            </li>
-           : <li className="header-top-block-right-item"><span className="header-top-navigation-menu-item-active">Cart (0)</span></li> }
+           : <li className="header-top-block-right-item">
+             <NavLink to="/user/profile/cart" exact className="header-top-navigation-menu-item-active">Cart</NavLink>
+           </li> }
          </ul> : '' }
          {user.user_type == 'admin' ?
         <ul className="header-top-block-right">

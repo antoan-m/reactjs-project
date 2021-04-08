@@ -164,7 +164,7 @@ return (
                     <p>Please, confirm your order...</p>
                   </div>
                   <div className="modal-footer">
-                    <Link to="/user/profile/orders" onClick={(e) => {orderHandler(e)}} className="modal-close waves-effect waves-green btn-flat agree-btn">CONFIRM</Link>
+                    <Link to="/user/profile/cart-success" onClick={(e) => {orderHandler(e)}} className="modal-close waves-effect waves-green btn-flat agree-btn">CONFIRM</Link>
                   </div>
                 </div>
                 {!cartEmpty && !loggedIn ?
