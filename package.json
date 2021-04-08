@@ -10,6 +10,7 @@
     "flickity": "^2.2.2",
     "mapbox-gl": "^2.2.0",
     "materialize-css": "^1.0.0-rc.2",
+    "netlify-cli": "^3.16.2",
     "react": "^17.0.1",
     "react-debounce-component": "^1.0.0",
     "react-dom": "^17.0.1",

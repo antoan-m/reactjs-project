@@ -89,7 +89,7 @@ function editNews(news_id, title, short_description, long_description, image) {
 function getMyNews(user_id) {
     let userToken = localStorage.getItem("user-token");
 
-    let query = `?where=ownerId%3D'2FAEC5F6-C59A-4CD4-8FFD-24522DB02CF3'&sortBy=created%20desc`;
+    let query = `?where=ownerId%3D'7AEA9A8E-54D1-43CC-AEDC-9EBF9229E1C8'&sortBy=created%20desc`;
 
     var myHeaders = new Headers();
     myHeaders.append(

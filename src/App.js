@@ -25,6 +25,7 @@ import News from "./components/News/News";
 import NewsArticleDetails from "./components/News/NewsArticleDetails";
 import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
+import ContactBG from "./components/Pages/ContactBG";
 import Terms from "./components/Pages/Terms";
 import Login from "./components/User/Login";
 import Register from "./components/User/Register";
@@ -117,6 +118,7 @@ console.log('logged: ', loggedIn);
         <Route path="/news/details/:id" exact component={NewsArticleDetails} />
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
+        <Route path="/contact-bg" exact component={ContactBG} />
         <Route path="/terms" exact component={Terms} />
         <ProtectedRouteUser path="/user/login" loggedIn={loggedIn} exact component={Login} />
         <ProtectedRouteUser path="/user/register" loggedIn={loggedIn} exact component={Register} />
