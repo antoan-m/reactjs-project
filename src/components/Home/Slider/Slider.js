@@ -52,7 +52,7 @@ function Slider() {
        </section>
        <section className="home-main-sliders-right">
          <article className="home-main-sliders-small">
-         <NavLink to="/news/F2EEF62C-8FE1-4881-839B-BEF4F08B625E">
+         <NavLink to="/news/81DB6189-F694-4382-893E-8D94E309B0E8">
              <img src="slide-small-1.jpg" className="carousel-image" alt="" />
         </NavLink>
          </article>
