@@ -2,6 +2,7 @@ import "./EditBook.css";
 import { Component } from 'react';
 import bookService from '../../services/booksService';
 import Debounce from 'react-debounce-component';
+import M from "materialize-css";
 
 class EditBook extends Component {
     constructor(props) {
@@ -286,20 +287,25 @@ class EditBook extends Component {
             return this.setState({ addbook_price_error: "Price is empty!" });
         };
 
-        bookService.editBook(this.state.book_data.objectId, title, author, category, short_description, long_description, image, format, pages, year, price, rrp, featured, promo);
+        bookService.editBook(this.state.book_data.objectId, title, author, category, short_description, long_description, image, format, pages, year, price, rrp, featured, promo)
+        .then((result) => {
+            M.toast({ html: "Book edited successfully!" });
+             if (history) { history.push('/user/profile/mybooks', result) };
+        })
 
-        if (history) { history.push('/user/profile/mybooks') };
+       
     };
 
     cancelHandler = () => {
         const { history } = this.props;
-        if (history) { history.push(`/user/profile/mybooks/`) };
+
+        if (history) { history.push('/user/profile/mybooks') };
     };
 
 
 
     render() {
-        // console.log(this.state);
+        
         return (
             <>
                 <h2 className="page-title">EDIT BOOK</h2>

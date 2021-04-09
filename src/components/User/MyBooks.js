@@ -39,9 +39,9 @@ class MyBooks extends Component {
     }
   }
 
-  render() {
-    // console.log(this.state.my_books);
-  return (
+render() {
+    return (
+      
 <div className="profile">
 
     <section className="profile-main">

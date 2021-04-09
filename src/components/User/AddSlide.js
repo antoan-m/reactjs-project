@@ -3,6 +3,7 @@ import { Component } from 'react';
 import slidesService from '../../services/slidesService';
 import React from 'react';
 import Debounce from 'react-debounce-component';
+import M from 'materialize-css';
 
 class AddSlide extends Component {
     constructor(props) {
@@ -150,9 +151,12 @@ submitHandler(e) {
         return this.setState({addSlide_url_error: "URL is required!"});
     };
 
-    slidesService.addSlide(title, description, cover, background, url, priority, published);
-    
-        if (history) { history.push('/user/profile/myslides') };
+    slidesService.addSlide(title, description, cover, background, url, priority, published)
+    .then((result) => {
+        M.toast({ html: "Slide added successfully!" });
+        if (history) { history.push('/user/profile/myslides', result) };
+    })
+
     };
 
     submitClearHandler = () => { 

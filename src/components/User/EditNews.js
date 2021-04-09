@@ -2,6 +2,7 @@ import "./EditNews.css";
 import { Component } from 'react';
 import newsService from '../../services/newsService';
 import Debounce from 'react-debounce-component';
+import M from 'materialize-css';
 
 class EditNews extends Component {
     constructor(props) {
@@ -112,9 +113,11 @@ class EditNews extends Component {
             return this.setState({ addnews_image_error: "Image is empty!" });
         };
 
-        newsService.editNews(this.state.news_data.objectId, title, short_description, long_description, image);
-
-        if (history) { history.push('/user/profile/mynews') };
+        newsService.editNews(this.state.news_data.objectId, title, short_description, long_description, image)
+        .then((result) => {
+            M.toast({ html: "News edited successfully!" });
+            if (history) { history.push('/user/profile/mynews', result) };
+        })
     };
 
     cancelHandler = () => {
@@ -125,7 +128,7 @@ class EditNews extends Component {
 
 
     render() {
-        // console.log(this.state);
+        
         return (
             <>
                 <h2 className="page-title">EDIT NEWS ARTICLE</h2>

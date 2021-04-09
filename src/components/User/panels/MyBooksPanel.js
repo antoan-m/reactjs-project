@@ -23,9 +23,9 @@ function MyBooksPanel(props) {
                      </article>
                      <article className="profile-main-my-books-list-item-details">
                          <h5 className="profile-main-my-books-list-item-title">{x.title}</h5>
-                         <p className="profile-main-my-books-list-item-author">Author: {x.author}</p>
-                         <p className="profile-main-my-books-list-item-category">Category: {x.category}</p>
-                         <p className="profile-main-my-books-list-item-price">Price: {x.price}</p>
+                         <p className="profile-main-my-books-list-item-author">{x.author}</p>
+                         <p className="profile-main-my-books-list-item-category">{x.category}</p>
+                         <p className="profile-main-my-books-list-item-price">{x.price}</p>
                      </article>
                      </article>
                      <article className="profile-main-my-books-list-item-book-buttons">

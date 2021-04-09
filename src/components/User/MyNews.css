@@ -63,7 +63,9 @@
   }
   
   .profile-main-my-news-list-item-image img {
-    width: 80px;
+    width: 205px;
+    height: 120px;
+    object-fit: cover;
   }
   
   .profile-main-my-news-list-item-title {

@@ -14,7 +14,7 @@ const [user, setUser, admin, setAdmin] = useContext(UserContext);
     <section className="profile-main-left">
          
     <section className="profile-main-left-last-tasks">
-    <h2 className="profile-main-header">Hello, {user.name}</h2>
+    <h2 className="profile-main-header">{user.user_type == 'admin' ? 'Admin Panel' : 'User Panel'}</h2>
     {user.user_type != 'admin' ?
     <ul className="profile-main-left-last-tasks-list">
             <li><Link to={`/user/profile/details/${user.objectId}`}><button className="btn waves-effect waves-light profile-list-item-btn-user">My Details<i className="material-icons right">import_contacts</i></button></Link></li>

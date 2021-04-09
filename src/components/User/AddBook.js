@@ -3,6 +3,7 @@ import { Component } from 'react';
 import bookService from '../../services/booksService';
 import React from 'react';
 import Debounce from 'react-debounce-component';
+import M from "materialize-css";
 
 class AddBook extends Component {
     constructor(props) {
@@ -260,9 +261,12 @@ submitHandler(e) {
         return this.setState({addbook_price_error: "Price is empty!"});
     };
 
-    bookService.addBook(title, author, category, short_description, long_description, image, format, pages, year, price, rrp, featured, promo);
-    
-        if (history) { history.push('/user/profile/mybooks') };
+    bookService.addBook(title, author, category, short_description, long_description, image, format, pages, year, price, rrp, featured, promo)
+    .then((result) => {
+        M.toast({ html: "Book added successfully!" });
+        if (history) { history.push('/user/profile/mybooks', result) };
+    })
+        
     };
 
     submitClearHandler = () => { 

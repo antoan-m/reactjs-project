@@ -39,9 +39,6 @@ function addNews(title, short_description, long_description, image) {
 
     return fetch(`${api.news}`, requestOptions)
         .then((response) => response.json())
-        .then((result) => {
-            M.toast({ html: "News added successfully!" });
-        })
         .catch((error) => {
             console.error("error", error);
             M.toast({ html: error.message });
@@ -76,9 +73,6 @@ function editNews(news_id, title, short_description, long_description, image) {
 
     return fetch(`${api.news}/${news_id}`, requestOptions)
         .then((response) => response.json())
-        .then((result) => {
-            M.toast({ html: "News edited successfully!" });
-        })
         .catch((error) => {
             console.error("error", error);
             M.toast({ html: error.message });

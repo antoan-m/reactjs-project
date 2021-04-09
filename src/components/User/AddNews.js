@@ -3,6 +3,7 @@ import { Component } from 'react';
 import newsService from '../../services/newsService';
 import React from 'react';
 import Debounce from 'react-debounce-component';
+import M from "materialize-css";
 
 class AddNews extends Component {
     constructor(props) {
@@ -94,10 +95,12 @@ submitHandler(e) {
         return this.setState({addNews_image_error: "Image is empty!"});
     };
 
-    newsService.addNews(title, short_description, long_description, image);
-    
-        if (history) { history.push('/user/profile/mynews') };
-    };
+    newsService.addNews(title, short_description, long_description, image)
+    .then((result) => {
+        M.toast({ html: "News added successfully!" });
+        if (history) { history.push('/user/profile/mynews', result) };
+    })
+};
 
     submitClearHandler = () => { 
         this.setState({

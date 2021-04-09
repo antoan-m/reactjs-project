@@ -240,9 +240,6 @@ function addBook(title, author, category, short_description, long_description, i
 
     return fetch(`${api.books}`, requestOptions)
         .then((response) => response.json())
-        .then((result) => {
-            M.toast({ html: "Book added successfully!" });
-        })
         .catch((error) => {
             console.error("error", error);
             M.toast({ html: error.message });
@@ -286,9 +283,6 @@ function editBook(book_id, title, author, category, short_description, long_desc
 
     return fetch(`${api.books}/${book_id}`, requestOptions)
         .then((response) => response.json())
-        .then((result) => {
-            M.toast({ html: "Book edited successfully!" });
-        })
         .catch((error) => {
             console.error("error", error);
             M.toast({ html: error.message });

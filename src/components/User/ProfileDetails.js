@@ -15,26 +15,22 @@ class ProfileDetails extends Component {
     };
   }
 
+  
+
   componentDidMount() {
     userService.userData(this.state.user_id)
     .then(data => this.setState({ user_data: data }))
-    // console.log(this.state.user_data)
-    // console.log(this.state.user_id)
-    // console.log(this.state.params)
   }
 
   componentDidUpdate() {
     if (this.state.user_data === '') {
     userService.userData(this.state.user_id)
     .then(data => this.setState({ user_data: data }))
-    // console.log(this.state.user_data)
-    // console.log(this.state.user_id)
-    // console.log(this.state.params)
     }
 }
 
 
-  render() {console.log(this.state.user_data);
+render() {
   return (
     
 <div className="profile">

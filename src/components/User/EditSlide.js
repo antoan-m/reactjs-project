@@ -2,6 +2,7 @@ import "./EditSlide.css";
 import { Component } from 'react';
 import slidesService from '../../services/slidesService';
 import Debounce from 'react-debounce-component';
+import M from 'materialize-css';
 
 class EditSlide extends Component {
     constructor(props) {
@@ -171,9 +172,11 @@ class EditSlide extends Component {
             return this.setState({ addSlide_url_error: "URL is required!" });
         };
 
-        slidesService.editSlide(this.state.slide_data.objectId, title, description, cover, background, url, priority, published);
-
-        if (history) { history.push('/user/profile/myslides') };
+        slidesService.editSlide(this.state.slide_data.objectId, title, description, cover, background, url, priority, published)
+        .then((result) => {
+            M.toast({ html: "Slide edited successfully!" });
+            if (history) { history.push('/user/profile/myslides', result) };
+        })
     };
 
     cancelHandler = () => {
@@ -184,7 +187,7 @@ class EditSlide extends Component {
 
 
     render() {
-        // console.log(this.state);
+        
         return (
             <>
                 <h2 className="page-title">EDIT NEWS ARTICLE</h2>

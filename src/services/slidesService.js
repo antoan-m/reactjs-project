@@ -42,9 +42,6 @@ function addSlide(title, description, cover, background, url, priority, publishe
 
     return fetch(`${api.slides}`, requestOptions)
         .then((response) => response.json())
-        .then((result) => {
-            M.toast({ html: "Slide added successfully!" });
-        })
         .catch((error) => {
             console.error("error", error);
             M.toast({ html: error.message });
@@ -82,9 +79,6 @@ function editSlide(slide_id, title, description, cover, background, url, priorit
 
     return fetch(`${api.slides}/${slide_id}`, requestOptions)
         .then((response) => response.json())
-        .then((result) => {
-            M.toast({ html: "Slide edited successfully!" });
-        })
         .catch((error) => {
             console.error("error", error);
             M.toast({ html: error.message });

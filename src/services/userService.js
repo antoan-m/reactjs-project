@@ -90,34 +90,8 @@ function userLogout(token) {
  .catch(error => console.error(error));
   }
 
-  // var myHeaders = new Headers();
-  // myHeaders.append(
-  //   "Content-Type", "application/json",
-  //   "Access-Control-Allow-Origin", "*",
-  //   "user-token", token
-  //   );
-  
-  // var requestOptions = {
-  //   method: 'GET',
-  //   headers: myHeaders,
-  //   redirect: 'follow'
-  // };
-  //   return fetch(`${api.users}/logout/${token}`, requestOptions)
-  //   .then(response => { 
-  //     response.json();
-  //     localStorage.removeItem('name');
-  //     localStorage.removeItem('email');
-  //     localStorage.removeItem('id');
-  //     localStorage.removeItem('user-token');
-  //     M.toast({html: 'Logout successful!'})
-  //   })
-  //   .catch(error => {
-  //     console.log('error', error);
 
-  // })
-  //}
-
-  function userUpdate(userId, name, password, country, address, phone) {
+  function userUpdate(user) {
     var myHeaders = new Headers();
     myHeaders.append(
       "Content-Type", "application/json",
@@ -125,11 +99,12 @@ function userLogout(token) {
       );
     
     var raw = JSON.stringify({
-      "name": name,
-      "password": password,
-      "country": country,
-      "address": address,
-      "phone": phone
+      "objectId": user.userId,
+      "name": user.name,
+      "password": user.password,
+      "country": user.country,
+      "address": user.address,
+      "phone": user.phone
     });
     
     var requestOptions = {
@@ -139,12 +114,8 @@ function userLogout(token) {
       redirect: 'follow'
     };
     
-    return fetch(`${api.users}/${userId}`, requestOptions)
+    return fetch(`${api.users}/${user.userId}`, requestOptions)
       .then(response => response.json())
-      .then(result => {
-        console.log(result);
-        M.toast({html: 'Update successful!'})
-    })
       .catch(error => {console.log('error', error);
         M.toast({html: error.message})
     })

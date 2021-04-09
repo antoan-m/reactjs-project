@@ -12,11 +12,12 @@ import { useContext } from 'react';
 
 function TopBar(props) {
 
-  const [user, setUser] = useContext(UserContext);
+  const [user, setUser, loggedIn, setLoggedIn] = useContext(UserContext);
 
   function logout() {
      userService.userLogout();
      setUser(oldState => oldState = '');
+     setLoggedIn(oldState => oldState = false);
    }
 
   return (

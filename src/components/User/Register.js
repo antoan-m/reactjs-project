@@ -245,15 +245,6 @@ render() {
                         </div>
                     </div>
 
-                    {/* <div className="row">
-                        <div className="form-field-group">
-                            <input id="country" type="text" className="form-input-field" name="country" onChange={this.changeHandlerCountry.bind(this)} value={this.state.contry} placeholder="Country" />
-                            <Debounce ms={1000}>
-                            <span className="vaidation-error error-text-red">{this.state.register_country_error}</span>
-                            </Debounce>
-                        </div>
-                    </div> */}
-
                     <div className="row">
                     <div className="form-field-group">
                         <select className="browser-default form-countrylist-dropdown" onChange={this.changeHandlerCountry.bind(this)} >

@@ -1,6 +1,5 @@
 import "./ProfileDetailsEdit.css";
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
 import userService from "../../services/userService";
 import countryList from "../../services/countryList";
 import React from 'react';
@@ -118,18 +117,19 @@ class ProfileDetailsEdit extends Component {
       };
 
       changeHandlerCountry(e) {
+          console.log(e.target.value)
 
         this.setState({country: e.target.value},
   
             function validateCountry() {
               if (this.state.country === 'Country'|| !this.state.country || this.state.country === '') { this.setState({country: this.state.user_data.country}) } 
-              else { this.setState({register_country_error: "", country: this.state.user_data.country}) }
+              else { this.setState({register_country_error: "", country: e.target.value}) }
             }
         )
       };
 
       changeHandlerAddress(e) {
-
+     
         this.setState({address: e.target.value},
   
             function validateAddress() {
@@ -149,8 +149,19 @@ submitHandler(e) {
     
     const { name, password, rePassword, country, address, phone } = this.state;
 
+    let user = { "userId": this.state.user_data.objectId };
+
+    if(name === '') {
+        this.setState({name: this.state.user_data.name});
+   } else {
+       user.name = name;
+   };
+
+
     if(password === '' && rePassword === '') {
         return this.setState({register_password_error: "Enter the old or a new password!"});
+    } else {
+        user.password = password;
     }
 
 
@@ -159,21 +170,37 @@ submitHandler(e) {
     }
 
     if(country === '' || country === 'Country') {
-        return this.setState({country: this.state.user_data.country});
+         this.setState({country: this.state.user_data.country});
+    } else {
+        user.country = country;
     };
 
-    userService.userUpdate(this.state.user_data.objectId, name, password, country, address, phone);
+    if(this.state.address === '') {
+         this.setState({address: this.state.user_data.address});
+    } else {
+        user.address = address;
+    };
+
+    if(this.state.phone === '') {
+        this.setState({phone: this.state.user_data.phone});
+   } else {
+       user.phone = phone;
+   };
+
+    userService.userUpdate(user)
+    .then(result => {
+        M.toast({html: 'Update successful!'});
+            if (history) { history.push(`/user/profile/details/${this.state.user_id}, ${result}`) };
+    })
     
-        if (history) { history.push(`/user/profile/details/${this.state.user_id}`) };
+        
     };
 
     cancelHandler = () => { 
         const { history } = this.props;
-        if (history) { history.push(`/user/profile/details/${this.state.user_id}`) };
+            if (history) { history.push(`/user/profile/details/${this.state.user_id}`) };
     };
       
-
-
 
 render() {
     return (
@@ -215,19 +242,10 @@ render() {
                         </div>
                     </div>
 
-                    {/* <div className="row">
-                        <div className="form-field-group">
-                            <input id="country" type="text" className="form-input-field" name="country" onChange={this.changeHandlerCountry.bind(this)} value={this.state.contry} placeholder="Country" />
-                            <Debounce ms={1000}>
-                            <span className="vaidation-error error-text-red">{this.state.register_country_error}</span>
-                            </Debounce>
-                        </div>
-                    </div> */}
-
                     <div className="row">
                     <div className="form-field-group">
                         <select className="browser-default form-countrylist-dropdown" onChange={this.changeHandlerCountry.bind(this)} >
-                            <option value={this.state.user_data.country}>{this.state.user_data.country}</option>
+                            <option value={this.state.user_data.country}>Country</option>
                             {this.state.countries.map(x =>
                                 <option value={x} key={x}>{x}</option>
                             )}
