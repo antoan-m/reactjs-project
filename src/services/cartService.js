@@ -62,6 +62,7 @@ return fetch(`${api.orders}`, requestOptions)
         });
 }
 
+
 function getMyOrders(user_id) {
 
   let query = `?where=ownerId%3D'${user_id}'&property=book_ids&property=created&property=order_total&property=objectId&sortBy=created%20desc`;
@@ -196,4 +197,4 @@ export default {
     getOrderBooksInfo,
     getAllOrders,
     getTotalSales
-}
+  }

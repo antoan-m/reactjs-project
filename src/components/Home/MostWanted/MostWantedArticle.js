@@ -1,22 +1,22 @@
 import { Component } from 'react';
 
-import "./BestSellersArticle.css";
+import "./MostWantedArticle.css";
 
 import { NavLink } from 'react-router-dom';
 
 
-class BestSellersArticle extends Component {
+class MostWantedArticle extends Component {
    constructor(props) {
     super(props)
    }
 
 render() {
   return (
-  this.props.bestSellersBooks.map(x => {
+  this.props.mostWantedBooks.map(x => {
     return (
-        <article className="bestsellers-items-item" key={x.objectId}>
+        <article className="mostwanted-items-item" key={x.objectId}>
         <NavLink to={`books/details/${x.objectId}`}>
-            <img src={x.image} className="bestsellers-items-item-img" alt={x.title} />
+            <img src={x.image} className="mostwanted-items-item-img" alt={x.title} />
          </NavLink>
           <h3>
           <NavLink to={`books/details/${x.objectId}`}>{x.title}</NavLink>
@@ -31,4 +31,4 @@ render() {
   )}
 }
 
-export default BestSellersArticle;
+export default MostWantedArticle;

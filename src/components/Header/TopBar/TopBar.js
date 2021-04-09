@@ -2,13 +2,7 @@ import "./TopBar.css";
 import { NavLink } from "react-router-dom";
 import userService from "../../../services/userService";
 import { UserContext } from "../../../context/UserContext";
-import { useContext } from 'react';
-
-
-// let userToken = localStorage.getItem('user-token');
-// if (userToken === null || userToken === undefined) {
-//   userToken = false;
-// }
+import { useContext, useEffect } from 'react';
 
 function TopBar(props) {
 

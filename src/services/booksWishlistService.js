@@ -25,7 +25,7 @@ function checkIfInWishlist(ownerId, book_id) {
 return fetch(`${api.wishlist}${query}`, requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result);
+            // console.log(result);
       if (result.length > 0) {
         return true
       } else {
@@ -99,7 +99,7 @@ function removeFromWishlist(ownerId, book_id) {
 fetch(`${api.wishlist}${query}`, requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result[0].objectId);
+            // console.log(result[0].objectId);
       if (result.length > 0) {
         
         var myHeaders = new Headers();
@@ -180,11 +180,22 @@ function getWishlistBooksInfo(array) {
 
 }
 
+function getMostWantedBooks(limit) {
+  let query = `pageSize=${limit}&property=book_id&property=Count(book_id)&groupBy=book_id`;
+
+  return fetch(`${api.wishlist}?${query}`, {
+          headers: { "Access-Control-Allow-Origin": "*" },
+      })
+      .then((res) => res.json())
+      .catch((error) => console.error(error));
+}
+
 
 export default {
     checkIfInWishlist,
     addToWishlist,
     removeFromWishlist,
     getWishlistBookIds,
-    getWishlistBooksInfo
+    getWishlistBooksInfo,
+    getMostWantedBooks
 };

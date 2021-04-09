@@ -6,6 +6,7 @@ import React from 'react';
 import Debounce from 'react-debounce-component';
 import M from 'materialize-css';
 
+
 class ProfileDetailsEdit extends Component {
     constructor(props) {
       super(props);
@@ -190,6 +191,7 @@ submitHandler(e) {
     userService.userUpdate(user)
     .then(result => {
         M.toast({html: 'Update successful!'});
+        localStorage.setItem('name', result.name);
             if (history) { history.push(`/user/profile/details/${this.state.user_id}, ${result}`) };
     })
     

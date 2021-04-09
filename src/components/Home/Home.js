@@ -4,7 +4,7 @@ import InfoBoxes from './InfoBoxes/InfoBoxes';
 import Slider from './Slider/Slider';
 import WeeklyDeals from './WeeklyDeals/WeeklyDeals';
 import FeaturedCategory from './FeaturedCategory/FeaturedCategory';
-import BestSellers from './BestSellers/BestSellers';
+import MostWanted from './MostWanted/MostWanted';
 
 
 function Home() {
@@ -20,7 +20,7 @@ function Home() {
 
      <FeaturedCategory />
 
-     <BestSellers />
+     <MostWanted />
 
    </div>
   );

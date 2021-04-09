@@ -1,24 +1,24 @@
-.bestsellers {
+.mostwanted {
   height: 440px;
   margin-bottom: 50px;
   display: flex;
   align-items: center;
 }
 
-.bestsellers-item-big {
+.mostwanted-item-big {
   width: 330px;
   height: 440px;
   position: relative;
 }
 
-.bestsellers-item-big img {
+.mostwanted-item-big img {
   border: 0px;
   border-radius: 4px;
   overflow: hidden;
   opacity: 0.8;
 }
 
-.bestsellers-item-big h2 {
+.mostwanted-item-big h2 {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -26,7 +26,7 @@
   color: #3D405B;
 }
 
-.bestsellers-item-big h3 {
+.mostwanted-item-big h3 {
   position: absolute;
   top: 70px;
   left: 20px;
@@ -34,6 +34,6 @@
   color: #81b29a;
 }
 
-.bestsellers-items-small {
+.mostwanted-items-small {
   display: flex;
 }
