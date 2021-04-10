@@ -52,7 +52,8 @@ import Cart from "./components/User/Cart";
 
 import PageNotFound from "./components/Pages/PageNotFound";
 import userService from "./services/userService";
-import { ProtectedRoute, ProtectedRouteUser } from "./components/utils/ProtectedRoute";
+import { ProtectedRoute, ProtectedRouteUser } from "./utils/ProtectedRoute";
+import ErrorBoundary from "./utils/ErrorBoundaty";
 
 
 export function App() {
@@ -87,16 +88,18 @@ if(userToken) {
       setCart(true) 
       setCartItems(localStorage.getItem('cart').split(','))
     } else {
-      setCart(false)
+      setCart(false);
+        localStorage.setItem('cart','');
     }
   }
 },[])
 
 console.log('logged: ', loggedIn);
 
-  return (
-    <div className="App">
-      <UserContext.Provider value={[user, setUser, loggedIn, setLoggedIn, cartItems, setCartItems]}>
+return (
+  <div className="App">
+    <UserContext.Provider value={[user, setUser, loggedIn, setLoggedIn, cartItems, setCartItems]}>
+      <ErrorBoundary>
       <Header userData={user} loggedIn={loggedIn} />
       <Switch>
         <Route path="/" exact component={Home} />
@@ -147,8 +150,9 @@ console.log('logged: ', loggedIn);
       </Switch>
       <Newsletter />
       <Footer />
-      </UserContext.Provider>
-    </div>
+      </ErrorBoundary>
+    </UserContext.Provider>
+  </div>
   );
 }
 
