@@ -27,13 +27,11 @@ componentDidMount() {
     for (let i = 0; i < mostWantedBooksIds.length; i++) {
       const book = mostWantedBooksIds[i].book_id;
       book_ids.push(book);
-      console.log(book_ids);
     }
 
     wishlistService.getWishlistBooksInfo(book_ids)
     .then(mostWantedBooks => {
       this.setState({ mostWantedBooks });
-      console.log(mostWantedBooks);
     })
 })
 
