@@ -25,6 +25,7 @@
   align-content: center;
   width: 50%;
   max-width: 640px;
+  position: relative;
 }
 
 .weekly-deals-items-item:first-child {

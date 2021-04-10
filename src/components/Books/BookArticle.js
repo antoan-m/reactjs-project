@@ -24,6 +24,7 @@ render() {
 <Link to={`/books/${x.author}`}><p className="book-list-item-details-author">{x.author}</p></Link>
 </article>
 <article className="book-list-item-details-bottom">
+{x.rrp ? <p className="book-list-item-details-rrp">${x.rrp}</p> : ''}
   <p className="book-list-item-details-price">${x.price}</p>
 <Link to={`/books/details/${x.objectId}`}><button className="btn waves-effect waves-light book-list-item-details-btn">Read more<i className="material-icons right">import_contacts</i></button></Link>
 </article>

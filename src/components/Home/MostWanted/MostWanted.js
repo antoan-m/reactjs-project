@@ -46,10 +46,10 @@ render() {
 <section className="mostwanted">
 
     <article className="mostwanted-item-big">
-       <NavLink to="/books">
+      
            <img src="best-sellers-banner.jpg" alt="Most Wanted" />
            <h2>Most Wanted</h2>
-        </NavLink>
+        
     </article>
 
     <article className="mostwanted-items-small">

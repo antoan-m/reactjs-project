@@ -27,7 +27,8 @@ render() {
           <h5>
           <NavLink to={`/books/author/${x.author}`}>{x.author}</NavLink>
           </h5>
-          <p>${x.price}</p>
+          {x.rrp ? <p className="featured-category-items-item-info-rrp">${x.rrp}</p> : ''}
+          <p className="featured-category-items-item-info-price">${x.price}</p>
         </article>
   )
 })

@@ -82,6 +82,15 @@
   text-align: right;
 }
 
+.book-list-item-details-rrp {
+  position: absolute;
+    font-size: 12px;
+    text-decoration: line-through;
+    bottom: 33px;
+    left: 10px;
+    color: #ee6e73;
+}
+
 .book-list-item-details-btn {
   
 }

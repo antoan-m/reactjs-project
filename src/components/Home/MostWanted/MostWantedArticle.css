@@ -41,3 +41,9 @@
   font-size: 16px;
   font-weight: 600;
 }
+
+.mostwanted-items-item-info-rrp {
+  font-size: 12px !important;
+  text-decoration: line-through;
+  color: #ee6e73;
+}
