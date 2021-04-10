@@ -34,8 +34,7 @@ can create/edit/delete news,\
 can create/edit/delete products,\
 add/edit/remove slides on frontpage,\
 add/edit/remove newsletter,\
-view orders,\
-view most liked/added to Wishlist
+view orders
 
 ### `Forms`
 
