@@ -13,6 +13,7 @@ function MyNewslettersPanel(props) {
   useEffect(() => {
     setEmail(props.userData.email);
     setSubscribers(props.myNewsletters);
+    props.userData.newsletter ? setSubscribed(true) : setSubscribed(false);
   });
 
 
@@ -24,8 +25,9 @@ function MyNewslettersPanel(props) {
         let userId = localStorage.getItem('id');
           if(userId) {
         newsletterService.updateUserNewsletterStatus(userId, false);
+        setSubscribed(false);
     }
-    setSubscribed(false);
+    
       })
   }
      
@@ -41,7 +43,7 @@ function MyNewslettersPanel(props) {
                      </article>
                      </article>
                      <article className="profile-main-my-books-list-item-book-buttons">
-                       {props.userData.newsletter ?
+                    {subscribed ?
                      <button onClick={(e) => {newsletterUnsubscribeHandler(e, "x.objectId")}} type="button" className="btn waves-effect waves-light btn-small unsubscribe-btn">Unsubscribe<i className="material-icons right">delete</i></button>
                      : <span>You are not subscribed.</span>}
                      </article>
