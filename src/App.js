@@ -100,7 +100,7 @@ return (
   <div className="App">
     <UserContext.Provider value={[user, setUser, loggedIn, setLoggedIn, cartItems, setCartItems]}>
       <ErrorBoundary>
-      <Header userData={user} loggedIn={loggedIn} />
+      <Header />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/books" exact component={Books} />
