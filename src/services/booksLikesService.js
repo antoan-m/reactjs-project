@@ -26,7 +26,7 @@ function checkIfInLikes(ownerId, book_id) {
 return fetch(`${api.likes}${query}`, requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result);
+            // console.log(result);
       if (result.length > 0) {
         return true
       } else {
