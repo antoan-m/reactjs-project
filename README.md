@@ -51,4 +51,6 @@ used debounce component for input feedback
 
 ### `Protected Routes`
 
+### `Error Handling incl. Error Boundary`
+
 ### `Deployed`
